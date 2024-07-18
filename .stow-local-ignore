@@ -1,0 +1,6 @@
+scripts
+.stow-local-ignore
+packages.sh
+pacman.log
+.git
+
