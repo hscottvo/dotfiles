@@ -1,50 +1,112 @@
-[
-    {
-        "layer": "top",
-        "position": "top",
-        "output": "DP-3",
-        "height": 30,
-        "spacing": 5,
-        "margin-bottom": 0,
-        "modules-left": [
-            "hyprland/workspaces"
-        ],
-        "modules-center": [
-            "hyprland/window"
-        ],
-        "modules-right": [
-            "pulseaudio",
-            "clock"
-        ],
-        "clock": {
-            "format": "{:%H:%M}"
+// [
+//     {
+//         "layer": "top",
+//         "position": "top",
+//         "output": "DP-3",
+//         "height": 30,
+//         "spacing": 5,
+//         "margin-bottom": 0,
+//         "modules-left": [
+//             "hyprland/workspaces"
+//         ],
+//         "modules-center": [
+//             "hyprland/window"
+//         ],
+//         "modules-right": [
+//             "pulseaudio",
+//             "clock"
+//         ],
+//         "clock": {
+//             "format": "{:%H:%M}"
+//         },
+//         "pulseaudio": {
+//             "format": "{volume}% {icon}",
+//             "format-icons": {
+//                 "default": [
+//                     "\uf026",
+//                     "\uf027",
+//                     "\uf028"
+//                 ]
+//             },
+//             "on-click": "pactl set-sink-mute @DEFAULT_SINK@ toggle",
+//             "on-click-right": "pavucontrol"
+//         }
+//     },
+//     {
+//         "layer": "top",
+//         "position": "bottom",
+//         "output": "DP-3",
+//         "height": 30
+//     },
+//     {
+//         "layer": "top",
+//         "output": "HDMI-A-1",
+//         "height": 30,
+//         "spacing": 5,
+//         "modules-left": [
+//             "hyprland/workspaces"
+//         ]
+//     }
+// ]
+{
+    "layer": "top", // Waybar at top layer
+    "position": "top", // Waybar position (top|bottom|left|right)
+    "output": "DP-3",
+    // Choose the order of the modules
+    "modules-left": [
+        "hyprland/workspaces"
+    ],
+    "modules-center": [
+        // "custom/music",
+        "hyprland/window"
+    ],
+    "modules-right": [
+        "pulseaudio",
+        "clock",
+        "custom/lock",
+        "custom/power"
+    ],
+    "hyprland/workspaces": {
+        "disable-scroll": true
+    },
+    "tray": {
+        "icon-size": 21,
+        "spacing": 10
+    },
+    "custom/music": {
+        "format": "  {}",
+        "escape": true,
+        "interval": 5,
+        "tooltip": false,
+        "exec": "playerctl metadata --format='{{ title }}'",
+        "on-click": "playerctl play-pause",
+        "max-length": 50
+    },
+    "clock": {
+        "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>"
+    },
+    "pulseaudio": {
+        // "scroll-step": 1, // %, can be a float
+        "format": "{icon}  {volume}%",
+        "format-muted": "",
+        "format-icons": {
+            "default": [
+                "",
+                "",
+                " "
+            ]
         },
-        "pulseaudio": {
-            "format": "{volume}% {icon}",
-            "format-icons": {
-                "default": [
-                    "\uf026",
-                    "\uf027",
-                    "\uf028"
-                ]
-            },
-            "on-click": "pactl set-sink-mute @DEFAULT_SINK@ toggle",
-            "on-click-right": "pavucontrol"
-        }
+        "on-click": "pavucontrol"
     },
-    {
-        "layer": "top",
-        "position": "bottom",
-        "output": "DP-3",
-        "height": 30
+    // https://github.com/hyprwm/hyprlock
+    "custom/lock": {
+        "tooltip": false,
+        "on-click": "sh -c '(hyprlock)' & disown",
+        "format": ""
     },
-    {
-        "layer": "top",
-        "output": "HDMI-A-1",
-        "height": 30,
-        "spacing": 5,
-        "modules-left": [
-            "hyprland/workspaces"
-        ]
+    "custom/power": {
+        "tooltip": false,
+        "on-click": "wlogout &",
+        "format": "⏻"
     }
-]
+}
