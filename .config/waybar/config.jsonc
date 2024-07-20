@@ -48,65 +48,129 @@
 //         ]
 //     }
 // ]
-{
-    "layer": "top", // Waybar at top layer
-    "position": "top", // Waybar position (top|bottom|left|right)
-    "output": "DP-3",
-    // Choose the order of the modules
-    "modules-left": [
-        "hyprland/workspaces"
-    ],
-    "modules-center": [
+[
+    {
+        "layer": "top", // Waybar at top layer
+        "position": "top", // Waybar position (top|bottom|left|right)
+        "output": "DP-3",
+        // Choose the order of the modules
+        "modules-left": [
+            "hyprland/workspaces"
+        ],
+        // "modules-center": [
         // "custom/music",
-        "hyprland/window"
-    ],
-    "modules-right": [
-        "pulseaudio",
-        "clock",
-        "custom/lock",
-        "custom/power"
-    ],
-    "hyprland/workspaces": {
-        "disable-scroll": true
-    },
-    "tray": {
-        "icon-size": 21,
-        "spacing": 10
-    },
-    "custom/music": {
-        "format": "  {}",
-        "escape": true,
-        "interval": 5,
-        "tooltip": false,
-        "exec": "playerctl metadata --format='{{ title }}'",
-        "on-click": "playerctl play-pause",
-        "max-length": 50
-    },
-    "clock": {
-        "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>"
-    },
-    "pulseaudio": {
-        // "scroll-step": 1, // %, can be a float
-        "format": "{icon}  {volume}%",
-        "format-muted": "",
-        "format-icons": {
-            "default": [
-                "",
-                "",
-                " "
-            ]
+        // "hyprland/window"
+        // ],
+        "modules-right": [
+            "pulseaudio",
+            "clock",
+            "custom/lock",
+            "custom/power"
+        ],
+        "hyprland/workspaces": {
+            "disable-scroll": true
         },
-        "on-click": "pavucontrol"
+        "tray": {
+            "icon-size": 21,
+            "spacing": 10
+        },
+        "custom/music": {
+            "format": "  {}",
+            "escape": true,
+            "interval": 5,
+            "tooltip": false,
+            "exec": "playerctl metadata --format='{{ title }}'",
+            "on-click": "playerctl play-pause",
+            "max-length": 50
+        },
+        "clock": {
+            "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>"
+        },
+        "pulseaudio": {
+            // "scroll-step": 1, // %, can be a float
+            "format": "{icon}  {volume}%",
+            "format-muted": "",
+            "format-icons": {
+                "default": [
+                    "",
+                    "",
+                    " "
+                ]
+            },
+            "on-click": "pavucontrol"
+        },
+        // https://github.com/hyprwm/hyprlock
+        "custom/lock": {
+            "tooltip": false,
+            "on-click": "sh -c '(hyprlock)' & disown",
+            "format": ""
+        },
+        "custom/power": {
+            "tooltip": false,
+            "on-click": "wlogout &",
+            "format": "⏻"
+        }
     },
-    // https://github.com/hyprwm/hyprlock
-    "custom/lock": {
-        "tooltip": false,
-        "on-click": "sh -c '(hyprlock)' & disown",
-        "format": ""
-    },
-    "custom/power": {
-        "tooltip": false,
-        "on-click": "wlogout &",
-        "format": "⏻"
+    {
+        "layer": "top", // Waybar at top layer
+        "position": "top", // Waybar position (top|bottom|left|right)
+        "output": "HDMI-A-1",
+        // Choose the order of the modules
+        "modules-left": [
+            "hyprland/workspaces"
+        ],
+        // "modules-center": [
+        // "custom/music",
+        // "hyprland/window"
+        // ],
+        "modules-right": [
+            "pulseaudio",
+            "clock",
+            "custom/lock",
+            "custom/power"
+        ],
+        "hyprland/workspaces": {
+            "disable-scroll": true
+        },
+        "tray": {
+            "icon-size": 21,
+            "spacing": 10
+        },
+        "custom/music": {
+            "format": "  {}",
+            "escape": true,
+            "interval": 5,
+            "tooltip": false,
+            "exec": "playerctl metadata --format='{{ title }}'",
+            "on-click": "playerctl play-pause",
+            "max-length": 50
+        },
+        "clock": {
+            "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>"
+        },
+        "pulseaudio": {
+            // "scroll-step": 1, // %, can be a float
+            "format": "{icon}  {volume}%",
+            "format-muted": "",
+            "format-icons": {
+                "default": [
+                    "",
+                    "",
+                    " "
+                ]
+            },
+            "on-click": "pavucontrol"
+        },
+        // https://github.com/hyprwm/hyprlock
+        "custom/lock": {
+            "tooltip": false,
+            "on-click": "sh -c '(hyprlock)' & disown",
+            "format": ""
+        },
+        "custom/power": {
+            "tooltip": false,
+            "on-click": "wlogout &",
+            "format": "⏻"
+        }
     }
-}
+]
