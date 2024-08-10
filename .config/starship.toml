@@ -1,3 +1,5 @@
+# stolen from https://github.com/neuromaancer/everforest_collection/blob/main/starship/starship.toml
+
 format = """
 $os\
 $username\
