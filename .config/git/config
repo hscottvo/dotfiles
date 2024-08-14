@@ -3,3 +3,5 @@
 	email = 56327086+hscottvo@users.noreply.github.com
 [init]
 	defaultBranch = main
+[core]
+	symlinks = true
