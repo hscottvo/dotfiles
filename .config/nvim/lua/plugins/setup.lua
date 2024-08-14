@@ -14,14 +14,14 @@ return {
 				desc = "Find files",
 			},
 		},
-		config = function()
-			require("telescope").setup({
-				extensions = {
-					["ui-select"] = {
-						require("telescope.themes").get_dropdown({}),
-					},
+		opts = {
+			extensions = {
+				["ui-select"] = {
+					require("telescope.themes").get_dropdown({}),
 				},
-			})
+			},
+		},
+		config = function()
 			require("telescope").load_extension("ui-select")
 		end,
 	},
