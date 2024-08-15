@@ -53,6 +53,9 @@ return {
 	{
 		"smoka7/hop.nvim",
 		version = "*",
+		keys = {
+			{ "<leader>hw", "<cmd>HopWord<cr>", desc = "Hop to word in buffer" },
+		},
 		opts = {
 			keys = "etovxqpdygfblzhckisuran",
 		},
