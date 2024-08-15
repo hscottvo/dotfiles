@@ -36,20 +36,13 @@ local wk = require("which-key")
 
 wk.add({
 	-- Find
-	{ "<leader>f", group = "Find" },
+	{ "<leader>f", desc = "Find" },
 
 	-- Git
 	{ "<leader>g", "", desc = "git" },
 	{ "<leader>gg", "<cmd>LazyGit<cr>", desc = "LazyGit" },
-	{
-		"<leader>?",
-		function()
-			require("which-key").show({ global = false })
-		end,
-		desc = "Buffer Local Keymaps (which-key)",
-	},
 	-- Buffers
-	{ "<leader>b", group = "Buffer" },
+	{ "<leader>b", desc = "Buffer" },
 	{
 		"<leader>ba",
 		function()
