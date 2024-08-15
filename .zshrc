@@ -70,11 +70,9 @@ export ZSH="$HOME/.oh-my-zsh"
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-source ~/.zsh-syntax-highlighting/themes/everforest.zsh
 
 # now load zsh-syntax-highlighting plugin
-plugins=(git)
+plugins=(git zsh-syntax-highlighting)
 
 # source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source $ZSH/oh-my-zsh.sh
