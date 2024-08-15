@@ -85,4 +85,5 @@ wk.add({
 		end,
 		desc = "Select buffer 4",
 	},
+	{ "<leader>h", group = "Hop" },
 })
