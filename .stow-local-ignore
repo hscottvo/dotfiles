@@ -1,6 +1,9 @@
 scripts
 .stow-local-ignore
 packages.sh
+install.sh
 pacman.log
 .git
+.gitignore
+.gitmodules
 

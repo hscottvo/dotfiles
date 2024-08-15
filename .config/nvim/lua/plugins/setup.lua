@@ -12,9 +12,24 @@ return {
 		},
 		keys = {
 			{
-				"<Leader>ff",
-				"<cmd>Telescope find_files<CR>",
+				"<leader>ff",
+				"<cmd>Telescope find_files<cr>",
 				desc = "Find files",
+			},
+			{
+				"<leader>fw",
+				"<cmd>Telescope live_grep<cr>",
+				desc = "Find words using grep",
+			},
+			{
+				"<leader>fd",
+				"<cmd>Telescope diagnostics<cr>",
+				desc = "Find diagnostics",
+			},
+			{
+				"<leader>fs",
+				"<cmd>Telescore grep_string<cr>",
+				desc = "Find current string",
 			},
 		},
 		opts = {

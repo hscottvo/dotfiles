@@ -69,6 +69,12 @@ return {
 		},
 	},
 	{
+		"nvim-treesitter/nvim-treesitter",
+		opts = {
+			build = ":TSUpdate",
+		},
+	},
+	{
 		"stevearc/conform.nvim",
 		opts = {
 			formatters_by_ft = {
@@ -81,8 +87,9 @@ return {
 			},
 		},
 	},
-	{ "hrsh7th/cmp-nvim-lsp" },
-	{ "hrsh7th/nvim-cmp" },
+	-- old autocomplete, less pain in the butt to set up than COQ
+	-- { "hrsh7th/cmp-nvim-lsp" },
+	-- { "hrsh7th/nvim-cmp" },
 	{
 		"windwp/nvim-autopairs",
 		event = "InsertEnter",
