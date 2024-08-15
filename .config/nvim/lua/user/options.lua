@@ -19,4 +19,18 @@ o.scrolloff = 8
 
 vim.g.qs_highlight_on_keys = { "f", "t" }
 
-vim.diagnostic.config({ update_in_insert = true })
+vim.diagnostic.config({
+	virtual_text = {
+		format = function(diagnostic)
+			local lines = vim.split(diagnostic.message, "\n")
+			return lines[1]
+		end,
+		prefix = "●", -- You can use any character here for the virtual text
+		virt_text_pos = "right_align",
+		suffix = " ",
+	},
+	signs = false, -- Disable signs in the sign column
+	underline = true,
+	update_in_insert = true,
+	severity_sort = true,
+})
