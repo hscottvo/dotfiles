@@ -28,7 +28,7 @@ return {
 			},
 			{
 				"<leader>fs",
-				"<cmd>Telescore grep_string<cr>",
+				"<cmd>Telescope grep_string<cr>",
 				desc = "Find current string",
 			},
 			{
