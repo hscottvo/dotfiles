@@ -14,7 +14,7 @@ return {
 			{
 				"<leader>ff",
 				"<cmd>Telescope find_files<cr>",
-				desc = "Find files",
+				desc = "Find files using grep",
 			},
 			{
 				"<leader>fw",
@@ -31,17 +31,27 @@ return {
 				"<cmd>Telescore grep_string<cr>",
 				desc = "Find current string",
 			},
+			{
+				"<leader>fb",
+				"<cmd>Telescope file_browser<cr>",
+				desc = "Find files using file browser",
+			},
 		},
 		opts = {
 			extensions = {
 				["ui-select"] = {
 					require("telescope.themes").get_dropdown({}),
 				},
+				file_browser = {},
 			},
 		},
 		config = function()
 			require("telescope").load_extension("ui-select")
 		end,
+	},
+	{
+		"nvim-telescope/telescope-file-browser.nvim",
+		dependencies = { "nvim-telescope/telescope.nvim", "nvim-lua/plenary.nvim" },
 	},
 	{
 		"kdheepak/lazygit.nvim",
@@ -59,38 +69,6 @@ return {
 		-- setting the keybinding for LazyGit with 'keys' is recommended in
 		-- order to load the plugin when the command is run for the first time
 		keys = {},
-	},
-	{
-		"nvim-neo-tree/neo-tree.nvim",
-		branch = "v3.x",
-
-		dependencies = {
-			"nvim-lua/plenary.nvim",
-			"nvim-tree/nvim-web-devicons", -- not strictly required, but recommended
-			"MunifTanjim/nui.nvim",
-			-- "3rd/image.nvim", -- Optional image support in preview window: See `# Preview Mode` for more information
-		},
-		keys = {
-			{
-				"<leader>e",
-				"<cmd>Neotree toggle right<cr>",
-				desc = "Toggle Explorer",
-			},
-			{
-				"<leader>o",
-				function()
-					if vim.bo.filetype == "neo-tree" then
-						vim.cmd.wincmd("p")
-					else
-						vim.cmd({
-							cmd = "Neotree",
-							args = { "focus", "right" },
-						})
-					end
-				end,
-				desc = "Toggle explorer focus",
-			},
-		},
 	},
 	{
 		"nvim-lualine/lualine.nvim",
