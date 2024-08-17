@@ -2,10 +2,8 @@
 
 format = """
 $os\
-$username\
-$hostname\
+$username \
 $directory\
-$git_branch\
 $git_state\
 $git_status\
 $character"""
