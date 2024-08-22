@@ -65,6 +65,10 @@ return {
 				"clang-format",
 				-- bash
 				"shfmt",
+				--hypr
+				"hyprls",
+				-- zshrc
+				"beautysh",
 			},
 		},
 	},
