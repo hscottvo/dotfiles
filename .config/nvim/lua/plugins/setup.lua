@@ -13,12 +13,12 @@ return {
 		keys = {
 			{
 				"<leader>ff",
-				"<cmd>Telescope find_files<cr>",
+				"<cmd>lua require('telescope.builtin').find_files({ find_command = {'rg', '--files', '--hidden', '-g', '!.git' }})<cr>",
 				desc = "Find files using grep",
 			},
 			{
 				"<leader>fw",
-				"<cmd>Telescope live_grep<cr>",
+				"<cmd>lua require('telescope.builtin').live_grep({additional_args = function() return {'--hidden'} end})<cr>",
 				desc = "Find words using grep",
 			},
 			{
@@ -28,7 +28,7 @@ return {
 			},
 			{
 				"<leader>fs",
-				"<cmd>Telescope grep_string<cr>",
+				"<cmd>lua require('telescope.builtin').grep_string({additional_args = function() return {'--hidden'} end})<cr>",
 				desc = "Find current string",
 			},
 			{
