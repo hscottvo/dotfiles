@@ -37,7 +37,14 @@ return {
 	{
 		"williamboman/mason-lspconfig.nvim",
 		opts = {
-			ensure_installed = { "lua_ls", "rust_analyzer", "pyright", "clangd", "bashls" },
+			ensure_installed = {
+				"lua_ls",
+				"rust_analyzer",
+				"pyright",
+				"clangd",
+				"bashls",
+				"docker_compose_language_service",
+			},
 			handlers = {
 				function(server_name)
 					require("lspconfig")[server_name].setup({})
@@ -77,6 +84,24 @@ return {
 		opts = {
 			build = ":TSUpdate",
 		},
+		config = function()
+			require("nvim-treesitter.configs").setup({
+				ensure_installed = {
+					"bash",
+					"c",
+					"css",
+					"dockerfile",
+					"go",
+					"hyprlang",
+					"lua",
+					"markdown",
+					"python",
+					"rust",
+					"sql",
+					"yaml",
+				},
+			})
+		end,
 	},
 	{
 		"stevearc/conform.nvim",
@@ -84,6 +109,7 @@ return {
 			formatters_by_ft = {
 				lua = { "stylua" },
 				python = { "isort", "black" },
+				cpp = { "clang-format" },
 			},
 			format_on_save = {
 				timeout_ms = 500,

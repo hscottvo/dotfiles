@@ -1,0 +1,11 @@
+[Unit]
+Description=Pipewire Media Server
+After=wireplumber.service
+
+[Service]
+ExecStart=/usr/bin/pipewire
+Restart=on-failure
+Environment=PIPEWIRE_LOG_LEVEL=3
+
+[Install]
+WantedBy=default.target
