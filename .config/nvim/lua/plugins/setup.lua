@@ -38,14 +38,23 @@ return {
 			},
 		},
 		opts = {
-			extensions = {
-				["ui-select"] = {
-					require("telescope.themes").get_dropdown({}),
-				},
-				file_browser = {},
-			},
+			-- extensions = {
+			-- 	["ui-select"] = {
+			-- 		require("telescope.themes").get_dropdown({}),
+			-- 	},
+			-- 	file_browser = {},
+			-- },
 		},
 		config = function()
+			-- require("telescope").load_extension("ui-select")
+			require("telescope").setup {
+				extensions = {
+					["ui-select"] = {
+						require("telescope.themes").get_dropdown({}),
+					}
+				},
+			}
+
 			require("telescope").load_extension("ui-select")
 		end,
 	},
