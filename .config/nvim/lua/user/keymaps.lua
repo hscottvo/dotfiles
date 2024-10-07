@@ -6,29 +6,6 @@ local expr_opts = { silent = true, expr = true }
 local keymap = vim.keymap.set
 
 keymap({ "n" }, "<ESC>", ":noh<CR>:lua require('notify').dismiss()<CR>", opts)
---keymap({ "n" }, "<ESC>", ":lua require('notify').dismiss()<CR>")
-
--- local lsp_zero = require("lsp-zero")
---
--- local lsp_attach = function(client, bufnr)
--- 	local opts = {buffer = buffnr}
--- 	keymap('n', 'K', '<cmd>lua vim.lsp.buf.hover()<cr>', opts)
--- 	keymap('n', 'gd', '<cmd>lua vim.lsp.buf.definition()<cr>', opts)
--- 	keymap('n', 'gD', '<cmd>lua vim.lsp.buf.declaration()<cr>', opts)
--- 	keymap('n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<cr>', opts)
--- 	keymap('n', 'go', '<cmd>lua vim.lsp.buf.type_definition()<cr>', opts)
--- 	keymap('n', 'gr', '<cmd>lua vim.lsp.buf.references()<cr>', opts)
--- 	keymap('n', 'gs', '<cmd>lua vim.lsp.buf.signature_help()<cr>', opts)
--- 	keymap('n', '<F2>', '<cmd>lua vim.lsp.buf.rename()<cr>', opts)
--- 	keymap({'n', 'x'}, '<F3>', '<cmd>lua vim.lsp.buf.format({async = true})<cr>', opts)
--- 	keymap('n', '<F4>', '<cmd>lua vim.lsp.buf.code_action()<cr>', opts)
--- end
---
--- lsp_zero.extend_lspconfig({
--- 	sign_text = true,
--- 	lsp_attach = lsp_attach,
--- 	capabilities = require("cmp_nvim_lsp").default_capabilities(),
--- })
 
 local harpoon = require("harpoon")
 
@@ -37,6 +14,18 @@ local wk = require("which-key")
 wk.add({
 	-- Find
 	{ "<leader>f", desc = "Find" },
+
+	-- lsp
+	{ "<leader>l", desc = "LSP" },
+	{ "<leader>lr", "<cmd>lua vim.lsp.buf.rename()<cr>", desc = "Rename" },
+	{ "<leader>la", "<cmd> lua vim.lsp.buf.code_action()<cr>", desc = "Code Action" },
+	{ "<leader>lh", "<cmd>lua vim.lsp.buf.hover()<cr>", desc = "Hover" },
+	{ "<leader>ld", "<cmd>lua vim.lsp.buf.definition()<cr>", desc = "Definition" },
+	{ "<leader>lD", "<cmd>lua vim.lsp.buf.declaration()<cr>", desc = "Declaration" },
+	{ "<leader>li", "<cmd>lua vim.lsp.buf.implementation()<cr>", desc = "Implementation" },
+	{ "<leader>lo", "<cmd>lua vim.lsp.buf.type_definition()<cr>", desc = "Type Definition" },
+	{ "<leader>lR", "<cmd>lua vim.lsp.buf.references()<cr>", desc = "References" },
+	{ "<leader>ls", "<cmd>lua vim.lsp.buf.signature_help()<cr>", desc = "Signature Help" },
 
 	-- Git
 	{ "<leader>g", "", desc = "git" },
