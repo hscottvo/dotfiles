@@ -6,5 +6,7 @@ pacman.log
 .git
 .gitignore
 .gitmodules
+.zshrc
+nixos
 
 README.md
