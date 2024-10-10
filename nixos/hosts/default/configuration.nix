@@ -8,8 +8,9 @@
   imports =
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
-      inputs.home-manager.nixosModules.default
-      ./main-user.nix
+      # ./main-user.nix
+      # inputs.home-manager.nixosModules.default
+      # inputs.home-manager.nixosModules.home-manager
     ];
 
   # Bootloader.
@@ -19,14 +20,14 @@
   networking.hostName = "nixos"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
-  nix.settings.experimental-features = [ "nix-command" "flakes" ];
-
   # Configure network proxy if necessary
   # networking.proxy.default = "http://user:password@proxy:port/";
   # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
 
   # Enable networking
   networking.networkmanager.enable = true;
+
+  nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
   # Set your time zone.
   time.timeZone = "America/Los_Angeles";
@@ -47,17 +48,12 @@
   };
 
   # Enable the X11 windowing system.
-  # You can disable this if you're only using the Wayland session.
   services.xserver.enable = true;
 
-  # Enable the KDE Plasma Desktop Environment.
+  # Enable the GNOME Desktop Environment.
+  # services.xserver.displayManager.gdm.enable = true;
+  # services.xserver.desktopManager.gnome.enable = true;
   services.displayManager.sddm.enable = true;
-  services.desktopManager.plasma6.enable = true;
-
-  # Enable Hyprland.
-  programs.hyprland.enable = true;
-  xdg.portal.enable = true;
-  xdg.portal.extraPortals = [ pkgs.xdg-desktop-portal-gtk pkgs.xdg-desktop-portal-hyprland];
 
   # Configure keymap in X11
   services.xserver.xkb = {
@@ -91,99 +87,55 @@
   # services.xserver.libinput.enable = true;
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
-  main-user.enable = true;
-  main-user.userName = "scott";
+  # main-user.enable = true;
+  # main-user.userName = "scott";
   users.users.scott = {
+    # enable = true;
+    # username = "scott";
     isNormalUser = true;
+    initialPassword = "12345";
+    description = "main user";
+    shell = pkgs.zsh;
     extraGroups = [ "networkmanager" "wheel" ];
     packages = with pkgs; [
-      kdePackages.kate
     #  thunderbird
-      bat
-      discord
-      git
-      hyprlock
-      hyprpaper
-      kitty
-      neofetch
       neovim
-      pavucontrol
-      starship
+      vim
+      firefox
+
+      kitty
       stow
-      rofi-wayland
-      thefuck
-      waybar
-      wlogout
-      wofi
-
-      # Compilers & Interpreters
-	python3
-	gcc
-
-
-      # Neovim Dependencies
-
-        # Utility
-        ripgrep
-	xclip
-
-        # LSP and Formatters
-        pyright
-        black
-        isort
-        mypy
-        lua-language-server
-        stylua
-        rust-analyzer
-        clang
-        # bash-language-server
-        shfmt
-        beautysh
-        # hyprls
-        # docker-compose-language-service
-
     ];
   };
 
-  fonts.packages = with pkgs; [
-    iosevka
-    _0xproto
-    jetbrains-mono
-    (nerdfonts.override { fonts = ["FiraCode" "Iosevka"]; })
-  ];
-
   # Install home-manager.
-  home-manager = {
-    extraSpecialArgs = { inherit inputs; };
-    users = {
-      "scott" = import ./home.nix;
-    };
-  };
+  # home-manager = {
+  #   extraSpecialArgs = {inherit inputs; };
+  #   # users = {
+  #   #   "scott" = import ./home.nix;
+  #   # };
+  # }; 
 
   # Install firefox.
   programs.firefox.enable = true;
 
   # Install zsh.
-  users.defaultUserShell = pkgs.zsh;
-  programs.zsh = {
+  programs.zsh.enable = true;
+
+  # Install hyprland.
+  programs.hyprland = {
     enable = true;
-    enableCompletion = true;
-    autosuggestions.enable = true;
-    syntaxHighlighting.enable = true;
+    xwayland.enable = true;
+  }; 
 
-    ohMyZsh = {
-      enable = true;
-      plugins = ["git" "thefuck"];	
-    };
-
-    shellAliases = {
-      update = "sudo nixos-rebuild switch";
-    };
-
+  environment.sessionVariables = {
+    # WLR_NO_HARDWARE_CURSORS = "1";
+    NIXOS_OZONE_WL = "1";
   };
 
-  # Install thunar.
-  programs.thunar.enable = true;
+  hardware = {
+    graphics.enable = true;
+  };
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
@@ -191,12 +143,10 @@
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
-  #  vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
-  curl
-  dunst
-  libnotify
-  neovim
-  wget
+    vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
+    neovim
+
+    home-manager
   #  wget
   ];
 
