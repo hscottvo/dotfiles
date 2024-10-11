@@ -1,8 +1,16 @@
 # /etc/nixos/games.nix
-{ lib, config, pkgs, ... }:
+{ config, pkgs, ... }:
 
 {
+  programs.steam.enable = true;
+  programs.steam.gamescopeSession.enable = true;
+
   environment.systemPackages = with pkgs; [
-    tree
+    mangohud
   ];
+
+  programs.gamemode.enable = true;
+
+  # You can add any other configuration you want to test
 }
+
