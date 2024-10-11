@@ -4,9 +4,19 @@
   home.packages = with pkgs; [
     cowsay  # Add cowsay to your environment
     rofi
-    neofetch
     fastfetch
     nwg-look
+    waybar
+    wlogout
+    xfce.thunar
+    xfce.thunar-volman
+
+    hyprcursor
+    hypridle
+    hyprpaper
+    hyprlock
+    wl-clipboard
+
 
     (nerdfonts.override {fonts = [ "Iosevka" "JetBrainsMono" ]; })
 
