@@ -116,24 +116,14 @@
     extraGroups = [ "networkmanager" "wheel" ];
     packages = with pkgs; [
     #  thunderbird
-      # neovim
       vim
       firefox
       git
 
       kitty
       stow
-	  tree
     ];
   };
-
-  # Install home-manager.
-  # home-manager = {
-  #   extraSpecialArgs = {inherit inputs; };
-  #   # users = {
-  #   #   "scott" = import ./home.nix;
-  #   # };
-  # }; 
 
   # Install firefox.
   programs.firefox.enable = true;
@@ -149,7 +139,8 @@
 
   # Install steam.
   programs.steam.enable = true;
-
+  programs.steam.gamescopeSession.enable = true;
+  programs.gamemode.enable = true;
 
   environment.sessionVariables = {
     # WLR_NO_HARDWARE_CURSORS = "1";
@@ -167,7 +158,6 @@
   # $ nix search wget
   environment.systemPackages = with pkgs; [
     vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
-    # neovim
 
     home-manager
   #  wget
