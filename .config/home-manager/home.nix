@@ -17,7 +17,6 @@
   # environment.
   home.packages = with pkgs; [
     git
-    neovim
     xclip
     p7zip
 
@@ -69,9 +68,6 @@
   #
   #  /etc/profiles/per-user/scott/etc/profile.d/hm-session-vars.sh
   #
-  home.sessionVariables = {
-    EDITOR = "nvim";
-  };
 
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
