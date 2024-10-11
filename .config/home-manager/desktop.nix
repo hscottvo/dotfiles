@@ -5,7 +5,10 @@
     cowsay  # Add cowsay to your environment
     rofi
     neofetch
+    fastfetch
     nwg-look
+
+    (nerdfonts.override {fonts = [ "Iosevka" "JetBrainsMono" ]; })
 
   ];
 
@@ -16,12 +19,8 @@
 
     iconTheme.name = "";
     iconTheme.package = arc-icon-theme;
-
-    # theme.name = "Everforest";
-    # theme.package = everforest-gtk-theme;
-
-
   };
+
 
 }
 
