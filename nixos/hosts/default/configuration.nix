@@ -102,6 +102,7 @@
       neovim
       vim
       firefox
+      git
 
       kitty
       stow
