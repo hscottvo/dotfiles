@@ -3,7 +3,7 @@ local fn = vim.fn
 local o = vim.opt
 local g = vim.g
 
-vim.cmd([[colo everforest]])
+vim.cmd([[colo gruvbox-material]])
 
 o.number = true
 o.relativenumber = true
