@@ -3,6 +3,7 @@
 {
   home.packages = with pkgs; [
     cowsay  # Add cowsay to your environment
+    dunst
     rofi
     fastfetch
     nwg-look
@@ -31,6 +32,7 @@
     iconTheme.package = arc-icon-theme;
   };
 
+  wayland.windowManager.hyprland.xwayland.enable = true;
 
 }
 
