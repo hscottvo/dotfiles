@@ -16,15 +16,16 @@
       # pkgs = nixpkgs.legacyPackages.${system};
       pkgs = import nixpkgs {
         inherit system;
-	config.allowUnfree = true;
+        config.allowUnfree = true;
       };
-    in {
+    in
+    {
       homeConfigurations."scott" = home-manager.lib.homeManagerConfiguration {
         inherit pkgs;
 
         # Specify your home configuration modules here, for example,
         # the path to your home.nix.
-        modules = [ ./home.nix ./desktop.nix ./apps.nix ./games.nix ./nvim.nix];
+        modules = [ ./home.nix ./desktop.nix ./apps.nix ./games.nix ./nvim.nix ];
 
         # Optionally use extraSpecialArgs
         # to pass through arguments to home.nix
