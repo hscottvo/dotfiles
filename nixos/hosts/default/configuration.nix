@@ -8,9 +8,7 @@
   imports =
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
-      # ./main-user.nix
-      # inputs.home-manager.nixosModules.default
-      # inputs.home-manager.nixosModules.home-manager
+      ./games.nix
     ];
 
   # Bootloader.
@@ -49,11 +47,30 @@
 
   # Enable the X11 windowing system.
   services.xserver.enable = true;
+  services.xserver.videoDrivers = ["amdgpu"];
 
-  # Enable the GNOME Desktop Environment.
-  # services.xserver.displayManager.gdm.enable = true;
-  # services.xserver.desktopManager.gnome.enable = true;
+  # Enable sddm.
   services.displayManager.sddm.enable = true;
+
+  xdg = {
+    portal = {
+      enable = true;
+      wlr.enable = true;
+      extraPortals = with pkgs; [
+        xdg-desktop-portal-gtk
+        xdg-desktop-portal
+        xdg-desktop-portal-wlr
+	xdg-desktop-portal-hyprland
+      ];
+      configPackages = with pkgs; [
+        hyprland
+	# xdg-desktop-portal-gtk
+	#        xdg-desktop-portal
+	#        xdg-desktop-portal-wlr
+	# xdg-desktop-portal-hyprland
+      ];
+    };
+  };
 
   # Configure keymap in X11
   services.xserver.xkb = {
@@ -99,22 +116,14 @@
     extraGroups = [ "networkmanager" "wheel" ];
     packages = with pkgs; [
     #  thunderbird
-      neovim
       vim
       firefox
+      git
 
       kitty
       stow
     ];
   };
-
-  # Install home-manager.
-  # home-manager = {
-  #   extraSpecialArgs = {inherit inputs; };
-  #   # users = {
-  #   #   "scott" = import ./home.nix;
-  #   # };
-  # }; 
 
   # Install firefox.
   programs.firefox.enable = true;
@@ -128,13 +137,18 @@
     xwayland.enable = true;
   }; 
 
+  # Install steam.
+  programs.steam.enable = true;
+  programs.steam.gamescopeSession.enable = true;
+  programs.gamemode.enable = true;
+
   environment.sessionVariables = {
     # WLR_NO_HARDWARE_CURSORS = "1";
     NIXOS_OZONE_WL = "1";
   };
 
-  hardware = {
-    graphics.enable = true;
+  hardware.graphics = {
+    enable = true;
   };
 
   # Allow unfree packages
@@ -144,7 +158,6 @@
   # $ nix search wget
   environment.systemPackages = with pkgs; [
     vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
-    neovim
 
     home-manager
   #  wget

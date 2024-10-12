@@ -1,6 +1,7 @@
 return {
 	{
-		"neanias/everforest-nvim",
+		-- "neanias/everforest-nvim",
+		"sainnhe/gruvbox-material",
 		version = false,
 		lazy = false,
 		priority = 1000, -- make sure to load this before all the other start plugins
