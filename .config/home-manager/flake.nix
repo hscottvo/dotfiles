@@ -12,23 +12,25 @@
 
   outputs = { nixpkgs, home-manager, ... }:
     let
-      system = "x86_64-linux";
-      # pkgs = nixpkgs.legacyPackages.${system};
-      pkgs = import nixpkgs {
-        inherit system;
-        config.allowUnfree = true;
-      };
+      moduleFiles = [ ./home.nix ./desktop.nix ./apps.nix ./games.nix ./nvim.nix ];
     in
     {
-      homeConfigurations."scott" = home-manager.lib.homeManagerConfiguration {
-        inherit pkgs;
 
-        # Specify your home configuration modules here, for example,
-        # the path to your home.nix.
-        modules = [ ./home.nix ./desktop.nix ./apps.nix ./games.nix ./nvim.nix ];
-
-        # Optionally use extraSpecialArgs
-        # to pass through arguments to home.nix
+      homeConfigurations.scott-linux = home-manager.lib.homeManagerConfiguration {
+        pkgs = import nixpkgs {
+          system = "x86_64-linux";
+          config.allowUnfree = true;
+        };
+        modules = moduleFiles;
       };
+
+      homeConfigurations.scott-mac = home-manager.lib.homeManagerConfiguration {
+        pkgs = import nixpkgs {
+          system = "aarch64-darwin";
+          config.allowUnfree = true;
+        };
+        modules = moduleFiles;
+      };
+
     };
 }
