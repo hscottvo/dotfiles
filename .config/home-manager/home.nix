@@ -42,16 +42,64 @@
     # autosuggestion.enable = true;
     historySubstringSearch.enable = true;
     syntaxHighlighting.enable = true;
+    shellAliases = {
+      ll = "ls -l";
+      neofetch = "fastfetch";
+    };
     oh-my-zsh = {
       enable = true;
     };
+    envExtra = ''
+      if [ -x "$(command -v tmux)" ] && [ -n "$DISPLAY" ] && [ -z "$TMUX" ]; then
+          # Check for existing tmux sessions
+          if tmux list-sessions 2>/dev/null | grep -q "^[^:]*:"; then
+              # Attach to the last session
+              exec tmux attach-session -t "$(tmux list-sessions | awk 'NR==1{print $1}' | sed 's/:$//')" >/dev/null 2>&1
+          else
+              # Create a new session
+              exec tmux new-session -s "$USER" >/dev/null 2>&1
+          fi
+      fi
+    '';
   };
+
+  programs.tmux = {
+    enable = true;
+    baseIndex = 1;
+    newSession = true;
+    escapeTime = 0;
+    secureSocket = false;
+    plugins = with pkgs.tmuxPlugins; [
+      better-mouse-mode
+      gruvbox
+      # mode-indicator
+      resurrect
+    ];
+
+    extraConfig = ''
+      set -g default-terminal "xterm-256color"
+      set -ga terminal-overrides ",*256col*:Tc"
+      set -ga terminal-overrides '*:Ss=\E[%p1%d q:Se=\E[ q'
+      set-environment -g COLORTERM "truecolor"
+
+      # Mouse works as expected
+      set-option -g mouse on
+      # easy-to-remember split pane commands
+      bind | split-window -h -c "#{pane_current_path}"
+      bind - split-window -v -c "#{pane_current_path}"
+      bind c new-window -c "#{pane_current_path}"
+    '';
+  };
+
 
   programs.starship = {
     enable = true;
     enableZshIntegration = true;
   };
 
+  home.sessionPath = [
+    "$HOME/.local/bin"
+  ];
   # Home Manager can also manage your environment variables through
   # 'home.sessionVariables'. These will be explicitly sourced when using a
   # shell provided by Home Manager. If you don't want to manage your shell
