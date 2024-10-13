@@ -1,11 +1,5 @@
 return {
 	{
-		"williamboman/mason.nvim",
-		config = function()
-			require("mason").setup()
-		end,
-	},
-	{
 		"neovim/nvim-lspconfig",
 		lazy = false, -- REQUIRED: tell lazy.nvim to start this plugin at startup
 		dependencies = {
@@ -31,76 +25,24 @@ return {
 			}
 		end,
 		config = function()
-			-- Your LSP settings here
-		end,
-	},
-	{
-		"williamboman/mason-lspconfig.nvim",
-		opts = {
-			ensure_installed = {
-				"lua_ls",
-				"rust_analyzer",
-				"pyright",
-				"clangd",
-				"bashls",
-				"docker_compose_language_service",
-			},
-			handlers = {
-				function(server_name)
-					require("lspconfig")[server_name].setup({})
-				end,
-				rust_analyzer = function()
-					require("lspconfig").rust_analyzer.setup({
-						testExplorer = true,
-					})
-				end,
-			},
-		},
-	},
-	{
-		"WhoIsSethDaniel/mason-tool-installer.nvim",
-		--config = function()jk
-		opts = {
-			ensure_installed = {
-				-- python
-				"black",
-				"isort",
-				"mypy",
-				-- lua
-				"stylua",
-				-- c++
-				"clang-format",
-				-- bash
-				"shfmt",
-				--hypr
-				"hyprls",
-				-- zshrc
-				"beautysh",
-			},
-		},
-	},
-	{
-		"nvim-treesitter/nvim-treesitter",
-		opts = {
-			build = ":TSUpdate",
-		},
-		config = function()
-			require("nvim-treesitter.configs").setup({
-				ensure_installed = {
-					"bash",
-					"c",
-					"css",
-					"dockerfile",
-					"go",
-					"hyprlang",
-					"lua",
-					"markdown",
-					"python",
-					"rust",
-					"sql",
-					"yaml",
+			require("lspconfig").lua_ls.setup({})
+			require("lspconfig").rust_analyzer.setup({})
+			require("lspconfig").pyright.setup({})
+			require("lspconfig").clangd.setup({})
+			require("lspconfig").bashls.setup({})
+			require("lspconfig").docker_compose_language_service.setup({})
+			require("lspconfig").nil_ls.setup({
+				settings = {
+					nil_ls = {
+						formatter = {
+							command = {
+								"nixpkgs-fmt",
+							},
+						},
+					},
 				},
 			})
+			-- Your LSP settings here
 		end,
 	},
 	{
@@ -110,6 +52,7 @@ return {
 				lua = { "stylua" },
 				python = { "isort", "black" },
 				cpp = { "clang-format" },
+				nix = { "nixpkgs_fmt" },
 			},
 			format_on_save = {
 				timeout_ms = 500,
