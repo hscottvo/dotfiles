@@ -2,7 +2,7 @@
 
 {
   home.packages = with pkgs; [
-    cowsay  # Add cowsay to your environment
+    blueman
     dunst
     rofi
     fastfetch
@@ -19,7 +19,7 @@
     wl-clipboard
 
 
-    (nerdfonts.override {fonts = [ "Iosevka" "JetBrainsMono" ]; })
+    (nerdfonts.override { fonts = [ "Iosevka" "JetBrainsMono" ]; })
 
   ];
 

@@ -4,6 +4,7 @@
 {
   home.packages = with pkgs; [
     protonup
+	SDL2
   ];
 
   home.sessionVariables = {

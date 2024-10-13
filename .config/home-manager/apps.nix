@@ -4,11 +4,12 @@
   home.packages = with pkgs; [
     btop
     discord
-    (if system == "aarch64-darwin" then null else obs-studio)
+    musescore
+    obs-studio
     spotify
     vlc
 
-    # vesktop
+    vesktop
   ];
 }
 
