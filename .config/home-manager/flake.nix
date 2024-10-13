@@ -12,7 +12,8 @@
 
   outputs = { nixpkgs, home-manager, ... }:
     let
-      moduleFiles = [ ./home.nix ./desktop.nix ./apps.nix ./games.nix ./nvim.nix ];
+      moduleFiles = [ ./home.nix ./apps.nix ./games.nix ./nvim.nix ];
+      linuxFiles = [ ./desktop.nix ];
     in
     {
 
@@ -21,7 +22,7 @@
           system = "x86_64-linux";
           config.allowUnfree = true;
         };
-        modules = moduleFiles;
+        modules = moduleFiles ++ linuxFiles;
       };
 
       homeConfigurations.scott-mac = home-manager.lib.homeManagerConfiguration {
