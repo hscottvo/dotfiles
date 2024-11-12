@@ -1,5 +1,29 @@
 return {
 	{
+		"nvim-treesitter/nvim-treesitter",
+		opts = {
+			build = ":TSUpdate",
+		},
+		config = function()
+			require("nvim-treesitter.configs").setup({
+				ensure_installed = {
+					"bash",
+					"c",
+					"css",
+					"dockerfile",
+					"go",
+					"hyprlang",
+					"lua",
+					"markdown",
+					"python",
+					"rust",
+					"sql",
+					"yaml",
+				},
+			})
+		end,
+	},
+	{
 		"neovim/nvim-lspconfig",
 		lazy = false, -- REQUIRED: tell lazy.nvim to start this plugin at startup
 		dependencies = {
