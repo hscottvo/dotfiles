@@ -33,8 +33,15 @@ return {
 		},
 		init = function()
 			vim.g.coq_settings = {
-				auto_start = true, -- if you want to start COQ at startup
-				-- Your COQ settings here
+				auto_start = "shut-up",
+				completion = {
+					always = false,
+				},
+				display = {
+					preview = {
+						border = "rounded",
+					},
+				},
 			}
 		end,
 		config = function()
