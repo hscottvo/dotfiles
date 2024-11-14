@@ -1,9 +1,12 @@
 { config, pkgs, ... }:
 
+let
+  isDarwin = builtins.match "darwin" (builtins.currentSystem or "") != null;
+  isLinux = builtins.match "linux" (builtins.currentSystem or "") != null;
+in
 {
   home.username = "scott";
-  home.homeDirectory = "/home/scott";
-
+  home.homeDirectory = if isLinux then "/home/scott" else "/Users/scott";
   # This value determines the Home Manager release that your configuration is
   # compatible with. This helps avoid breakage when a new Home Manager release
   # introduces backwards incompatible changes.
@@ -47,6 +50,7 @@
       neofetch = "fastfetch";
     };
     oh-my-zsh = {
+
       enable = true;
     };
     envExtra = ''
