@@ -3,7 +3,7 @@ local fn = vim.fn
 local o = vim.opt
 local g = vim.g
 
-vim.cmd([[colo gruvbox-material]])
+vim.cmd([[colo nord]])
 
 o.number = true
 o.relativenumber = true
@@ -16,6 +16,7 @@ o.undofile = true
 o.wildignorecase = true
 o.wildmode = "full"
 o.scrolloff = 8
+o.conceallevel = 1
 
 vim.g.qs_highlight_on_keys = { "f", "t" }
 

@@ -7,6 +7,7 @@
     rofi
     fastfetch
     nwg-look
+    pavucontrol
     waybar
     wlogout
     xfce.thunar
@@ -14,8 +15,9 @@
 
     hyprcursor
     hypridle
-    hyprpaper
     hyprlock
+    hyprpaper
+    hyprshot
     wl-clipboard
 
 

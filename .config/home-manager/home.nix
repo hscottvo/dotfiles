@@ -20,6 +20,7 @@ in
   # environment.
   home.packages = with pkgs; [
     git
+    keychain
     xclip
     p7zip
 
@@ -54,6 +55,7 @@ in
       enable = true;
     };
     envExtra = ''
+      eval $(keychain --quiet --eval --agents ssh ~/.ssh/git)
       if [ -x "$(command -v tmux)" ] && [ -n "$DISPLAY" ] && [ -z "$TMUX" ]; then
           # Check for existing tmux sessions
           if tmux list-sessions 2>/dev/null | grep -q "^[^:]*:"; then
@@ -69,19 +71,21 @@ in
 
   programs.tmux = {
     enable = true;
+    terminal = "screen-256color";
     baseIndex = 1;
     newSession = true;
     escapeTime = 0;
     secureSocket = false;
     plugins = with pkgs.tmuxPlugins; [
       better-mouse-mode
-      gruvbox
+      # gruvbox
+      nord
       # mode-indicator
       resurrect
     ];
 
     extraConfig = ''
-      set -g default-terminal "xterm-256color"
+      set -g default-terminal "screen-256color"
       set -ga terminal-overrides ",*256col*:Tc"
       set -ga terminal-overrides '*:Ss=\E[%p1%d q:Se=\E[ q'
       set-environment -g COLORTERM "truecolor"

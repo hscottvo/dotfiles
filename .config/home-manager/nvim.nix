@@ -4,6 +4,7 @@
   home.packages = with pkgs; [
     # Requirements for Neovim
     cargo
+    fd
     gcc
     go
     gnumake
@@ -19,6 +20,8 @@
     # cpp
     clang-tools
 
+    # go
+    gopls
     # lua
     lua-language-server
     stylua
