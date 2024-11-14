@@ -20,6 +20,8 @@
     # cpp
     clang-tools
 
+    # go
+    gopls
     # lua
     lua-language-server
     stylua
