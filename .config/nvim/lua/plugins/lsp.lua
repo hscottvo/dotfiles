@@ -20,6 +20,7 @@ return {
 					"sql",
 					"yaml",
 				},
+				highlight = { enable = true },
 			})
 		end,
 	},
@@ -51,6 +52,7 @@ return {
 			require("lspconfig").clangd.setup({})
 			require("lspconfig").bashls.setup({})
 			require("lspconfig").docker_compose_language_service.setup({})
+			require("lspconfig").gopls.setup({})
 			require("lspconfig").nil_ls.setup({
 				settings = {
 					nil_ls = {
@@ -72,6 +74,7 @@ return {
 				lua = { "stylua" },
 				python = { "isort", "black" },
 				cpp = { "clang-format" },
+				go = { "gofmt" },
 				nix = { "nixpkgs_fmt" },
 			},
 			format_on_save = {
