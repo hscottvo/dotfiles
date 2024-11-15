@@ -12,8 +12,9 @@
 
   outputs = { nixpkgs, home-manager, ... }:
     let
-      moduleFiles = [ ./home.nix ./apps.nix ./games.nix ./nvim.nix ];
-      linuxFiles = [ ./desktop.nix ];
+      moduleFiles = [ ./global/apps.nix ./games.nix ./nvim.nix ./global/shell.nix ];
+      linuxFiles = [ ./nixos/home.nix ./desktop.nix ./nixos/apps.nix ];
+      macFiles = [ ./mac/home.nix ];
     in
     {
 
@@ -30,7 +31,7 @@
           system = "aarch64-darwin";
           config.allowUnfree = true;
         };
-        modules = moduleFiles;
+        modules = moduleFiles ++ macFiles;
       };
 
     };
