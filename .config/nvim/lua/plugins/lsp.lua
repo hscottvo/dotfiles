@@ -35,14 +35,6 @@ return {
 		init = function()
 			vim.g.coq_settings = {
 				auto_start = "shut-up",
-				completion = {
-					always = false,
-				},
-				display = {
-					preview = {
-						border = "rounded",
-					},
-				},
 			}
 		end,
 		config = function()
@@ -53,17 +45,7 @@ return {
 			require("lspconfig").bashls.setup({})
 			require("lspconfig").docker_compose_language_service.setup({})
 			require("lspconfig").gopls.setup({})
-			require("lspconfig").nil_ls.setup({
-				settings = {
-					nil_ls = {
-						formatter = {
-							command = {
-								"nixpkgs-fmt",
-							},
-						},
-					},
-				},
-			})
+			require("lspconfig").nil_ls.setup({})
 			-- Your LSP settings here
 		end,
 	},
