@@ -1,5 +1,4 @@
 -- copied from https://github.com/majamin/nvim-lazy-starter/blob/master/lua/user/options.lua
-local fn = vim.fn
 local o = vim.opt
 
 vim.cmd([[colo nord]])
@@ -7,11 +6,13 @@ vim.cmd([[colo nord]])
 o.number = true
 o.relativenumber = true
 o.wrap = false
-o.shiftwidth = 4
-o.smartindent = true
+
 o.tabstop = 4
+o.softtabstop = 4
+o.shiftwidth = 4
+o.expandtab = true
 o.termguicolors = true
-o.undodir = fn.stdpath("data") .. "/undodir"
+o.undodir = os.getenv("HOME") .. "/.vim/undodir"
 o.undofile = true
 o.wildignorecase = true
 o.wildmode = "full"
