@@ -6,7 +6,9 @@
     discord
     musescore
     obs-studio
+    signal-desktop
     spotify
+    tree
     vlc
 
     vesktop

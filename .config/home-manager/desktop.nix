@@ -3,9 +3,11 @@
 {
   home.packages = with pkgs; [
     blueman
+    google-chrome
     dunst
     rofi
     fastfetch
+    flatpak
     nwg-look
     pavucontrol
     waybar
@@ -27,8 +29,10 @@
 
   gtk = with pkgs; {
     enable = true;
-    theme.name = "gruvbox-dark";
-    theme.package = gruvbox-dark-gtk;
+    # theme.name = "gruvbox-dark";
+    # theme.package = gruvbox-dark-gtk;
+    theme.name = "Nordic";
+    theme.package = nordic;
 
     iconTheme.name = "";
     iconTheme.package = arc-icon-theme;
