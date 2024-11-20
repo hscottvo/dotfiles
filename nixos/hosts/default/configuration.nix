@@ -6,7 +6,8 @@
 
 {
   imports =
-    [ # Include the results of the hardware scan.
+    [
+      # Include the results of the hardware scan.
       ./hardware-configuration.nix
       ./games.nix
     ];
@@ -47,27 +48,28 @@
 
   # Enable the X11 windowing system.
   services.xserver.enable = true;
-  services.xserver.videoDrivers = ["amdgpu"];
+  services.xserver.videoDrivers = [ "amdgpu" ];
 
   # Enable sddm.
   services.displayManager.sddm.enable = true;
 
+  # Install flatpak.
+  services.flatpak.enable = true;
+
+
   xdg = {
+    autostart.enable = true;
     portal = {
       enable = true;
       wlr.enable = true;
       extraPortals = with pkgs; [
         xdg-desktop-portal-gtk
-        xdg-desktop-portal
-        xdg-desktop-portal-wlr
-	xdg-desktop-portal-hyprland
+        # xdg-desktop-portal-gnome
+        xdg-desktop-portal-hyprland
       ];
+      config.common.default = "*";
       configPackages = with pkgs; [
         hyprland
-	# xdg-desktop-portal-gtk
-	#        xdg-desktop-portal
-	#        xdg-desktop-portal-wlr
-	# xdg-desktop-portal-hyprland
       ];
     };
   };
@@ -80,9 +82,29 @@
 
   # Enable CUPS to print documents.
   services.printing.enable = true;
+  services.printing.browsing = true;
+  services.printing.browsedConf = ''
+    BrowseDNSSDSubTypes _cups,_print
+    BrowseLocalProtocols all
+    BrowseRemoteProtocols all
+    CreateIPPPrinterQueues All
+
+    BrowseProtocols all
+  '';
+  services.avahi = {
+    enable = true;
+    nssmdns4 = true;
+  };
 
   # Enable bluetooth.
-  hardware.bluetooth.enable = true;
+  hardware.bluetooth = {
+    enable = true;
+    settings = {
+      General = {
+        Experimental = "true";
+      };
+    };
+  };
 
   # Enable sound with pipewire.
   hardware.pulseaudio.enable = false;
@@ -115,7 +137,7 @@
     shell = pkgs.zsh;
     extraGroups = [ "networkmanager" "wheel" ];
     packages = with pkgs; [
-    #  thunderbird
+      #  thunderbird
       vim
       firefox
       git
@@ -135,21 +157,33 @@
   programs.hyprland = {
     enable = true;
     xwayland.enable = true;
-  }; 
+  };
 
   # Install steam.
   programs.steam.enable = true;
   programs.steam.gamescopeSession.enable = true;
   programs.gamemode.enable = true;
 
+  virtualisation.docker.enable = true;
+  virtualisation.docker.rootless =
+    {
+      enable = true;
+      setSocketVariable = true;
+    };
+
   environment.sessionVariables = {
     # WLR_NO_HARDWARE_CURSORS = "1";
     NIXOS_OZONE_WL = "1";
   };
 
+  programs.kdeconnect.enable = true;
+
   hardware.graphics = {
     enable = true;
   };
+
+  # Enable qmk.
+  hardware.keyboard.qmk.enable = true;
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
@@ -160,7 +194,8 @@
     vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
 
     home-manager
-  #  wget
+    qmk
+    #  wget
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
@@ -177,6 +212,15 @@
   # services.openssh.enable = true;
 
   # Open ports in the firewall.
+  networking.firewall = {
+    enable = true;
+    allowedTCPPortRanges = [
+      { from = 1714; to = 1764; } # KDE Connect
+    ];
+    allowedUDPPortRanges = [
+      { from = 1714; to = 1764; } # KDE Connect
+    ];
+  };
   # networking.firewall.allowedTCPPorts = [ ... ];
   # networking.firewall.allowedUDPPorts = [ ... ];
   # Or disable the firewall altogether.
