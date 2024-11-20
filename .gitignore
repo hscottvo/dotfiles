@@ -1,3 +1,3 @@
 pacman.log
-nixos/result
 .*log
+**/result
