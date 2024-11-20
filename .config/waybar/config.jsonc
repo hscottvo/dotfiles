@@ -7,10 +7,10 @@
         "modules-left": [
             "hyprland/workspaces"
         ],
-        // "modules-center": [
+        "modules-center": [
         // "custom/music",
-        // "hyprland/window"
-        // ],
+        "hyprland/window"
+        ],
         "modules-right": [
             "pulseaudio",
             "clock",
