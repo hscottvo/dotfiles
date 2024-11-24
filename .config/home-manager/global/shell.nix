@@ -37,7 +37,7 @@
     secureSocket = false;
     plugins = with pkgs.tmuxPlugins; [
       better-mouse-mode
-      nord
+      catppuccin
       resurrect
     ];
 
