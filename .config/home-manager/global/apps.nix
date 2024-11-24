@@ -7,6 +7,7 @@
     obsidian
     signal-desktop
     spotify
+    spotify-player
     tree
   ];
 
