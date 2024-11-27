@@ -8,11 +8,12 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    catppuccin.url = "github:catppuccin/nix";
   };
 
-  outputs = { nixpkgs, home-manager, ... }:
+  outputs = { nixpkgs, home-manager, catppuccin, ... }:
     let
-      moduleFiles = [ ./global/apps.nix ./games.nix ./global/nvim.nix ./global/shell.nix ];
+      moduleFiles = [ ./global/apps.nix ./games.nix ./global/nvim.nix ./global/shell.nix catppuccin.homeManagerModules.catppuccin ];
       linuxFiles = [ ./nixos/home.nix ./desktop.nix ./nixos/apps.nix ];
       macFiles = [ ./mac/home.nix ];
     in
