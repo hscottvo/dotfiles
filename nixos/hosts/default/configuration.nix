@@ -61,16 +61,16 @@
     autostart.enable = true;
     portal = {
       enable = true;
-      wlr.enable = true;
+      # wlr.enable = true;
       extraPortals = with pkgs; [
         xdg-desktop-portal-gtk
-        # xdg-desktop-portal-gnome
+        xdg-desktop-portal-wlr
         xdg-desktop-portal-hyprland
       ];
-      config.common.default = "*";
-      configPackages = with pkgs; [
-        hyprland
-      ];
+      # config.common.default = "*";
+      # configPackages = with pkgs; [
+      #   hyprland
+      # ];
     };
   };
 
@@ -94,6 +94,7 @@
   services.avahi = {
     enable = true;
     nssmdns4 = true;
+    openFirewall = true;
   };
 
   # Enable bluetooth.
@@ -116,6 +117,11 @@
     pulse.enable = true;
     # If you want to use JACK applications, uncomment this
     jack.enable = true;
+
+    wireplumber = {
+      enable = true;
+      configPackages = [ ];
+    };
 
     # use the example session manager (no others are packaged yet so this is enabled by default,
     # no need to redefine it in your config for now)
@@ -158,6 +164,7 @@
     enable = true;
     xwayland.enable = true;
   };
+  programs.xwayland.enable = true;
 
   # Install steam.
   programs.steam.enable = true;

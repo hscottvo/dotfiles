@@ -1,6 +1,20 @@
 { config, pkgs, ... }:
 
 {
+
+  programs.kitty = {
+    enable = true;
+    font = {
+      name = "JetBrainsMono Nerd Font";
+      size = 20;
+    };
+    extraConfig = ''
+      enable_audio_bell no
+      confirm_os_window_close 0
+
+    '';
+    themeFile = "Catppuccin-Frappe";
+  };
   programs.zsh = {
     enable = true;
     historySubstringSearch.enable = true;
