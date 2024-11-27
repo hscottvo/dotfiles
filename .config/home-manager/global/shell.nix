@@ -50,9 +50,22 @@
     newSession = true;
     escapeTime = 0;
     secureSocket = false;
+    catppuccin = {
+      enable = true;
+      flavor = "frappe";
+      extraConfig = ''
+        set -g @catppuccin_flavor "frappe"
+        set -g @catppuccin_window_status_style "rounded"
+        set -ogq @catppuccin_window_text " #T"
+        set -ogq @catppuccin_window_current_text " #T"
+        set -g status-right "#{E:@catppuccin_status_application}"
+        set -ag status-right "#{E:@catppuccin_status_session}"
+        set -ag status-right "#{E:@catppuccin_status_uptime}"
+        set -ag status-right "#{E:@catppuccin_date_time_icon}"
+      '';
+    };
     plugins = with pkgs.tmuxPlugins; [
       better-mouse-mode
-      catppuccin
       resurrect
     ];
 
@@ -64,6 +77,7 @@
 
       # Mouse works as expected
       set-option -g mouse on
+      
       # easy-to-remember split pane commands
       bind | split-window -h -c "#{pane_current_path}"
       bind - split-window -v -c "#{pane_current_path}"
@@ -71,6 +85,13 @@
     '';
   };
 
+  programs.bat = {
+    enable = true;
+    catppuccin = {
+      enable = true;
+      flavor = "frappe";
+    };
+  };
 
   programs.starship = {
     enable = true;
