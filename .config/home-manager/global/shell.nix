@@ -28,6 +28,7 @@
       enable = true;
     };
     envExtra = ''
+      source <(fzf --zsh)
       eval $(keychain --quiet --eval --agents ssh ~/.ssh/git)
       if [ -x "$(command -v tmux)" ] && [ -n "$DISPLAY" ] && [ -z "$TMUX" ]; then
           # Check for existing tmux sessions
@@ -74,6 +75,14 @@
   programs.starship = {
     enable = true;
     enableZshIntegration = true;
+  };
+
+  programs.fzf = {
+    enable = true;
+    catppuccin = {
+      enable = true;
+      flavor = "frappe";
+    };
   };
 
 }
