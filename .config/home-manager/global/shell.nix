@@ -45,7 +45,6 @@
 
   programs.tmux = {
     enable = true;
-    terminal = "screen-256color";
     baseIndex = 1;
     newSession = true;
     escapeTime = 0;
@@ -73,7 +72,6 @@
       set -g default-terminal "screen-256color"
       set -ga terminal-overrides ",*256col*:Tc"
       set -ga terminal-overrides '*:Ss=\E[%p1%d q:Se=\E[ q'
-      set-environment -g COLORTERM "truecolor"
 
       # Mouse works as expected
       set-option -g mouse on
@@ -82,6 +80,17 @@
       bind | split-window -h -c "#{pane_current_path}"
       bind - split-window -v -c "#{pane_current_path}"
       bind c new-window -c "#{pane_current_path}"
+      
+      # reload config 
+      unbind r
+      bind r source-file ~/.config/tmux/tmux.conf
+
+      # vim styles
+      setw -g mode-keys vi
+      bind-key h select-pane -L
+      bind-key j select-pane -D
+      bind-key k select-pane -U
+      bind-key l select-pane -R
     '';
   };
 
