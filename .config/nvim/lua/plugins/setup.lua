@@ -31,22 +31,8 @@ return {
 				"<cmd>lua require('telescope.builtin').grep_string({additional_args = function() return {'--hidden'} end})<cr>",
 				desc = "Find current string",
 			},
-			{
-				"<leader>fb",
-				"<cmd>Telescope file_browser<cr>",
-				desc = "Find files using file browser",
-			},
-		},
-		opts = {
-			-- extensions = {
-			-- 	["ui-select"] = {
-			-- 		require("telescope.themes").get_dropdown({}),
-			-- 	},
-			-- 	file_browser = {},
-			-- },
 		},
 		config = function()
-			-- require("telescope").load_extension("ui-select")
 			require("telescope").setup({
 				extensions = {
 					["ui-select"] = {
@@ -57,6 +43,20 @@ return {
 
 			require("telescope").load_extension("ui-select")
 		end,
+	},
+	{
+		"stevearc/oil.nvim",
+		---@module 'oil'
+		---@type oil.SetupOpts
+		opts = {},
+		dependencies = { "nvim-tree/nvim-web-devicons" }, -- use if prefer nvim-web-devicons},
+		keys = {
+			{
+				"<leader>-",
+				"<cmd>Oil<cr>",
+				desc = "Open file browser",
+			},
+		},
 	},
 	{
 		"nvim-telescope/telescope-file-browser.nvim",
