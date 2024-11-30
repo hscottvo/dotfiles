@@ -18,24 +18,47 @@ o.wildignorecase = true
 o.wildmode = "full"
 o.scrolloff = 8
 o.conceallevel = 1
-
-vim.g.qs_highlight_on_keys = { "f", "t" }
+o.updatetime = 25
 
 vim.diagnostic.config({
-	virtual_text = false,
-	float = { border = "rounded" },
-	signs = true, -- Disable signs in the sign column
+	virtual_text = {
+		virt_text_pos = "right_align",
+	},
+	-- float = {
+	-- 	border = "single",
+	-- 	max_width = 80,
+	-- 	max_height = 5,
+	-- 	relative = "editor", -- Use 'editor' for positioning relative to the entire editor
+	-- 	row = 0, -- Position at the top of the screen
+	-- 	col = vim.o.columns - 1,
+	-- 	focusable = false,
+	-- },
+	signs = true,
 	underline = true,
 	update_in_insert = true,
 	severity_sort = true,
 })
 
-vim.cmd([[autocmd CursorHold,CursorHoldI * lua vim.diagnostic.open_float(nil, {focus=false})]])
+vim.api.nvim_create_autocmd("CursorMoved", {
+	callback = function()
+		vim.diagnostic.config({
+			virtual_text = {
+				virt_text_pos = "right_align",
+				format = function(diagnostic)
+					if diagnostic.lnum == vim.fn.line(".") - 1 then
+						return ""
+					end
+					return diagnostic.message
+				end,
+			},
+		})
+	end,
+})
 
 -- highlight yanked text for 200ms using the "Visual" highlight group
 vim.cmd([[
-augroup highlight_yank
-autocmd!
-au TextYankPost * silent! lua vim.highlight.on_yank({higroup="Visual", timeout=200})
-augroup END
+    augroup highlight_yank
+        autocmd!
+        au TextYankPost * silent! lua vim.highlight.on_yank({higroup="Visual", timeout=200})
+    augroup END
 ]])

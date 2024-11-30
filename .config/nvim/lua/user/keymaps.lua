@@ -52,7 +52,7 @@ wk.add({
 	{ "<leader>l", desc = "LSP" },
 	{ "<leader>lr", "<cmd>lua vim.lsp.buf.rename()<cr>", desc = "Rename" },
 	{ "<leader>la", "<cmd> lua vim.lsp.buf.code_action()<cr>", desc = "Code Action" },
-	{ "<leader>lh", "<cmd>lua vim.lsp.buf.hover()<cr>", desc = "Hover" },
+	{ "<leader>lh", "<cmd>lua vim.diagnostic.open_float()<cr>", desc = "Hover" },
 	{ "<leader>ld", "<cmd>lua vim.lsp.buf.definition()<cr>", desc = "Definition" },
 	{ "<leader>lD", "<cmd>lua vim.lsp.buf.declaration()<cr>", desc = "Declaration" },
 	{ "<leader>li", "<cmd>lua vim.lsp.buf.implementation()<cr>", desc = "Implementation" },
