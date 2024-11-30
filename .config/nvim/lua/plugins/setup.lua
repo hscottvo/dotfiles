@@ -82,7 +82,13 @@ return {
 	{
 		"nvim-lualine/lualine.nvim",
 		dependencies = { "nvim-tree/nvim-web-devicons" },
-		-- opts = { theme = "everforest", disabled_filetypes = { "neo-tree" } },
+		config = function()
+			require("lualine").setup({
+				options = {
+					theme = "catppuccin",
+				},
+			})
+		end,
 	},
 	{
 		"ThePrimeagen/harpoon",
