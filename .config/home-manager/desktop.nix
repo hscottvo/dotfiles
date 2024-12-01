@@ -22,7 +22,6 @@
     wl-clipboard
 
 
-    (nerdfonts.override { fonts = [ "Iosevka" "JetBrainsMono" ]; })
 
   ];
 
