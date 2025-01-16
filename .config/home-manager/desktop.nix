@@ -4,7 +4,7 @@
   home.packages = with pkgs; [
     blueman
     google-chrome
-    rofi
+    # rofi
     fastfetch
     flatpak
     nwg-look
@@ -21,16 +21,10 @@
     hyprshot
     wl-clipboard
 
-
-
   ];
 
   services.dunst = {
     enable = true;
-    catppuccin = {
-      enable = true;
-      flavor = "frappe";
-    };
     settings = {
 
       global = {
@@ -43,12 +37,12 @@
 
   gtk = {
     enable = true;
-    catppuccin = {
-      enable = true;
-      flavor = "frappe";
-      icon.enable = true;
-    };
   };
+
+  programs.rofi = {
+    enable = true;
+  };
+
 
   wayland.windowManager.hyprland.xwayland.enable = true;
 

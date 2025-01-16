@@ -49,20 +49,6 @@
     newSession = true;
     escapeTime = 0;
     secureSocket = false;
-    catppuccin = {
-      enable = true;
-      flavor = "frappe";
-      extraConfig = ''
-        set -g @catppuccin_flavor "frappe"
-        set -g @catppuccin_window_status_style "rounded"
-        set -ogq @catppuccin_window_text " #T"
-        set -ogq @catppuccin_window_current_text " #T"
-        set -g status-right "#{E:@catppuccin_status_application}"
-        set -ag status-right "#{E:@catppuccin_status_session}"
-        set -ag status-right "#{E:@catppuccin_status_uptime}"
-        set -ag status-right "#{E:@catppuccin_date_time_icon}"
-      '';
-    };
     plugins = with pkgs.tmuxPlugins; [
       better-mouse-mode
       resurrect
@@ -96,10 +82,6 @@
 
   programs.bat = {
     enable = true;
-    catppuccin = {
-      enable = true;
-      flavor = "frappe";
-    };
   };
 
   programs.starship = {
@@ -109,10 +91,6 @@
 
   programs.fzf = {
     enable = true;
-    catppuccin = {
-      enable = true;
-      flavor = "frappe";
-    };
   };
 
 }

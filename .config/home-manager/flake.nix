@@ -14,7 +14,7 @@
   outputs = { nixpkgs, home-manager, catppuccin, ... }:
     let
       moduleFiles = [ ./global/apps.nix ./games.nix ./global/nvim.nix ./global/shell.nix catppuccin.homeManagerModules.catppuccin ];
-      linuxFiles = [ ./nixos/home.nix ./desktop.nix ./nixos/apps.nix ];
+      linuxFiles = [ ./nixos/home.nix ./desktop.nix ./nixos/apps.nix ./nixos/catppuccin.nix ];
       macFiles = [ ./mac/home.nix ];
     in
     {
