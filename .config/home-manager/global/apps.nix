@@ -3,6 +3,7 @@
 {
   home.packages = with pkgs;
     [
+      brave
       musescore
       obsidian
       signal-desktop
