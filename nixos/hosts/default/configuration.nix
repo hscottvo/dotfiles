@@ -2,7 +2,7 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, inputs, ... }:
+{ config, pkgs, inputs, lib, ... }:
 
 {
   imports =
@@ -10,11 +10,20 @@
       # Include the results of the hardware scan.
       ./hardware-configuration.nix
       ./games.nix
+      inputs.ssbm-nix.overlay
     ];
 
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
+  boot.extraModulePackages = [
+    config.boot.kernelPackages.gcadapter-oc-kmod
+  ];
+  boot.kernelModules = [
+    "gcadapter_oc"
+  ];
+  boot.supportedFilesystems = [ "fuse" ];
+  # environment.systemPackages = with pkgs; [ fuse ];
 
   networking.hostName = "nixos"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
@@ -67,6 +76,7 @@
         xdg-desktop-portal-wlr
         xdg-desktop-portal-hyprland
       ];
+      xdgOpenUsePortal = true;
       # config.common.default = "*";
       # configPackages = with pkgs; [
       #   hyprland
@@ -108,7 +118,7 @@
   };
 
   # Enable sound with pipewire.
-  hardware.pulseaudio.enable = false;
+  services.pulseaudio.enable = false;
   security.rtkit.enable = true;
   services.pipewire = {
     enable = true;
@@ -128,6 +138,11 @@
     #media-session.enable = true;
   };
 
+  fonts.packages = with pkgs; [
+    nerd-fonts.fira-code
+    fira-code-symbols
+  ];
+
   # Enable touchpad support (enabled default in most desktopManager).
   # services.xserver.libinput.enable = true;
 
@@ -144,10 +159,15 @@
     extraGroups = [ "networkmanager" "wheel" ];
     packages = with pkgs; [
       #  thunderbird
+      appimage-run
+      fuse
+      # fusePackages.fuse_2
+      dolphin-emu
       vim
       firefox
       git
 
+      ghostty
       kitty
       stow
     ];
@@ -178,6 +198,7 @@
       setSocketVariable = true;
     };
 
+
   environment.sessionVariables = {
     # WLR_NO_HARDWARE_CURSORS = "1";
     NIXOS_OZONE_WL = "1";
@@ -198,9 +219,11 @@
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
+    fuse
     vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
 
     home-manager
+    slippi-launcher
     qmk
     #  wget
   ];
@@ -217,6 +240,7 @@
 
   # Enable the OpenSSH daemon.
   # services.openssh.enable = true;
+  # services.udev.packages = [ pkgs.dolphin-emu ];
 
   # Open ports in the firewall.
   networking.firewall = {
