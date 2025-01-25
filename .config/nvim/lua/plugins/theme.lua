@@ -81,7 +81,6 @@ return {
 			keys = "etovxqpdygfblzhckisuran",
 		},
 	},
-	{ "tris203/precognition.nvim", opts = {} },
 	{
 		"Aasim-A/scrollEOF.nvim",
 		event = { "CursorMoved", "WinScrolled" },
