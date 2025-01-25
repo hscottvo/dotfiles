@@ -4,6 +4,8 @@
   home.packages = with pkgs;
     [
       brave
+      libreoffice-qt
+      hunspell
       musescore
       obsidian
       signal-desktop
