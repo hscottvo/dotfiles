@@ -23,6 +23,7 @@
         pkgs = import nixpkgs {
           system = "x86_64-linux";
           config.allowUnfree = true;
+          allowUnfreePredicate = (_: true);
         };
         modules = moduleFiles ++ linuxFiles;
       };
@@ -31,6 +32,7 @@
         pkgs = import nixpkgs {
           system = "aarch64-darwin";
           config.allowUnfree = true;
+          # allowUnfreePredicate = (_: true);
         };
         modules = moduleFiles ++ macFiles;
       };
