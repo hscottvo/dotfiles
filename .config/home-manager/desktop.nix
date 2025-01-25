@@ -7,6 +7,7 @@
     # rofi
     fastfetch
     flatpak
+    gparted
     nwg-look
     pavucontrol
     waybar
@@ -37,12 +38,17 @@
 
   gtk = {
     enable = true;
+    theme = {
+      package = pkgs.nordic;
+      name = "Nordic";
+    };
+    iconTheme = {
+      # package = pkgs.papirus-nord;
+      # name = "Papirus-Nord";
+      package = pkgs.papirus-icon-theme;
+      name = "Papirus";
+    };
   };
-
-  programs.rofi = {
-    enable = true;
-  };
-
 
   wayland.windowManager.hyprland.xwayland.enable = true;
 

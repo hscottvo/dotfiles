@@ -8,7 +8,6 @@
             "hyprland/workspaces"
         ],
         "modules-center": [
-        // "custom/music",
         "hyprland/window"
         ],
         "modules-right": [
@@ -23,15 +22,6 @@
         "tray": {
             "icon-size": 21,
             "spacing": 10
-        },
-        "custom/music": {
-            "format": "  {}",
-            "escape": true,
-            "interval": 5,
-            "tooltip": false,
-            "exec": "playerctl metadata --format='{{ title }}'",
-            "on-click": "playerctl play-pause",
-            "max-length": 50
         },
         "clock": {
             "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>"
@@ -70,7 +60,6 @@
             "hyprland/workspaces"
         ],
         // "modules-center": [
-        // "custom/music",
         // "hyprland/window"
         // ],
         "modules-right": [
@@ -85,15 +74,6 @@
         "tray": {
             "icon-size": 21,
             "spacing": 10
-        },
-        "custom/music": {
-            "format": "  {}",
-            "escape": true,
-            "interval": 5,
-            "tooltip": false,
-            "exec": "playerctl metadata --format='{{ title }}'",
-            "on-click": "playerctl play-pause",
-            "max-length": 50
         },
         "clock": {
             "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>"

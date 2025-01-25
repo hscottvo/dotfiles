@@ -1,7 +1,8 @@
 -- copied from https://github.com/majamin/nvim-lazy-starter/blob/master/lua/user/options.lua
 local o = vim.opt
 
-vim.cmd([[colo catppuccin-frappe]])
+-- vim.cmd([[colo catppuccin-frappe]])
+vim.cmd([[colo nord]])
 
 o.number = true
 o.relativenumber = true

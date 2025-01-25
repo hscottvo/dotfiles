@@ -3,8 +3,9 @@ return {
 		-- "neanias/everforest-nvim",
 		-- "sainnhe/gruvbox-material",
 		-- "shaunsingh/nord.nvim",
+		"arcticicestudio/nord-vim",
 		-- "gbprod/nord.nvim",
-		"catppuccin/nvim",
+		-- "catppuccin/nvim",
 		version = false,
 		lazy = false,
 		priority = 1000, -- make sure to load this before all the other start plugins
@@ -44,6 +45,14 @@ return {
 				long_message_to_split = true, -- long messages will be sent to a split
 				inc_rename = false, -- enables an input dialog for inc-rename.nvim
 				lsp_doc_border = true, -- add a border to hover docs and signature help
+			},
+			routes = {
+				filter = {
+					event = "msg_show",
+					kind = "",
+					find = "written",
+				},
+				opts = { skip = true },
 			},
 		},
 	},
