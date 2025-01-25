@@ -6,6 +6,8 @@
       brave
       libreoffice-qt
       hunspell
+      dbeaver-bin
+      duckdb
       musescore
       obsidian
       signal-desktop
