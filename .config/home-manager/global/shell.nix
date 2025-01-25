@@ -2,6 +2,10 @@
 
 {
 
+  home.packages = with pkgs; [
+    xdelta
+  ];
+
   programs.kitty = {
     enable = true;
     font = {

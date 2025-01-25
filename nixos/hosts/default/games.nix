@@ -7,10 +7,10 @@
 
   environment.systemPackages = with pkgs; [
     mangohud
+    protonup
   ];
 
   programs.gamemode.enable = true;
 
-  # You can add any other configuration you want to test
 }
 
