@@ -6,7 +6,6 @@
     cargo
     fd
     gcc
-    go
     gnumake
     lazygit
     libgcc
@@ -21,6 +20,7 @@
     clang-tools
 
     # go
+    go
     gopls
     # lua
     lua-language-server
@@ -34,6 +34,11 @@
     black
     isort
     pyright
+
+    # terraform
+    terraform
+    terraform-ls
+    tflint
 
     unzip
   ];

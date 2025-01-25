@@ -13,12 +13,14 @@ return {
 					"css",
 					"dockerfile",
 					"go",
+					"hcl",
 					"hyprlang",
 					"lua",
 					"markdown",
 					"python",
 					"rust",
 					"sql",
+					"terraform",
 					"yaml",
 				},
 				sync_install = true,
@@ -45,6 +47,19 @@ return {
 			}
 		end,
 		config = function()
+			-- bash
+			require("lspconfig").bashls.setup({})
+
+			-- c
+			require("lspconfig").clangd.setup({})
+
+			-- docker
+			require("lspconfig").docker_compose_language_service.setup({})
+
+			-- go
+			require("lspconfig").gopls.setup({})
+
+			-- lua
 			require("lspconfig").lua_ls.setup({
 				settings = {
 					Lua = {
@@ -56,25 +71,38 @@ return {
 					},
 				},
 			})
-			require("lspconfig").rust_analyzer.setup({})
+
+			-- python
 			require("lspconfig").pyright.setup({})
-			require("lspconfig").clangd.setup({})
-			require("lspconfig").bashls.setup({})
-			require("lspconfig").docker_compose_language_service.setup({})
-			require("lspconfig").gopls.setup({})
+
+			-- rust
+			require("lspconfig").rust_analyzer.setup({})
+
+			-- terraform
+			require("lspconfig").terraformls.setup({
+				cmd = { "terraform-ls", "serve" },
+				filetypes = { "terraform", "hcl", "tf" },
+			})
+
+			require("lspconfig").tflint.setup({
+				cmd = { "tflint" },
+				filetypes = { "terraform" },
+			})
+
+			-- etc
 			require("lspconfig").nil_ls.setup({})
-			-- Your LSP settings here
 		end,
 	},
 	{
 		"stevearc/conform.nvim",
 		opts = {
 			formatters_by_ft = {
-				lua = { "stylua" },
-				python = { "isort", "black" },
 				cpp = { "clang-format" },
 				go = { "gofmt" },
+				lua = { "stylua" },
 				nix = { "nixpkgs_fmt" },
+				python = { "isort", "black" },
+				terraform = { "terraform_fmt" },
 			},
 			format_on_save = {
 				timeout_ms = 500,
