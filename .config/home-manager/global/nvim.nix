@@ -15,6 +15,7 @@
     python3
     ripgrep
     rustc
+    tree-sitter
 
     # cpp
     clang-tools
@@ -25,6 +26,12 @@
     # lua
     lua-language-server
     stylua
+
+    # markdown
+    marksman
+    markdownlint-cli2
+    nodePackages.prettier
+
 
     # nix
     nil
