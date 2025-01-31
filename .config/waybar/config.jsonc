@@ -24,7 +24,7 @@
             "spacing": 10
         },
         "clock": {
-            "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>"
+            "format": "{:%I:%M %p}"
         },
         "pulseaudio": {
             // "scroll-step": 1, // %, can be a float
