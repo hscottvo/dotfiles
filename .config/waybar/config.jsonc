@@ -17,14 +17,15 @@
             "custom/power"
         ],
         "hyprland/workspaces": {
-            "disable-scroll": true
+            "disable-scroll": false,
+            "enable-bar-scroll": true
         },
         "tray": {
             "icon-size": 21,
             "spacing": 10
         },
         "clock": {
-            "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>"
+            "format": "{:%I:%M %p}"
         },
         "pulseaudio": {
             // "scroll-step": 1, // %, can be a float
@@ -76,7 +77,8 @@
             "spacing": 10
         },
         "clock": {
-            "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>"
+            "format": "{:%I:%M %p}"
+
         },
         "pulseaudio": {
             // "scroll-step": 1, // %, can be a float
