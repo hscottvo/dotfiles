@@ -57,7 +57,18 @@
 
   # Enable the X11 windowing system.
   services.xserver.enable = true;
-  services.xserver.videoDrivers = [ "amdgpu" ];
+  # services.xserver.videoDrivers = [ "amdgpu" ];
+
+  services.xserver.videoDrivers = [ "nvidia" ];
+  hardware.nvidia = {
+    modesetting.enable = true;
+    powerManagement.enable = false;
+    powerManagement.finegrained = false;
+    open = false;
+    nvidiaSettings = true;
+  };
+
+
 
   # Enable sddm.
   services.displayManager.sddm.enable = true;
@@ -169,6 +180,7 @@
 
       ghostty
       kitty
+      networkmanagerapplet
       stow
     ];
   };
@@ -183,6 +195,7 @@
   programs.hyprland = {
     enable = true;
     xwayland.enable = true;
+    nvidiaPatches = true;
   };
   programs.xwayland.enable = true;
 
@@ -212,6 +225,7 @@
 
   # Enable qmk.
   hardware.keyboard.qmk.enable = true;
+
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
