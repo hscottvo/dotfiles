@@ -17,6 +17,9 @@
     rustc
     tree-sitter
 
+    # bash
+    bash-language-server
+
     # cpp
     clang-tools
 
@@ -42,10 +45,19 @@
     isort
     pyright
 
+    # rust
+    rust-analyzer
+
+    # toml
+    taplo
+
     # terraform
     terraform
     terraform-ls
     tflint
+
+    # YAML
+    yaml-language-server
 
     unzip
   ];
