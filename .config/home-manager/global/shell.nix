@@ -10,7 +10,7 @@
     enable = true;
     font = {
       name = "FiraCode Nerd Font";
-      size = 36;
+      size = 14;
     };
     extraConfig = ''
       enable_audio_bell no
