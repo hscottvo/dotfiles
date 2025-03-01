@@ -46,6 +46,7 @@
     pyright
 
     # rust
+    rustfmt
     rust-analyzer
 
     # toml

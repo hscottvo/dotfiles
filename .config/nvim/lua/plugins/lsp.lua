@@ -122,6 +122,7 @@ return {
 				markdown = { "prettier" },
 				nix = { "nixpkgs_fmt" },
 				python = { "isort", "black" },
+				rust = { "rustfmt" },
 				terraform = { "terraform_fmt" },
 				toml = { "taplo" },
 			},
