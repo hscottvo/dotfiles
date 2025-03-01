@@ -21,8 +21,13 @@
   ];
   boot.kernelModules = [
     "gcadapter_oc"
+    "nvidia_uvm"
+    "nvidia_modeset"
+    "nvidia_drm"
+    "nvidia"
   ];
   boot.supportedFilesystems = [ "fuse" ];
+  fileSystems."/".options = [ "noatime" "nodiratime" "discard" ];
   # environment.systemPackages = with pkgs; [ fuse ];
 
   networking.hostName = "nixos"; # Define your hostname.
@@ -57,14 +62,25 @@
 
   # Enable the X11 windowing system.
   services.xserver.enable = true;
-  # services.xserver.videoDrivers = [ "amdgpu" ];
-
   services.xserver.videoDrivers = [ "nvidia" ];
+  nixpkgs.config.nvidia.acceptLicence = true;
+
+  hardware.graphics = {
+    enable = true;
+    # enable32Bit = true;
+    extraPackages = with pkgs; [
+      vaapiVdpau
+      nvidia-vaapi-driver
+      libvdpau-va-gl
+    ];
+  };
+
   hardware.nvidia = {
     modesetting.enable = true;
-    powerManagement.enable = false;
-    powerManagement.finegrained = false;
     open = false;
+    powerManagement.enable = true;
+    # powerManagement.finegrained = false;
+    # package = config.boot.kernelPackages.nvidiaPackages.stable;
     nvidiaSettings = true;
   };
 
@@ -72,6 +88,8 @@
 
   # Enable sddm.
   services.displayManager.sddm.enable = true;
+  # services.xserver.displayManager.gdm.enable = true;
+  services.xserver.desktopManager.gnome.enable = true;
 
   # Install flatpak.
   services.flatpak.enable = true;
@@ -195,7 +213,6 @@
   programs.hyprland = {
     enable = true;
     xwayland.enable = true;
-    nvidiaPatches = true;
   };
   programs.xwayland.enable = true;
 
@@ -212,16 +229,18 @@
     };
 
 
+  environment.variables = {
+    GBM_BACKEND = "nvidia-drm";
+    LIBVA_DRIVER_NAME = "nvidia";
+    __GLX_VENDOR_LIBRARY_NAME = "nvidia";
+  };
+
   environment.sessionVariables = {
     # WLR_NO_HARDWARE_CURSORS = "1";
     NIXOS_OZONE_WL = "1";
   };
 
   programs.kdeconnect.enable = true;
-
-  hardware.graphics = {
-    enable = true;
-  };
 
   # Enable qmk.
   hardware.keyboard.qmk.enable = true;
