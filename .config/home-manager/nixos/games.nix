@@ -2,7 +2,7 @@
 { config, pkgs, ... }:
 {
   home.packages = with pkgs; [
-    # fuse
+    fuse
     bottles
     lutris
     protonup
