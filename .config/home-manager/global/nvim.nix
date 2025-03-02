@@ -15,6 +15,10 @@
     python3
     ripgrep
     rustc
+    tree-sitter
+
+    # bash
+    bash-language-server
 
     # cpp
     clang-tools
@@ -26,6 +30,12 @@
     lua-language-server
     stylua
 
+    # markdown
+    marksman
+    markdownlint-cli2
+    nodePackages.prettier
+
+
     # nix
     nil
     nixpkgs-fmt
@@ -35,10 +45,20 @@
     isort
     pyright
 
+    # rust
+    rustfmt
+    rust-analyzer
+
+    # toml
+    taplo
+
     # terraform
     terraform
     terraform-ls
     tflint
+
+    # YAML
+    yaml-language-server
 
     unzip
   ];

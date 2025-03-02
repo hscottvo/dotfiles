@@ -10,7 +10,7 @@
     enable = true;
     font = {
       name = "FiraCode Nerd Font";
-      size = 36;
+      size = 14;
     };
     extraConfig = ''
       enable_audio_bell no
@@ -30,7 +30,7 @@
         color_scheme = "nord",
 
         -- Appearance
-        font = wezterm.font("FiraCode Nerd Font Mono"), -- Use the font family
+        font = wezterm.font_with_fallback({"FiraCode Nerd Font Mono", "DejaVu Math TeX Gyre"}), -- Use the font family
         font_size = 16.0, -- Adjust the font size to your preference
         line_height = 1.1,
         enable_tab_bar = false, -- Hide tab bar when only one tab

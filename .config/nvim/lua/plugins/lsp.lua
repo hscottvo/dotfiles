@@ -14,13 +14,17 @@ return {
 					"dockerfile",
 					"go",
 					"hcl",
+					"html",
 					"hyprlang",
+					"latex",
 					"lua",
 					"markdown",
+					"markdown_inline",
 					"python",
 					"rust",
 					"sql",
 					"terraform",
+					"typst",
 					"yaml",
 				},
 				sync_install = true,
@@ -72,6 +76,9 @@ return {
 				},
 			})
 
+			--markdown
+			require("lspconfig").marksman.setup({})
+
 			-- python
 			require("lspconfig").pyright.setup({})
 
@@ -89,6 +96,18 @@ return {
 				filetypes = { "terraform" },
 			})
 
+			require("lspconfig").yamlls.setup({
+				-- settings = {
+				-- 	yaml = {
+				-- 		schemas = {
+				-- 			["https://json.schemastore.org/docker-compose.json"] = "docker-compose*.{yml,yaml}",
+				-- 		},
+				-- 		validate = true,
+				-- 		format = { enable = true },
+				-- 	},
+				-- },
+			})
+
 			-- etc
 			require("lspconfig").nil_ls.setup({})
 		end,
@@ -100,9 +119,12 @@ return {
 				cpp = { "clang-format" },
 				go = { "gofmt" },
 				lua = { "stylua" },
+				markdown = { "prettier" },
 				nix = { "nixpkgs_fmt" },
 				python = { "isort", "black" },
+				rust = { "rustfmt" },
 				terraform = { "terraform_fmt" },
+				toml = { "taplo" },
 			},
 			format_on_save = {
 				timeout_ms = 500,
