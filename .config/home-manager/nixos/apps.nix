@@ -3,6 +3,7 @@
 {
   home.packages = with pkgs; [
     obs-studio
+    libreoffice-qt
     nginx
     vlc
     vesktop

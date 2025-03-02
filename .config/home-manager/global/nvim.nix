@@ -8,7 +8,6 @@
     gcc
     gnumake
     lazygit
-    libgcc
     lua
     luajitPackages.luarocks_bootstrap
     nodejs_22

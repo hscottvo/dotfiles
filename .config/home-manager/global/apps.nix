@@ -4,7 +4,6 @@
   home.packages = with pkgs;
     [
       brave
-      libreoffice-qt
       hunspell
       dbeaver-bin
       duckdb
