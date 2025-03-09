@@ -48,6 +48,12 @@ return {
 		init = function()
 			vim.g.coq_settings = {
 				auto_start = "shut-up",
+				completion = {
+					skip_after = { "\n", "\t", ";" },
+				},
+				display = {
+					mark_applied_notify = false,
+				},
 			}
 		end,
 		config = function()
