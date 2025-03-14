@@ -49,7 +49,7 @@ return {
 			vim.g.coq_settings = {
 				auto_start = "shut-up",
 				completion = {
-					skip_after = { "\n", "\t", ";" },
+					skip_after = { "\n", "\t", ";", "{", "}", " " },
 				},
 				display = {
 					mark_applied_notify = false,
