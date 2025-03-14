@@ -89,7 +89,25 @@ return {
 			require("lspconfig").pyright.setup({})
 
 			-- rust
-			require("lspconfig").rust_analyzer.setup({})
+			require("lspconfig").rust_analyzer.setup({
+				settings = {
+					["rust-analyzer"] = {
+						-- Other Settings ...
+						rustfmt = {
+							overrideCommand = { "leptosfmt", "--stdin", "--rustfmt" },
+						},
+						procMacro = {
+							ignored = {
+								leptos_macro = {
+									-- optional: --
+									-- "component",
+									"server",
+								},
+							},
+						},
+					},
+				},
+			})
 
 			-- terraform
 			require("lspconfig").terraformls.setup({
@@ -128,7 +146,7 @@ return {
 				markdown = { "prettier" },
 				nix = { "nixpkgs_fmt" },
 				python = { "isort", "black" },
-				rust = { "rustfmt" },
+				rust = { "rustfmt", "leptosfmt" },
 				terraform = { "terraform_fmt" },
 				toml = { "taplo" },
 			},

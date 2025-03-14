@@ -14,6 +14,8 @@
         # $ nix-env -qaP | grep wget
         environment.systemPackages = with pkgs;
           [
+            rustup
+            stow
             vim
             signal-desktop
           ];
