@@ -153,6 +153,7 @@ return {
 				col = 1,
 			},
 		},
+		lazy = false,
 	},
 	{
 		"OXY2DEV/markview.nvim",
