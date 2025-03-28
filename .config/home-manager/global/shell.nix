@@ -24,6 +24,7 @@
     enable = true;
     settings = {
       theme = "Everforest Dark - Hard";
+      font-family = "FiraCode Nerd Font";
     };
   };
 
