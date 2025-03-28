@@ -40,6 +40,8 @@
   # Enable networking
   networking.networkmanager.enable = true;
 
+  nix.optimise.automatic = true;
+  nix.settings.auto-optimise-store = true;
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
   # Set your time zone.
@@ -77,11 +79,11 @@
 
   hardware.nvidia = {
     modesetting.enable = true;
-    open = false;
     powerManagement.enable = true;
-    # powerManagement.finegrained = false;
-    # package = config.boot.kernelPackages.nvidiaPackages.stable;
+    powerManagement.finegrained = true;
+    open = true;
     nvidiaSettings = true;
+    package = config.boot.kernelPackages.nvidiaPackages.stable;
   };
 
 

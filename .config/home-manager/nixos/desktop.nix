@@ -35,6 +35,7 @@
       };
     };
   };
+  services.swaync.enable = true;
 
   gtk = {
     enable = true;

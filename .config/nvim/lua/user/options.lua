@@ -2,7 +2,7 @@
 local o = vim.opt
 
 -- vim.cmd([[colo catppuccin-frappe]])
-vim.cmd([[colo nord]])
+vim.cmd([[colo everforest]])
 
 o.number = true
 o.relativenumber = true

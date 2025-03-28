@@ -56,6 +56,12 @@
     terraform-ls
     tflint
 
+    # typescript
+    eslint
+    eslint_d
+    typescript-language-server
+    # vimPlugins.coc-tsserver
+
     # YAML
     yaml-language-server
 
@@ -67,12 +73,6 @@
     viAlias = true;
     vimAlias = true;
     vimdiffAlias = true;
-    plugins = with pkgs.vimPlugins; [
-      mason-nvim
-      nvim-lspconfig
-      mason-lspconfig-nvim
-      gruvbox-material-nvim
-    ];
   };
 
   home.sessionVariables = {

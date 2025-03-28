@@ -16,6 +16,7 @@ return {
 					"hcl",
 					"html",
 					"hyprlang",
+					"javascript",
 					"latex",
 					"lua",
 					"markdown",
@@ -24,6 +25,8 @@ return {
 					"rust",
 					"sql",
 					"terraform",
+					"tsx",
+					"typescript",
 					"typst",
 					"yaml",
 				},
@@ -65,6 +68,12 @@ return {
 
 			-- docker
 			require("lspconfig").docker_compose_language_service.setup({})
+
+			-- eslint
+			require("lspconfig").eslint.setup({
+				cmd = { "eslint_d", "--stdin", "--stdin-filename", "%filepath" },
+				filetypes = { "javascript", "javascriptreact", "typescript", "typescriptreact", "vue" },
+			})
 
 			-- go
 			require("lspconfig").gopls.setup({})
@@ -120,6 +129,17 @@ return {
 				filetypes = { "terraform" },
 			})
 
+			require("lspconfig").ts_ls.setup({
+				filetypes = { "javascript", "javascriptreact", "typescript", "typescriptreact", "html" },
+				settings = {
+					html = {
+						format = {
+							templating = true,
+						},
+					},
+				},
+			})
+
 			require("lspconfig").yamlls.setup({
 				-- settings = {
 				-- 	yaml = {
@@ -165,6 +185,22 @@ return {
 		config = true,
 		-- use opts = {} for passing setup options
 		-- this is equalent to setup({}) function
+	},
+	{
+		"windwp/nvim-ts-autotag",
+		ft = {
+			"javascript",
+			"javascriptreact",
+			"typescript",
+			"typescriptreact",
+		},
+		config = function()
+			require("nvim-ts-autotag").setup({
+				-- enable_close = true,
+				-- enable_rename = true,
+				-- enable_close_on_slash = true,
+			})
+		end,
 	},
 	{
 		"kylechui/nvim-surround",

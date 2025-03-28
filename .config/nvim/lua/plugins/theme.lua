@@ -1,11 +1,23 @@
 return {
 	{
-		-- "neanias/everforest-nvim",
-		-- "sainnhe/gruvbox-material",
+		"neanias/everforest-nvim",
+		config = function()
+			require("everforest").setup({
+				background = "medium",
+				transparent_background_level = 1,
+			})
+		end,
+		version = false,
+		lazy = false,
+		priority = 1000, -- make sure to load this before all the other start plugins
+	},
+	{
+		"oahlen/iceberg.nvim",
+		"sainnhe/gruvbox-material",
 		-- "shaunsingh/nord.nvim",
-		"arcticicestudio/nord-vim",
+		-- "arcticicestudio/nord-vim",
 		-- "gbprod/nord.nvim",
-		-- "catppuccin/nvim",
+		"catppuccin/nvim",
 		version = false,
 		lazy = false,
 		priority = 1000, -- make sure to load this before all the other start plugins
@@ -88,6 +100,10 @@ return {
 	},
 	{
 		"lewis6991/gitsigns.nvim",
+		keys = {
+			{ "<leader>gw", "<cmd>Gitsigns toggle_word_diff<cr>", desc = "Toggle word diffs" },
+			{ "<leader>gl", "<cmd>Gitsigns toggle_linehl<cr>", desc = "Toggle line diffs" },
+		},
 		opts = {
 			signs = {
 				add = { text = "┃" },
@@ -118,7 +134,7 @@ return {
 			current_line_blame = false, -- Toggle with `:Gitsigns toggle_current_line_blame`
 			current_line_blame_opts = {
 				virt_text = true,
-				virt_text_pos = "eol", -- 'eol' | 'overlay' | 'right_align'
+				virt_text_pos = "right_align", -- 'eol' | 'overlay' | 'right_align'
 				delay = 1000,
 				ignore_whitespace = false,
 				virt_text_priority = 100,
