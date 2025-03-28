@@ -8,28 +8,27 @@
     vlc
     vesktop
   ];
-  programs.rofi = {
+
+  programs.fuzzel = {
     enable = true;
-    extraConfig = {
-      modi = "drun,run,window";
-      # modi = "drun,window";
-      icon-theme = "Oranchelo";
-      show-icons = true;
-      terminal = "kitty";
-      drun-display-format = "{icon} {name}";
-      location = 0;
-      disable-history = false;
-      hide-scrollbar = true;
-      display-drun = "   Apps ";
-      display-run = "   Run ";
-      display-window = " 󰕰  Window";
-      display-Network = " 󰤨  Network";
-      sidebar-mode = true;
-      # };
+    settings = {
+      colors = {
+        background = "1E2326FF";
+        text = "D3C6AAFF";
+        prompt = "859289FF";
+        selection = "859289FF";
+        selection-text = "1E2326FF";
+        border = "A7C080FF";
+      };
+      main = {
+        horizontal-pad = 10;
+        vertical-pad = 5;
+        font = "FiraCode:size=16";
+        use-bold = true;
+        placeholder = "Select an app...";
+      };
+      border.width = 2;
     };
   };
-
-
-
 }
 
