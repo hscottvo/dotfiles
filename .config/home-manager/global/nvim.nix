@@ -39,6 +39,9 @@
     nil
     nixpkgs-fmt
 
+    # prettier
+    prettierd
+
     # python
     black
     isort

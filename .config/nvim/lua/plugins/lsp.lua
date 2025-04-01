@@ -52,7 +52,7 @@ return {
 			vim.g.coq_settings = {
 				auto_start = "shut-up",
 				completion = {
-					skip_after = { "\n", "\t", ";", "{", "}", " " },
+					skip_after = { "\n", "\t", ";", "{", "}", "(", ")", "[", "]", ",", " " },
 				},
 				display = {
 					mark_applied_notify = false,
@@ -161,14 +161,20 @@ return {
 		opts = {
 			formatters_by_ft = {
 				cpp = { "clang-format" },
+				css = { "prettierd" },
 				go = { "gofmt" },
+				html = { "prettierd" },
+				javascript = { "prettierd" },
+				json = { "prettierd" },
 				lua = { "stylua" },
 				markdown = { "prettier" },
 				nix = { "nixpkgs_fmt" },
 				python = { "isort", "black" },
 				rust = { "rustfmt", "leptosfmt" },
 				terraform = { "terraform_fmt" },
+				typescript = { "prettierd" },
 				toml = { "taplo" },
+				yaml = { "prettierd" },
 			},
 			format_on_save = {
 				timeout_ms = 500,

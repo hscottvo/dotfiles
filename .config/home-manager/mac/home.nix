@@ -10,6 +10,7 @@
     keychain
     xclip
     p7zip
+    hoppscotch
 
   ];
 
