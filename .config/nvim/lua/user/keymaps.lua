@@ -59,6 +59,7 @@ wk.add({
 	{ "<leader>lo", "<cmd>lua vim.lsp.buf.type_definition()<cr>", desc = "Type Definition" },
 	{ "<leader>lR", "<cmd>lua vim.lsp.buf.references()<cr>", desc = "References" },
 	{ "<leader>ls", "<cmd>lua vim.lsp.buf.signature_help()<cr>", desc = "Signature Help" },
+	{ "<leader>w", "<cmd> noa w<cr>", desc = "Write without Formatting" },
 
 	-- Git
 	{ "<leader>g", "", desc = "git" },
