@@ -21,6 +21,7 @@ return {
 					"lua",
 					"markdown",
 					"markdown_inline",
+					"nix",
 					"python",
 					"rust",
 					"sql",
@@ -28,6 +29,7 @@ return {
 					"tsx",
 					"typescript",
 					"typst",
+					"vue",
 					"yaml",
 				},
 				sync_install = true,
@@ -60,26 +62,36 @@ return {
 			}
 		end,
 		config = function()
+			local lspconfig = require("lspconfig")
 			-- bash
-			require("lspconfig").bashls.setup({})
+			lspconfig.bashls.setup({})
 
 			-- c
-			require("lspconfig").clangd.setup({})
+			lspconfig.clangd.setup({})
 
 			-- docker
-			require("lspconfig").docker_compose_language_service.setup({})
+			lspconfig.docker_compose_language_service.setup({})
 
 			-- eslint
-			require("lspconfig").eslint.setup({
-				cmd = { "eslint_d", "--stdin", "--stdin-filename", "%filepath" },
-				filetypes = { "javascript", "javascriptreact", "typescript", "typescriptreact", "vue" },
+			-- lspconfig.eslint.setup({
+			-- 	-- cmd = { "eslint_d", "--stdio" },
+			-- 	cmd = { "eslint", "--stdin", "--stdin-filename", "%filepath" },
+			-- 	filetypes = { "javascript", "javascriptreact", "typescript", "typescriptreact", "vue" },
+			-- })
+			lspconfig.eslint.setup({
+				on_attach = function(client, bufnr)
+					vim.api.nvim_create_autocmd("BufWritePre", {
+						buffer = bufnr,
+						command = "EslintFixAll",
+					})
+				end,
 			})
 
 			-- go
-			require("lspconfig").gopls.setup({})
+			lspconfig.gopls.setup({})
 
 			-- lua
-			require("lspconfig").lua_ls.setup({
+			lspconfig.lua_ls.setup({
 				settings = {
 					Lua = {
 						diagnostics = {
@@ -92,13 +104,13 @@ return {
 			})
 
 			--markdown
-			require("lspconfig").marksman.setup({})
+			lspconfig.marksman.setup({})
 
 			-- python
-			require("lspconfig").pyright.setup({})
+			lspconfig.pyright.setup({})
 
 			-- rust
-			require("lspconfig").rust_analyzer.setup({
+			lspconfig.rust_analyzer.setup({
 				settings = {
 					["rust-analyzer"] = {
 						-- Other Settings ...
@@ -119,28 +131,29 @@ return {
 			})
 
 			-- terraform
-			require("lspconfig").terraformls.setup({
+			lspconfig.terraformls.setup({
 				cmd = { "terraform-ls", "serve" },
 				filetypes = { "terraform", "hcl", "tf" },
 			})
 
-			require("lspconfig").tflint.setup({
+			lspconfig.tflint.setup({
 				cmd = { "tflint" },
 				filetypes = { "terraform" },
 			})
 
-			require("lspconfig").ts_ls.setup({
-				filetypes = { "javascript", "javascriptreact", "typescript", "typescriptreact", "html" },
-				settings = {
-					html = {
-						format = {
-							templating = true,
-						},
+			-- typescript/javascript
+			-- vue
+			lspconfig.volar.setup({
+				filetypes = { "typescript", "javascript", "javascriptreact", "typescriptreact", "vue" },
+				init_options = {
+					vue = {
+						-- disable hybrid mode
+						hybridMode = false,
 					},
 				},
 			})
 
-			require("lspconfig").yamlls.setup({
+			lspconfig.yamlls.setup({
 				-- settings = {
 				-- 	yaml = {
 				-- 		schemas = {
@@ -153,7 +166,7 @@ return {
 			})
 
 			-- etc
-			require("lspconfig").nil_ls.setup({})
+			lspconfig.nil_ls.setup({})
 		end,
 	},
 	{
@@ -165,18 +178,13 @@ return {
 				go = { "gofmt" },
 				html = { "prettierd" },
 				json = { "prettierd" },
-				javascript = { "prettierd" },
-				javascriptreact = { "prettierd" },
 				lua = { "stylua" },
 				markdown = { "prettier" },
 				nix = { "nixpkgs_fmt" },
 				python = { "isort", "black" },
 				rust = { "rustfmt", "leptosfmt" },
 				terraform = { "terraform_fmt" },
-				typescript = { "prettierd" },
 				toml = { "taplo" },
-                typescriptreact = { "prettierd" },
-                vue = { "prettier" },
 				yaml = { "prettierd" },
 			},
 			format_on_save = {

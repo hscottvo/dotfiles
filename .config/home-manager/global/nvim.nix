@@ -62,8 +62,11 @@
     # typescript
     eslint
     eslint_d
+    typescript
     typescript-language-server
-    # vimPlugins.coc-tsserver
+
+    # vue
+    vue-language-server
 
     # YAML
     yaml-language-server
