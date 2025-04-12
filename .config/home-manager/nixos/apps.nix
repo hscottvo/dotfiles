@@ -4,6 +4,7 @@
   home.packages = with pkgs; [
     obs-studio
     libreoffice-qt
+    librewolf
     nginx
     vlc
     vesktop
