@@ -40,7 +40,7 @@
   gtk = {
     enable = true;
     theme = {
-      package = pkgs.nordic;
+      package = pkgs.everforest-gtk-theme;
       name = "Nordic";
     };
     iconTheme = {
