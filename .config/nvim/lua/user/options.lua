@@ -20,6 +20,7 @@ o.wildmode = "full"
 o.scrolloff = 8
 o.conceallevel = 1
 o.updatetime = 25
+o.signcolumn = "yes:1"
 
 vim.diagnostic.config({
 	virtual_text = {
