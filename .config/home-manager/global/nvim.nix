@@ -64,6 +64,7 @@
     eslint_d
     typescript
     typescript-language-server
+    vscode-langservers-extracted
 
     # vue
     vue-language-server
