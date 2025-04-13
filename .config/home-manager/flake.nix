@@ -12,9 +12,22 @@
 
   outputs = { nixpkgs, home-manager, ... }:
     let
-      moduleFiles = [ ./global/apps.nix ./global/nvim.nix ./global/shell.nix ];
-      linuxFiles = [ ./nixos/home.nix ./nixos/desktop.nix ./nixos/apps.nix ./nixos/games.nix ./nixos/nvim.nix ];
-      macFiles = [ ./mac/home.nix ];
+      moduleFiles = [
+        ./global/apps.nix
+        ./global/nvim.nix
+        ./global/shell.nix
+        ./global/colors.nix
+      ];
+      linuxFiles = [
+        ./nixos/home.nix
+        ./nixos/desktop.nix
+        ./nixos/apps.nix
+        ./nixos/games.nix
+        ./nixos/nvim.nix
+      ];
+      macFiles = [
+        ./mac/home.nix
+      ];
     in
     {
 
