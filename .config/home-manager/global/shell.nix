@@ -33,7 +33,8 @@
     historySubstringSearch.enable = true;
     syntaxHighlighting.enable = true;
     shellAliases = {
-      ll = "ls -l";
+      ll = "eza -l";
+      ls = "eza";
       neofetch = "fastfetch";
     };
     oh-my-zsh = {
@@ -196,23 +197,17 @@
     enable = true;
   };
 
+
+  programs.eza = {
+    enable = true;
+    colors = "auto";
+    icons = "auto";
+    enableZshIntegration = true;
+  };
+
   programs.starship = {
     enable = true;
     enableZshIntegration = true;
-    # settings = {
-    #   # Add your Starship configuration here.
-    #   prompt_order = [
-    #     "username"
-    #     "hostname"
-    #     "directory"
-    #     "git_status"
-    #     "cmd_duration"
-    #     "line_break"
-    #     "jobs"
-    #     "character"
-    #   ];
-    #   add_newline = true;
-    # };
   };
 
   programs.fzf = {
