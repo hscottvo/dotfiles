@@ -45,20 +45,6 @@ return {
 		end,
 	},
 	{
-		"stevearc/oil.nvim",
-		---@module 'oil'
-		---@type oil.SetupOpts
-		opts = {},
-		dependencies = { "nvim-tree/nvim-web-devicons" }, -- use if prefer nvim-web-devicons},
-		keys = {
-			{
-				"<leader>-",
-				"<cmd>Oil<cr>",
-				desc = "Open file browser",
-			},
-		},
-	},
-	{
 		"nvim-telescope/telescope-file-browser.nvim",
 		dependencies = { "nvim-telescope/telescope.nvim", "nvim-lua/plenary.nvim" },
 	},
