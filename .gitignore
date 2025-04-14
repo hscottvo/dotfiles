@@ -1,3 +1,5 @@
 pacman.log
 .*log
 **/result
+
+.config/kitty
