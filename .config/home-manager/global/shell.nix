@@ -1,5 +1,8 @@
 { config, pkgs, ... }:
 
+let
+  colors = config.custom.themes.everforest.colors;
+in
 {
 
   home.packages = with pkgs; [
@@ -23,7 +26,7 @@
   programs.ghostty = {
     enable = true;
     settings = {
-      theme = "Everforest Dark - Hard";
+      # theme = "Everforest Dark - Hard";
       font-family = "FiraCode Nerd Font";
     };
   };
@@ -73,7 +76,6 @@
   programs.tmux = {
     enable = true;
     baseIndex = 1;
-    newSession = true;
     escapeTime = 0;
     secureSocket = false;
     plugins = with pkgs.tmuxPlugins; [
@@ -83,113 +85,62 @@
     ];
 
     extraConfig = ''
-      ## COLORSCHEME: everforest dark medium
-      set -g @everforest_bg_dim '#232a2e'
-      set -g @everforest_bg0 '#2d353b'
-      set -g @everforest_bg1 '#343f44'
-      set -g @everforest_bg2 '#3d484d'
-      set -g @everforest_bg3 '#475258'
-      set -g @everforest_bg4 '#4f585e'
-      set -g @everforest_bg5 '#56635f'
-      set -g @everforest_bg_visual '#543a48'
-      set -g @everforest_bg_red '#514045'
-      set -g @everforest_bg_green '#425047'
-      set -g @everforest_bg_blue '#3a515d'
-      set -g @everforest_bg_yellow '#4d4c43'
-  
-      set -g @everforest_fg '#d3c6aa'
-      set -g @everforest_red '#e67e80'
-      set -g @everforest_orange '#e69875'
-      set -g @everforest_yellow '#dbbc7f'
-      set -g @everforest_green '#a7c080'
-      set -g @everforest_aqua '#83c092'
-      set -g @everforest_blue '#7fbbb3'
-      set -g @everforest_purple '#d699b6'
-      set -g @everforest_grey0 '#7a8478'
-      set -g @everforest_grey1 '#859289'
-      set -g @everforest_grey2 '#9da9a0'
-      set -g @everforest_statusline1 '#a7c080'
-      set -g @everforest_statusline2 '#d3c6aa'
-      set -g @everforest_statusline3 '#e67e80'
-  
-      set-option -g status "on"
       set -g @continuum-boot 'on'
 
       set -g status-interval 2
-  
-      set-option -g status-fg '#d3c6aa' # fg (No idea why I can't use variables here)
-      set-option -g status-bg '#2d353b' # bg0
-  
-      set-option -g mode-style fg='#{@everforest_purple}',bg='#{@everforest_bg_red}' # fg=purple, bg=bg_visual
-  
-      # default statusbar colors
-      set-option -g status-style fg='#{@everforest_fg}',bg='#{@everforest_bg_dim}',default # fg=fg bg=bg_dim
-  
-      # ---- Windows ----
-      # default window title colors
-      set-window-option -g window-status-style fg='#{@everforest_bg5}',bg='#{@everforest_bg0}' # fg=yellow bg=bg0
-  
-      # default window with an activity alert
-      set-window-option -g window-status-activity-style 'bg=#{@everforest_bg1},fg=#{@everforest_bg3}' # bg=bg1, fg=fg3
-  
-      # active window title colors
-      set-window-option -g window-status-current-style fg='#{@everforest_fg}',bg='#{@everforest_bg_green}' # fg=fg bg=bg_green
-  
-      # ---- Pane ----
-      # pane borders
-      set-option -g pane-border-style fg='#{@everforest_bg1}' # fg=bg1
-      set-option -g pane-active-border-style 'fg=#{@everforest_blue}' # fg=blue
-  
-      # pane number display
-      set-option -g display-panes-active-colour '#7fbbb3' # blue
-      set-option -g display-panes-colour '#e69875' # orange
-  
-      # ---- Command ----
-      # message info
-      set-option -g message-style fg='#{@everforest_statusline3}',bg='#{@everforest_bg_dim}' # fg=statusline3 bg=bg_dim
-  
-      # writing commands inactive
-      set-option -g message-command-style 'fg=#{@everforest_bg3},bg=#{@everforest_bg1}' # bg=fg3, fg=bg1
-  
-      # ---- Miscellaneous ----
-      # clock
-      set-window-option -g clock-mode-colour '#7fbbb3' #blue
-  
-      # bell
-      set-window-option -g window-status-bell-style fg='#{@everforest_bg0}',bg='#{@everforest_statusline3}' # fg=bg, bg=statusline3
-  
-      # ---- Formatting ----
-      set-option -g status-left-style none
-      set -g status-left-length 60
-      set -g status-left '#[fg=#{@everforest_bg_dim},bg=#{@everforest_green},bold] #S #[fg=#{@everforest_green},bg=#{@everforest_bg2},nobold]#[fg=#{@everforest_green},bg=#{@everforest_bg2},bold] #(whoami) #[fg=#{@everforest_bg2},bg=#{@everforest_bg0},nobold]'
-  
-      set-option -g status-right-style none
-      set -g status-right-length 150
-      set -g status-right '#[fg=#{@everforest_bg2}]#[fg=#{@everforest_fg},bg=#{@everforest_bg2}] #[fg=#{@everforest_fg},bg=#{@everforest_bg2}]%Y-%m-%d  %H:%M #[fg=#{@everforest_aqua},bg=#{@everforest_bg2},bold]#[fg=#{@everforest_bg_dim},bg=#{@everforest_aqua},bold] #h '
-  
-      set -g window-status-separator '#[fg=#{@everforest_grey2},bg=#{@everforest_bg0}] '
-      set -g window-status-format "#[fg=#{@everforest_grey0},bg=#{@everforest_bg0}] #I  #[fg=#{@everforest_grey0},bg=#{@everforest_bg0}]#W "
-      set -g window-status-current-format "#[fg=#{@everforest_bg0},bg=#{@everforest_bg_green}]#[fg=#{@everforest_fg},bg=#{@everforest_bg_green}] #I  #[fg=#{@everforest_fg},bg=#{@everforest_bg_green},bold]#W #[fg=#{@everforest_bg_green},bg=#{@everforest_bg0},nobold]"
 
+      # mouse works as expected
+      set-option -g mouse on
+
+      # terminal colors
       set-option -g default-terminal "screen-256color"
       set-option -a terminal-features 'xterm-256color:RGB'
       set-option -g focus-events on
-
-
-      #   set -ga terminal-overrides ",*256col*:Tc"
-      #   set -ga terminal-overrides '*:Ss=\E[%p1%d q:Se=\E[ q'
-      #
-      # Mouse works as expected
-      set-option -g mouse on
-      #   
-      # easy-to-remember split pane commands
-      bind | split-window -h -c "#{pane_current_path}"
-      bind - split-window -v -c "#{pane_current_path}"
+  
+      # window menu
+      set-option -g mode-style fg=${colors.bg_dim},bg=${colors.fg}
+  
+      # pane background
+      set -g window-active-style bg=${colors.bg_dim}
+      set -g pane-active-border fg=${colors.green}
+  
+      # status bar
+      set-option -g status-style bg=${colors.bg0}
+      set-option -ag status-style fg=${colors.fg}
+      set -g status-left-length 150
+      set -g status-left "\
+      #[fg=${colors.bg0}, bg=${colors.statusline1}, bold] #(whoami) \
+      #[bg=${colors.bg0}, fg=${colors.statusline1}]\
+      #[bg=${colors.bg0}, fg=${colors.fg}] #S \
+      #[fg=${colors.fg}, bg=${colors.bg0}] "
+  
+      set-option -g status-right-style none
+      set -g status-right-length 150
+      set -g status-right "\
+      #[fg=${colors.bg2}, bg=${colors.bg0}]#[bg=${colors.bg2}, fg=${colors.fg}] %Y-%m-%d \
+      #[bg=${colors.bg2}, fg=${colors.bg4}]#[fg=${colors.fg}, bg=${colors.bg4}] %H:%M  \
+      #[fg=#A7C080, bg=${colors.bg4}]#[fg=${colors.bg_dim}, bg=#A7C080, bold] #h"
+  
+      set-window-option -g window-status-current-format "\
+      #[fg=${colors.bg0}, bg=${colors.bg5}]\
+      #[fg=${colors.fg}, bg=${colors.bg5}] #I \
+      #[fg=${colors.fg}, bg=${colors.bg5}, bold] #W \
+      #[fg=${colors.bg5}, bg=${colors.bg0}]"
+  
+      set-window-option -g window-status-format "\
+      #[fg=${colors.fg}, bg=${colors.bg0}] #I \
+       #W \
+      #[fg=${colors.bg0}, bg=${colors.bg0}]"
+  
+      # splitting
+      bind '"' split-window -h -c "#{pane_current_path}"
+      bind % split-window -v -c "#{pane_current_path}"
       bind c new-window -c "#{pane_current_path}"
 
       # reload config 
       unbind r
       bind r source-file ~/.config/tmux/tmux.conf
+
     '';
   };
 
