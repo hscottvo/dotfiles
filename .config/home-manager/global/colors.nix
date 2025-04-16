@@ -1,15 +1,18 @@
-{ lib, config, ... }:
+{ lib, ... }:
 
 {
+  options.custom.theme = with lib; {
+    colorscheme = mkOption { type = types.str; default = "everforest"; description = "Everforest dark hard"; };
+  };
   options.custom.themes.everforest.colors = with lib; {
     # Palette1: Background (hard contrast)
-    bg0 = mkOption { type = types.str; default = "#1E2326"; description = "Default background (hard)"; };
-    bg1 = mkOption { type = types.str; default = "#272E33"; description = "Line numbers, signs"; };
-    bg2 = mkOption { type = types.str; default = "#2E383C"; description = "Cursor line, folds"; };
-    bg3 = mkOption { type = types.str; default = "#374145"; description = "Popups, floating windows"; };
-    bg4 = mkOption { type = types.str; default = "#414B50"; description = "Separators, whitespace"; };
-    bg5 = mkOption { type = types.str; default = "#495156"; description = "Unused"; };
-    bg6 = mkOption { type = types.str; default = "#4F5B58"; description = "Unused"; };
+    bg_dim = mkOption { type = types.str; default = "#1E2326"; description = "Default background (hard)"; };
+    bg0 = mkOption { type = types.str; default = "#272E33"; description = "Line numbers, signs"; };
+    bg1 = mkOption { type = types.str; default = "#2E383C"; description = "Cursor line, folds"; };
+    bg2 = mkOption { type = types.str; default = "#374145"; description = "Popups, floating windows"; };
+    bg3 = mkOption { type = types.str; default = "#414B50"; description = "Separators, whitespace"; };
+    bg4 = mkOption { type = types.str; default = "#495156"; description = "Unused"; };
+    bg5 = mkOption { type = types.str; default = "#4F5B58"; description = "Unused"; };
 
     bg_visual = mkOption { type = types.str; default = "#4C3743"; description = "Visual selection"; };
     bg_red = mkOption { type = types.str; default = "#493B40"; description = "Diff deleted background"; };
