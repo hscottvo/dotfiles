@@ -81,7 +81,7 @@ in
     plugins = with pkgs.tmuxPlugins; [
       better-mouse-mode
       resurrect
-      continuum
+      # continuum
     ];
 
     extraConfig = ''
