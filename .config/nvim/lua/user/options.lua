@@ -26,16 +26,14 @@ vim.diagnostic.config({
 	virtual_text = {
 		virt_text_pos = "right_align",
 	},
-	-- float = {
-	-- 	border = "single",
-	-- 	max_width = 80,
-	-- 	max_height = 5,
-	-- 	relative = "editor", -- Use 'editor' for positioning relative to the entire editor
-	-- 	row = 0, -- Position at the top of the screen
-	-- 	col = vim.o.columns - 1,
-	-- 	focusable = false,
-	-- },
-	signs = true,
+	signs = {
+		text = {
+			[vim.diagnostic.severity.ERROR] = "󰅚 ",
+			[vim.diagnostic.severity.WARN] = "󰀪 ",
+			[vim.diagnostic.severity.INFO] = "󰋽 ",
+			[vim.diagnostic.severity.HINT] = "󰌶 ",
+		},
+	},
 	underline = true,
 	update_in_insert = true,
 	severity_sort = true,
