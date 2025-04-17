@@ -2,4 +2,5 @@ pacman.log
 .*log
 **/result
 
+.config/home-manager/build.log
 .config/kitty
