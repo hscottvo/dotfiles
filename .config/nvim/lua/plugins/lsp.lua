@@ -52,10 +52,9 @@ return {
 	},
 	{
 		"neovim/nvim-lspconfig",
-		lazy = false, -- REQUIRED: tell lazy.nvim to start this plugin at startup
+		lazy = false,
 		dependencies = {
 			"j-hui/fidget.nvim",
-			-- "saghen/blink.cmp",
 		},
 		opts = {
 			servers = {
@@ -96,6 +95,9 @@ return {
 
 				--markdown
 				marksman = {},
+
+				-- nix
+				nil_ls = {},
 
 				-- python
 				pyright = {},
@@ -145,9 +147,6 @@ return {
 				},
 
 				yamlls = {},
-
-				-- etc
-				nil_ls = {},
 			},
 		},
 		config = function(_, opts)
