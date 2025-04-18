@@ -15,7 +15,6 @@
   "lualine.nvim": { "branch": "master", "commit": "86fe39534b7da729a1ac56c0466e76f2c663dc42" },
   "luarocks.nvim": { "branch": "main", "commit": "1db9093915eb16ba2473cfb8d343ace5ee04130a" },
   "markview.nvim": { "branch": "main", "commit": "3cc0a687bfddf50eac2370c194f8d7ad14344db2" },
-  "mini.nvim": { "branch": "main", "commit": "6be765891c95242f6b8ebd3a25aa285ab3e9f6de" },
   "noice.nvim": { "branch": "main", "commit": "0427460c2d7f673ad60eb02b35f5e9926cf67c59" },
   "nui.nvim": { "branch": "main", "commit": "8d3bce9764e627b62b07424e0df77f680d47ffdb" },
   "nvim": { "branch": "main", "commit": "5b5e3aef9ad7af84f463d17b5479f06b87d5c429" },
