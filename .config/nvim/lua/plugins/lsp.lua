@@ -68,14 +68,14 @@ return {
 				docker_compose_language_service = {},
 
 				-- eslint
-				eslint = {
-					on_attach = function(_, bufnr)
-						vim.api.nvim_create_autocmd("BufWritePre", {
-							buffer = bufnr,
-							command = "EslintFixAll",
-						})
-					end,
-				},
+				-- eslint = {
+				-- 	on_attach = function(_, bufnr)
+				-- 		vim.api.nvim_create_autocmd("BufWritePre", {
+				-- 			buffer = bufnr,
+				-- 			command = "EslintFixAll",
+				-- 		})
+				-- 	end,
+				-- },
 
 				-- go
 				gopls = {},
@@ -166,6 +166,8 @@ return {
 				css = { "prettierd" },
 				go = { "gofmt" },
 				html = { "prettierd" },
+				javascript = { "prettierd" },
+				javascriptreact = { "prettierd" },
 				json = { "prettierd" },
 				lua = { "stylua" },
 				markdown = { "prettier" },
@@ -173,6 +175,8 @@ return {
 				python = { "isort", "black" },
 				rust = { "rustfmt", "leptosfmt" },
 				terraform = { "terraform_fmt" },
+				typescript = { "prettierd" },
+				typescriptreact = { "prettierd" },
 				toml = { "taplo" },
 				yaml = { "prettierd" },
 			},
