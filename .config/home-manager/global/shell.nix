@@ -6,6 +6,9 @@ in
 {
 
   home.packages = with pkgs; [
+    commitizen
+    pre-commit
+    wget
     xdelta
   ];
 
@@ -24,7 +27,7 @@ in
   };
 
   programs.ghostty = {
-    enable = true;
+    # enable = true;
     settings = {
       # theme = "Everforest Dark - Hard";
       font-family = "FiraCode Nerd Font";
