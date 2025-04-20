@@ -22,7 +22,7 @@
         homebrew = {
           enable = true;
           brews = [ "sdl3" ];
-          casks = [ "ghostty" "vlc" ];
+          casks = [ "ghostty" "signal" "vlc" ];
         };
 
         # Auto upgrade nix package and the daemon service.

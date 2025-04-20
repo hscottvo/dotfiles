@@ -6,6 +6,7 @@
     libreoffice-qt
     librewolf
     nginx
+    signal-desktop
     vlc
     vesktop
   ];
