@@ -7,6 +7,7 @@ in
   home.packages = with pkgs; [
     # Requirements for Neovim
     cargo
+    clippy
     fd
     gcc
     gnumake
@@ -63,7 +64,6 @@ in
     tflint
 
     # typescript
-    eslint
     eslint_d
     typescript
     typescript-language-server

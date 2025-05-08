@@ -6,7 +6,9 @@ in
 {
 
   home.packages = with pkgs; [
+    act
     commitizen
+    dust
     pre-commit
     wget
     xdelta
@@ -63,17 +65,6 @@ in
       source <(fzf --zsh)
       eval $(keychain --quiet --eval --agents ssh ~/.ssh/git)
     '';
-    # if [ -x "$(command -v tmux)" ] && [ -n "$DISPLAY" ] && [ -z "$TMUX" ]; then
-    #     # Check for existing tmux sessions
-    #     if tmux list-sessions 2>/dev/null | grep -q "^[^:]*:"; then
-    #         # Attach to the last session
-    #         exec tmux attach-session -t "$(tmux list-sessions | awk 'NR==1{print $1}' | sed 's/:$//')" >/dev/null 2>&1
-    #     else
-    #         # Create a new session
-    #         exec tmux new-session -s "$USER" >/dev/null 2>&1
-    #     fi
-    # fi
-    # ZSH_CUSTOM=$HOME/.config/oh-my-zsh
   };
 
   programs.tmux = {

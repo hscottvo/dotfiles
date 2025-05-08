@@ -4,7 +4,10 @@
   home.packages = with pkgs; [
     fuse
     bottles
+    desmume
+    gdlauncher-carbon
     lutris
+    prismlauncher
     protonup
     SDL2
   ];

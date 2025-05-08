@@ -106,6 +106,17 @@ return {
 				rust_analyzer = {
 					settings = {
 						["rust-analyzer"] = {
+							checkOnSave = {
+								command = "clippy",
+								extraArgs = {
+									"--",
+									"--no-deps",
+									"-Dclippy::correctness",
+									"-Dclippy::complexity",
+									"-Wclippy::perf",
+									"-Wclippy::pedantic",
+								},
+							},
 							-- Other Settings ...
 							rustfmt = {
 								overrideCommand = { "leptosfmt", "--stdin", "--rustfmt" },
