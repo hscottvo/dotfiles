@@ -1,26 +1,39 @@
-{ config, pkgs, ... }:
+{ config, pkgs, inputs, ... }:
 
+let
+  colors = config.custom.themes.everforest.colors;
+in
 {
+  imports = [
+    inputs.zen-browser.homeModules.beta
+    ../global/colors.nix
+  ];
   home.packages = with pkgs; [
     obs-studio
     libreoffice-qt
-    librewolf
     nginx
     signal-desktop
     vlc
     vesktop
   ];
 
+  programs.zen-browser = {
+    enable = true;
+    profiles = {
+      main = { };
+    };
+  };
+
   programs.fuzzel = {
     enable = true;
     settings = {
       colors = {
-        background = "1E2326FF";
-        text = "D3C6AAFF";
-        prompt = "859289FF";
-        selection = "859289FF";
-        selection-text = "1E2326FF";
-        border = "A7C080FF";
+        background = "${colors.bg_dim}FF";
+        text = "${colors.fg}FF";
+        prompt = "${colors.grey1}FF";
+        selection = "${colors.grey1}FF";
+        selection-text = "${colors.bg_dim}FF";
+        border = "${colors.green}FF";
       };
       main = {
         horizontal-pad = 10;
@@ -32,5 +45,6 @@
       border.width = 2;
     };
   };
+  stylix.targets.fuzzel.enable = false;
 }
 

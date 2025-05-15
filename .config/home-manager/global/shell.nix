@@ -7,6 +7,7 @@ in
 
   home.packages = with pkgs; [
     act
+    bacon
     commitizen
     dust
     pre-commit
@@ -25,8 +26,8 @@ in
       confirm_os_window_close 0
 
     '';
-    # themeFile = "nord";
   };
+  stylix.targets.kitty.enable = false;
 
   programs.ghostty = {
     # enable = true;
@@ -92,40 +93,40 @@ in
       set-option -g focus-events on
   
       # window menu
-      set-option -g mode-style fg=${colors.bg_dim},bg=${colors.fg}
+      set-option -g mode-style fg=#${colors.bg_dim},bg=#${colors.fg}
   
       # pane background
-      set -g window-active-style bg=${colors.bg_dim}
-      set -g pane-active-border fg=${colors.green}
+      set -g window-active-style bg=#${colors.bg_dim}
+      set -g pane-active-border fg=#${colors.green}
   
       # status bar
-      set-option -g status-style bg=${colors.bg0}
-      set-option -ag status-style fg=${colors.fg}
+      set-option -g status-style bg=#${colors.bg0}
+      set-option -ag status-style fg=#${colors.fg}
       set -g status-left-length 150
       set -g status-left "\
-      #[fg=${colors.bg0}, bg=${colors.statusline1}, bold] #(whoami) \
-      #[bg=${colors.bg0}, fg=${colors.statusline1}]\
-      #[bg=${colors.bg0}, fg=${colors.fg}] #S \
-      #[fg=${colors.fg}, bg=${colors.bg0}] "
+      #[fg=#${colors.bg0}, bg=#${colors.statusline1}, bold] #(whoami) \
+      #[bg=#${colors.bg0}, fg=#${colors.statusline1}]\
+      #[bg=#${colors.bg0}, fg=#${colors.fg}] #S \
+      #[fg=#${colors.fg}, bg=#${colors.bg0}] "
   
       set-option -g status-right-style none
       set -g status-right-length 150
       set -g status-right "\
-      #[fg=${colors.bg2}, bg=${colors.bg0}]#[bg=${colors.bg2}, fg=${colors.fg}] %Y-%m-%d \
-      #[bg=${colors.bg2}, fg=${colors.bg4}]#[fg=${colors.fg}, bg=${colors.bg4}] %H:%M  \
-      #[fg=#A7C080, bg=${colors.bg4}]#[fg=${colors.bg_dim}, bg=#A7C080, bold] #h"
+      #[fg=#${colors.bg2}, bg=#${colors.bg0}]#[bg=#${colors.bg2}, fg=#${colors.fg}] %Y-%m-%d \
+      #[bg=#${colors.bg2}, fg=#${colors.bg4}]#[fg=#${colors.fg}, bg=#${colors.bg4}] %H:%M  \
+      #[fg=#A7C080, bg=#${colors.bg4}]#[fg=#${colors.bg_dim}, bg=#A7C080, bold] #h "
   
       set-window-option -g window-status-current-format "\
-      #[fg=${colors.bg0}, bg=${colors.bg5}]\
-      #[fg=${colors.fg}, bg=${colors.bg5}] #I \
-      #[fg=${colors.fg}, bg=${colors.bg5}, bold] #W \
-      #[fg=${colors.bg5}, bg=${colors.bg0}]"
+      #[fg=#${colors.bg0}, bg=#${colors.bg5}]\
+      #[fg=#${colors.fg}, bg=#${colors.bg5}] #I \
+      #[fg=#${colors.fg}, bg=#${colors.bg5}, bold] #W \
+      #[fg=#${colors.bg5}, bg=#${colors.bg0}]"
   
       set-window-option -g window-status-format "\
-      #[fg=${colors.fg}, bg=${colors.bg0}] #I \
+      #[fg=#${colors.fg}, bg=#${colors.bg0}] #I \
        #W \
-      #[fg=${colors.bg0}, bg=${colors.bg0}]"
-  
+      #[fg=#${colors.bg0}, bg=#${colors.bg0}]"
+ 
       # splitting
       bind '"' split-window -h -c "#{pane_current_path}"
       bind % split-window -v -c "#{pane_current_path}"
@@ -154,6 +155,7 @@ in
     enable = true;
     enableZshIntegration = true;
   };
+  stylix.targets.starship.enable = false;
 
   programs.fzf = {
     enable = true;

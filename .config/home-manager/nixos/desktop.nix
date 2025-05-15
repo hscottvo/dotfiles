@@ -24,25 +24,14 @@
 
   ];
 
-  services.dunst = {
-    enable = true;
-    settings = {
-
-      global = {
-        font = "FiraCode Mono 14";
-        width = 400;
-
-      };
-    };
-  };
   services.swaync.enable = true;
 
   gtk = {
     enable = true;
-    theme = {
-      package = pkgs.everforest-gtk-theme;
-      name = "Nordic";
-    };
+    # theme = {
+    #   package = pkgs.everforest-gtk-theme;
+    #   name = "Nordic";
+    # };
     iconTheme = {
       # package = pkgs.papirus-nord;
       # name = "Papirus-Nord";
