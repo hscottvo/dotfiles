@@ -17,7 +17,6 @@
             rustup
             stow
             vim
-            signal-desktop
           ];
         homebrew = {
           enable = true;
