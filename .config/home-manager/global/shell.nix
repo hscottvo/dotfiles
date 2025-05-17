@@ -30,9 +30,7 @@ in
   stylix.targets.kitty.enable = false;
 
   programs.ghostty = {
-    # enable = true;
     settings = {
-      # theme = "Everforest Dark - Hard";
       font-family = "FiraCode Nerd Font";
     };
   };
