@@ -53,6 +53,7 @@
           config.allowUnfree = true;
         };
         modules = moduleFiles ++ macFiles;
+        extraSpecialArgs = { inherit inputs; };
       };
 
     };
