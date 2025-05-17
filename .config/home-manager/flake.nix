@@ -21,6 +21,7 @@
         ./global/nvim.nix
         ./global/shell.nix
         ./global/colors.nix
+        ./global/home.nix
         stylix.homeManagerModules.stylix
       ];
       linuxFiles = [
