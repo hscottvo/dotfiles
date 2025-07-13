@@ -12,6 +12,7 @@
       configuration = { pkgs, ... }: {
         # List packages installed in system profile. To search by name, run:
         # $ nix-env -qaP | grep wget
+        system.primaryUser = "scott";
         environment.systemPackages = with pkgs;
           [
             rustup
@@ -21,7 +22,7 @@
         homebrew = {
           enable = true;
           brews = [ "sdl3" ];
-          casks = [ "ghostty" "signal" "vlc" ];
+          casks = [ "ghostty" "signal" "vlc" "qbittorrent" ];
         };
 
         # Auto upgrade nix package and the daemon service.
