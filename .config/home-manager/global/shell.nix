@@ -43,6 +43,7 @@ in
       ll = "eza -l";
       ls = "eza";
       neofetch = "fastfetch";
+      dr = "sudo darwin-rebuild --impure switch --flake ~/.dotfiles/darwin#Scotts-Macbook-Pro";
     };
     oh-my-zsh = {
 
