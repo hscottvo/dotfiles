@@ -37,7 +37,6 @@ local wk = require("which-key")
 wk.add({
 	-- Copy to clipboard
 	{ "<leader>y", '"+y', hidden = true },
-	{ "<leader>y", '"+y', hidden = true },
 	{ "<leader>Y", '"+Y', hidden = true },
 	-- vim options
 	{ "<leader>j", "<cmd>lprev<CR>zz", desc = "Scroll quickfix up" },
