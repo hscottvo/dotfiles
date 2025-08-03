@@ -35,6 +35,7 @@ local harpoon = require("harpoon")
 local wk = require("which-key")
 
 wk.add({
+	{ "<leader>-", "<cmd>Oil<cr>", desc = "Oil File Explorer" },
 	-- Copy to clipboard
 	{ "<leader>y", '"+y', hidden = true },
 	{ "<leader>Y", '"+Y', hidden = true },

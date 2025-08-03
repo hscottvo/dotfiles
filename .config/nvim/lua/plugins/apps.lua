@@ -30,29 +30,18 @@ return {
 		},
 	},
 	{
-		"mikavilpas/yazi.nvim",
-		opts = {
-			yazi_floating_window_border = "none",
-		},
+		"stevearc/oil.nvim",
+		---@module 'oil'
+		opts = {},
 		keys = {
-			-- 👇 in this section, choose your own keymappings!
-			{
-				"<leader>-",
-				mode = { "n", "v" },
-				"<cmd>Yazi<cr>",
-				desc = "Open file browser at current file",
-			},
-			{
-				-- Open in the current working directory
-				"<leader>fb",
-				"<cmd>Yazi cwd<cr>",
-				desc = "Open new file browser",
-			},
-			{
-				"<leader>fc",
-				"<cmd>Yazi toggle<cr>",
-				desc = "Continue file browser session",
-			},
+			"<leader>-",
+			"<cmd>Oil<cr>",
+			desc = "Oil File Explorer",
 		},
+		-- Optional dependencies
+		dependencies = { { "echasnovski/mini.icons", opts = {} } },
+		-- dependencies = { "nvim-tree/nvim-web-devicons" }, -- use if you prefer nvim-web-devicons
+		-- Lazy loading is not recommended because it is very tricky to make it work correctly in all situations.
+		lazy = false,
 	},
 }
