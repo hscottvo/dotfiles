@@ -12,17 +12,6 @@ return {
 		priority = 1000, -- make sure to load this before all the other start plugins
 	},
 	{
-		"oahlen/iceberg.nvim",
-		"sainnhe/gruvbox-material",
-		-- "shaunsingh/nord.nvim",
-		-- "arcticicestudio/nord-vim",
-		-- "gbprod/nord.nvim",
-		"catppuccin/nvim",
-		version = false,
-		lazy = false,
-		priority = 1000, -- make sure to load this before all the other start plugins
-	},
-	{
 		"folke/noice.nvim",
 		event = "VeryLazy",
 		dependencies = {
@@ -68,21 +57,21 @@ return {
 			},
 		},
 	},
-	{
-		"yamatsum/nvim-cursorline",
-		opts = {
-			cursorline = {
-				enable = true,
-				timeout = 0,
-				number = false,
-			},
-			cursorword = {
-				enable = true,
-				min_length = 3,
-				hl = { underline = true },
-			},
-		},
-	},
+	-- {
+	-- 	"yamatsum/nvim-cursorline",
+	-- 	opts = {
+	-- 		cursorline = {
+	-- 			enable = true,
+	-- 			timeout = 0,
+	-- 			number = false,
+	-- 		},
+	-- 		cursorword = {
+	-- 			enable = true,
+	-- 			min_length = 3,
+	-- 			hl = { underline = true },
+	-- 		},
+	-- 	},
+	-- },
 	{
 		"smoka7/hop.nvim",
 		version = "*",

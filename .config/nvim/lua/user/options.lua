@@ -27,6 +27,7 @@ vim.opt.autoindent = true
 o.termguicolors = true
 o.signcolumn = "yes:1"
 o.winborder = "rounded"
+o.cursorline = true
 
 -- Undo settings
 o.undodir = os.getenv("HOME") .. "/.vim/undodir"
