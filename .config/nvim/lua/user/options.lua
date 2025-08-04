@@ -5,6 +5,9 @@ local o = vim.opt
 -- Color scheme
 -- vim.cmd([[colo catppuccin-frappe]])
 vim.cmd([[colo everforest]])
+vim.api.nvim_set_hl(0, "Pmenu", { bg = "NONE" })
+vim.api.nvim_set_hl(0, "FloatBorder", { bg = "NONE" })
+vim.api.nvim_set_hl(0, "NormalFloat", { bg = "NONE" })
 
 -- Line numbers
 o.number = true
@@ -23,6 +26,7 @@ vim.opt.autoindent = true
 -- Appearance
 o.termguicolors = true
 o.signcolumn = "yes:1"
+o.winborder = "rounded"
 
 -- Undo settings
 o.undodir = os.getenv("HOME") .. "/.vim/undodir"

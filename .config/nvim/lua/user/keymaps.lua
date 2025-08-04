@@ -30,8 +30,6 @@ keymap("n", "Q", "<nop")
 keymap("n", "<C-k>", "<cmd>cnext<CR>zz")
 keymap("n", "<C-j>", "<cmd>cprev<CR>zz")
 
-local harpoon = require("harpoon")
-
 local wk = require("which-key")
 
 wk.add({
@@ -64,48 +62,4 @@ wk.add({
 	-- Git
 	{ "<leader>g", "", desc = "git" },
 	{ "<leader>gg", "<cmd>LazyGit<cr>", desc = "LazyGit" },
-	-- Buffers
-	{ "<leader>b", desc = "Buffer" },
-	{
-		"<leader>ba",
-		function()
-			harpoon:list():add()
-		end,
-		desc = "Add current buffer to list",
-	},
-	{
-		"<leader>bh",
-		function()
-			harpoon.ui:toggle_quick_menu(harpoon:list())
-		end,
-		desc = "View Buffer List",
-	},
-	{
-		"<leader>b1",
-		function()
-			harpoon:list():select(1)
-		end,
-		desc = "Select buffer 1",
-	},
-	{
-		"<leader>b2",
-		function()
-			harpoon:list():select(2)
-		end,
-		desc = "Select buffer 2",
-	},
-	{
-		"<leader>b3",
-		function()
-			harpoon:list():select(3)
-		end,
-		desc = "Select buffer 3",
-	},
-	{
-		"<leader>b4",
-		function()
-			harpoon:list():select(4)
-		end,
-		desc = "Select buffer 4",
-	},
 })

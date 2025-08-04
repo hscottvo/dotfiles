@@ -3,8 +3,8 @@ return {
 		"neanias/everforest-nvim",
 		config = function()
 			require("everforest").setup({
-				background = "medium",
-				transparent_background_level = 1,
+				background = "hard",
+				transparent_background_level = 2,
 			})
 		end,
 		version = false,
@@ -159,4 +159,15 @@ return {
 	-- 	"OXY2DEV/markview.nvim",
 	-- 	lazy = false,
 	-- },
+	{
+		"nvim-lualine/lualine.nvim",
+		dependencies = { "nvim-tree/nvim-web-devicons" },
+		config = function()
+			require("lualine").setup({
+				-- options = {
+				-- 	theme = "nord",
+				-- },
+			})
+		end,
+	},
 }
