@@ -37,6 +37,8 @@ wk.add({
 	-- Copy to clipboard
 	{ "<leader>y", '"+y', hidden = true },
 	{ "<leader>Y", '"+Y', hidden = true },
+	{ "<leader>p", '"+p', hidden = true },
+	{ "<leader>P", '"+P', hidden = true },
 	-- vim options
 	{ "<leader>j", "<cmd>lprev<CR>zz", desc = "Scroll quickfix up" },
 	{ "<leader>k", "<cmd>lprev<CR>zz", desc = "Scroll quickfix down" },
