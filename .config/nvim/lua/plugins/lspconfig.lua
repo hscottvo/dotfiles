@@ -88,16 +88,26 @@ return {
 					cmd = { "terraform-ls", "serve" },
 					filetypes = { "terraform", "hcl", "tf" },
 				},
-
 				tflint = {
 					cmd = { "tflint" },
 					filetypes = { "terraform" },
 				},
 
 				-- typescript/javascript
+				ts_ls = {
+					filetypes = {
+						"javascript",
+						"javascriptreact",
+						"javascript.jsx",
+						"typescript",
+						"typescriptreact",
+						"typescript.tsx",
+					},
+				},
+
 				-- vue
 				volar = {
-					filetypes = { "typescript", "javascript", "javascriptreact", "typescriptreact", "vue" },
+					filetypes = { "vue" },
 					init_options = {
 						vue = {
 							-- disable hybrid mode
