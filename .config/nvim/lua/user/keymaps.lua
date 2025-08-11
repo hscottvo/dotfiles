@@ -47,16 +47,16 @@ wk.add({
 	{ "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]], desc = "Replace current word" },
 
 	-- lsp
-	{ "<leader>l", desc = "LSP" },
-	{ "<leader>lr", "<cmd>lua vim.lsp.buf.rename()<cr>", desc = "Rename" },
-	{ "<leader>la", "<cmd> lua vim.lsp.buf.code_action()<cr>", desc = "Code Action" },
-	{ "<leader>lh", "<cmd>lua vim.diagnostic.open_float()<cr>", desc = "Hover" },
-	{ "<leader>ld", "<cmd>lua vim.lsp.buf.definition()<cr>", desc = "Definition" },
-	{ "<leader>lD", "<cmd>lua vim.lsp.buf.declaration()<cr>", desc = "Declaration" },
-	{ "<leader>li", "<cmd>lua vim.lsp.buf.implementation()<cr>", desc = "Implementation" },
-	{ "<leader>lo", "<cmd>lua vim.lsp.buf.type_definition()<cr>", desc = "Type Definition" },
-	{ "<leader>lR", "<cmd>lua vim.lsp.buf.references()<cr>", desc = "References" },
-	{ "<leader>ls", "<cmd>lua vim.lsp.buf.signature_help()<cr>", desc = "Signature Help" },
+	{ "gr", desc = "LSP" },
+	{ "grn", "<cmd>lua vim.lsp.buf.rename()<cr>", desc = "Rename" },
+	{ "gra", "<cmd> lua vim.lsp.buf.code_action()<cr>", desc = "Code Action" },
+	{ "grf", "<cmd>lua vim.diagnostic.open_float()<cr>", desc = "Hover" },
+	{ "grd", "<cmd>lua vim.lsp.buf.definition()<cr>", desc = "Definition" },
+	{ "grD", "<cmd>lua vim.lsp.buf.declaration()<cr>", desc = "Declaration" },
+	{ "gri", "<cmd>lua vim.lsp.buf.implementation()<cr>", desc = "Implementation" },
+	{ "grt", "<cmd>lua vim.lsp.buf.type_definition()<cr>", desc = "Type Definition" },
+	{ "grr", "<cmd>lua vim.lsp.buf.references()<cr>", desc = "References" },
+	{ "grs", "<cmd>lua vim.lsp.buf.signature_help()<cr>", desc = "Signature Help" },
 	{ "<leader>w", "<cmd> noa w<cr>", desc = "Write without Formatting" },
 
 	-- Git
