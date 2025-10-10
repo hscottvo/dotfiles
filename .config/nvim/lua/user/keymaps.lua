@@ -30,15 +30,15 @@ keymap("n", "Q", "<nop")
 keymap("n", "<C-k>", "<cmd>cnext<CR>zz")
 keymap("n", "<C-j>", "<cmd>cprev<CR>zz")
 
-local harpoon = require("harpoon")
-
 local wk = require("which-key")
 
 wk.add({
+	{ "<leader>-", "<cmd>Oil<cr>", desc = "Oil File Explorer" },
 	-- Copy to clipboard
 	{ "<leader>y", '"+y', hidden = true },
-	{ "<leader>y", '"+y', hidden = true },
 	{ "<leader>Y", '"+Y', hidden = true },
+	{ "<leader>p", '"+p', hidden = true },
+	{ "<leader>P", '"+P', hidden = true },
 	-- vim options
 	{ "<leader>j", "<cmd>lprev<CR>zz", desc = "Scroll quickfix up" },
 	{ "<leader>k", "<cmd>lprev<CR>zz", desc = "Scroll quickfix down" },
@@ -49,63 +49,19 @@ wk.add({
 	{ "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]], desc = "Replace current word" },
 
 	-- lsp
-	{ "<leader>l", desc = "LSP" },
-	{ "<leader>lr", "<cmd>lua vim.lsp.buf.rename()<cr>", desc = "Rename" },
-	{ "<leader>la", "<cmd> lua vim.lsp.buf.code_action()<cr>", desc = "Code Action" },
-	{ "<leader>lh", "<cmd>lua vim.diagnostic.open_float()<cr>", desc = "Hover" },
-	{ "<leader>ld", "<cmd>lua vim.lsp.buf.definition()<cr>", desc = "Definition" },
-	{ "<leader>lD", "<cmd>lua vim.lsp.buf.declaration()<cr>", desc = "Declaration" },
-	{ "<leader>li", "<cmd>lua vim.lsp.buf.implementation()<cr>", desc = "Implementation" },
-	{ "<leader>lo", "<cmd>lua vim.lsp.buf.type_definition()<cr>", desc = "Type Definition" },
-	{ "<leader>lR", "<cmd>lua vim.lsp.buf.references()<cr>", desc = "References" },
-	{ "<leader>ls", "<cmd>lua vim.lsp.buf.signature_help()<cr>", desc = "Signature Help" },
+	{ "gr", desc = "LSP" },
+	{ "grn", "<cmd>lua vim.lsp.buf.rename()<cr>", desc = "Rename" },
+	{ "gra", "<cmd> lua vim.lsp.buf.code_action()<cr>", desc = "Code Action" },
+	{ "grf", "<cmd>lua vim.diagnostic.open_float()<cr>", desc = "Hover" },
+	{ "grd", "<cmd>lua vim.lsp.buf.definition()<cr>", desc = "Definition" },
+	{ "grD", "<cmd>lua vim.lsp.buf.declaration()<cr>", desc = "Declaration" },
+	{ "gri", "<cmd>lua vim.lsp.buf.implementation()<cr>", desc = "Implementation" },
+	{ "grt", "<cmd>lua vim.lsp.buf.type_definition()<cr>", desc = "Type Definition" },
+	{ "grr", "<cmd>lua vim.lsp.buf.references()<cr>", desc = "References" },
+	{ "grs", "<cmd>lua vim.lsp.buf.signature_help()<cr>", desc = "Signature Help" },
 	{ "<leader>w", "<cmd> noa w<cr>", desc = "Write without Formatting" },
 
 	-- Git
 	{ "<leader>g", "", desc = "git" },
 	{ "<leader>gg", "<cmd>LazyGit<cr>", desc = "LazyGit" },
-	-- Buffers
-	{ "<leader>b", desc = "Buffer" },
-	{
-		"<leader>ba",
-		function()
-			harpoon:list():add()
-		end,
-		desc = "Add current buffer to list",
-	},
-	{
-		"<leader>bh",
-		function()
-			harpoon.ui:toggle_quick_menu(harpoon:list())
-		end,
-		desc = "View Buffer List",
-	},
-	{
-		"<leader>b1",
-		function()
-			harpoon:list():select(1)
-		end,
-		desc = "Select buffer 1",
-	},
-	{
-		"<leader>b2",
-		function()
-			harpoon:list():select(2)
-		end,
-		desc = "Select buffer 2",
-	},
-	{
-		"<leader>b3",
-		function()
-			harpoon:list():select(3)
-		end,
-		desc = "Select buffer 3",
-	},
-	{
-		"<leader>b4",
-		function()
-			harpoon:list():select(4)
-		end,
-		desc = "Select buffer 4",
-	},
 })

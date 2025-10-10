@@ -29,30 +29,4 @@ return {
 			-- see below for full list of options 👇
 		},
 	},
-	{
-		"mikavilpas/yazi.nvim",
-		opts = {
-			yazi_floating_window_border = "none",
-		},
-		keys = {
-			-- 👇 in this section, choose your own keymappings!
-			{
-				"<leader>-",
-				mode = { "n", "v" },
-				"<cmd>Yazi<cr>",
-				desc = "Open file browser at current file",
-			},
-			{
-				-- Open in the current working directory
-				"<leader>fb",
-				"<cmd>Yazi cwd<cr>",
-				desc = "Open new file browser",
-			},
-			{
-				"<leader>fc",
-				"<cmd>Yazi toggle<cr>",
-				desc = "Continue file browser session",
-			},
-		},
-	},
 }

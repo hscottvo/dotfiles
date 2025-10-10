@@ -5,67 +5,30 @@
     nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
     nix-darwin.url = "github:LnL7/nix-darwin";
     nix-darwin.inputs.nixpkgs.follows = "nixpkgs";
+    home-manager.url = "github:nix-community/home-manager";
+    home-manager.inputs.nixpkgs.follows = "nixpkgs";
+    mac-app-util.url = "github:hraban/mac-app-util";
   };
 
-  outputs = inputs@{ self, nix-darwin, nixpkgs }:
+  outputs = inputs@{ self, nix-darwin, nixpkgs, home-manager, mac-app-util }:
     let
-      configuration = { pkgs, ... }: {
+      configuration = { pkgs, config, ... }: {
         # List packages installed in system profile. To search by name, run:
         # $ nix-env -qaP | grep wget
+        system.primaryUser = "scott";
         environment.systemPackages = with pkgs;
           [
             rustup
             stow
             vim
-            signal-desktop
           ];
         homebrew = {
           enable = true;
           brews = [ "sdl3" ];
-          casks = [ "ghostty" "signal" "vlc" ];
+          casks = [ "ghostty" "signal" "vlc" "qbittorrent" ];
         };
 
-        # Auto upgrade nix package and the daemon service.
-        # services.nix-daemon.enable = true;
-        # nix.package = pkgs.nix;
-        services.aerospace = {
-
-          enable = true;
-          settings = {
-            gaps = {
-              outer.left = 8;
-              outer.bottom = 8;
-              outer.top = 8;
-              outer.right = 8;
-            };
-            mode.main.binding = {
-              alt-h = "focus left";
-              alt-j = "focus down";
-              alt-k = "focus up";
-              alt-l = "focus right";
-
-              alt-1 = "workspace --auto-back-and-forth 1";
-              alt-2 = "workspace --auto-back-and-forth 2";
-              alt-3 = "workspace --auto-back-and-forth 3";
-              alt-4 = "workspace --auto-back-and-forth 4";
-              alt-5 = "workspace --auto-back-and-forth 5";
-              alt-6 = "workspace --auto-back-and-forth 6";
-              alt-7 = "workspace --auto-back-and-forth 7";
-              alt-8 = "workspace --auto-back-and-forth 8";
-              alt-9 = "workspace --auto-back-and-forth 9";
-
-              alt-shift-1 = "move-node-to-workspace 1";
-              alt-shift-2 = "move-node-to-workspace 2";
-              alt-shift-3 = "move-node-to-workspace 3";
-              alt-shift-4 = "move-node-to-workspace 4";
-              alt-shift-5 = "move-node-to-workspace 5";
-              alt-shift-6 = "move-node-to-workspace 6";
-              alt-shift-7 = "move-node-to-workspace 7";
-              alt-shift-8 = "move-node-to-workspace 8";
-              alt-shift-9 = "move-node-to-workspace 9";
-            };
-          };
-        };
+        nix.enable = false;
 
         # Necessary for using flakes on this system.
         nix.settings.experimental-features = "nix-command flakes";
@@ -73,6 +36,28 @@
         # Create /etc/zshrc that loads the nix-darwin environment.
         programs.zsh.enable = true; # default shell on catalina
         # programs.fish.enable = true;
+
+        # # fix spotlight
+        # system.activationScripts.applications.text =
+        #   let
+        #     env = pkgs.buildEnv {
+        #       name = "system-applications";
+        #       paths = config.environment.systemPackages;
+        #       pathsToLink = "/Applications";
+        #     };
+        #   in
+        #   pkgs.lib.mkForce ''
+        #     # Set up applications.
+        #     echo "setting up /Applications..." >&2
+        #     rm -rf /Applications/Nix\ Apps
+        #     mkdir -p /Applications/Nix\ Apps
+        #     find ${env}/Applications -maxdepth 1 -type l -exec readlink '{}' + |
+        #     while read -r src; do
+        #       app_name=$(basename "$src")
+        #       echo "copying $src" >&2
+        #       ${pkgs.mkalias}/bin/mkalias "$src" "/Applications/Nix Apps/$app_name"
+        #     done
+        #   '';
 
         # Set Git commit hash for darwin-version.
         system.configurationRevision = self.rev or self.dirtyRev or null;
@@ -90,10 +75,19 @@
       # Build darwin flake using:
       # $ darwin-rebuild build --flake .#simple
       darwinConfigurations.Scotts-Macbook-Pro = nix-darwin.lib.darwinSystem {
-        modules = [ configuration ];
+        modules = [
+          mac-app-util.darwinModules.default
+          configuration
+        ];
       };
 
       # Expose the package set, including overlays, for convenience.
       darwinPackages = self.darwinConfigurations.scott.pkgs;
     };
 }
+
+# home-manager.darwinModules.home-manager
+# {
+#   home-manager.useGlobalPkgs = true;
+#   home-manager.useUserPackages = true;
+# }

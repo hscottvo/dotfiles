@@ -1,56 +1,5 @@
 return {
 	{
-		"nvim-treesitter/nvim-treesitter",
-		opts = {
-			build = ":TSUpdate",
-		},
-		config = function()
-			require("nvim-treesitter.configs").setup({
-				ensure_installed = {
-					"bash",
-					"c",
-					"cpp",
-					"css",
-					"dockerfile",
-					"go",
-					"hcl",
-					"html",
-					"hyprlang",
-					"javascript",
-					"latex",
-					"lua",
-					"markdown",
-					"markdown_inline",
-					"nix",
-					"python",
-					"rust",
-					"sql",
-					"terraform",
-					"tsx",
-					"typescript",
-					"typst",
-					"vue",
-					"yaml",
-				},
-				sync_install = false,
-				highlight = {
-					enable = true,
-					additional_vim_regex_highlighting = true,
-				},
-				indent = { enable = true },
-				incremental_selection = {
-					enable = true,
-					keymaps = {
-						init_selection = "<Enter>",
-						node_incremental = "<Enter>",
-						scope_incremental = false,
-						node_decremental = "<Backspace>",
-					},
-				},
-			})
-		end,
-	},
-	{
 		"neovim/nvim-lspconfig",
 		lazy = false,
 		dependencies = {
@@ -139,16 +88,26 @@ return {
 					cmd = { "terraform-ls", "serve" },
 					filetypes = { "terraform", "hcl", "tf" },
 				},
-
 				tflint = {
 					cmd = { "tflint" },
 					filetypes = { "terraform" },
 				},
 
 				-- typescript/javascript
+				ts_ls = {
+					filetypes = {
+						"javascript",
+						"javascriptreact",
+						"javascript.jsx",
+						"typescript",
+						"typescriptreact",
+						"typescript.tsx",
+					},
+				},
+
 				-- vue
 				volar = {
-					filetypes = { "typescript", "javascript", "javascriptreact", "typescriptreact", "vue" },
+					filetypes = { "vue" },
 					init_options = {
 						vue = {
 							-- disable hybrid mode
@@ -168,33 +127,5 @@ return {
 				lspconfig[server].setup(config)
 			end
 		end,
-	},
-	{
-		"stevearc/conform.nvim",
-		opts = {
-			formatters_by_ft = {
-				cpp = { "clang-format" },
-				css = { "prettierd" },
-				go = { "gofmt" },
-				html = { "prettierd" },
-				javascript = { "prettierd" },
-				javascriptreact = { "prettierd" },
-				json = { "prettierd" },
-				lua = { "stylua" },
-				markdown = { "prettier" },
-				nix = { "nixpkgs_fmt" },
-				python = { "isort", "black" },
-				rust = { "rustfmt", "leptosfmt" },
-				terraform = { "terraform_fmt" },
-				typescript = { "prettierd" },
-				typescriptreact = { "prettierd" },
-				toml = { "taplo" },
-				yaml = { "prettierd" },
-			},
-			format_on_save = {
-				timeout_ms = 500,
-				lsp_format = "fallback",
-			},
-		},
 	},
 }

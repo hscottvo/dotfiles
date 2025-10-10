@@ -3,21 +3,10 @@ return {
 		"neanias/everforest-nvim",
 		config = function()
 			require("everforest").setup({
-				background = "medium",
-				transparent_background_level = 1,
+				background = "hard",
+				transparent_background_level = 2,
 			})
 		end,
-		version = false,
-		lazy = false,
-		priority = 1000, -- make sure to load this before all the other start plugins
-	},
-	{
-		"oahlen/iceberg.nvim",
-		"sainnhe/gruvbox-material",
-		-- "shaunsingh/nord.nvim",
-		-- "arcticicestudio/nord-vim",
-		-- "gbprod/nord.nvim",
-		"catppuccin/nvim",
 		version = false,
 		lazy = false,
 		priority = 1000, -- make sure to load this before all the other start plugins
@@ -68,21 +57,21 @@ return {
 			},
 		},
 	},
-	{
-		"yamatsum/nvim-cursorline",
-		opts = {
-			cursorline = {
-				enable = true,
-				timeout = 0,
-				number = false,
-			},
-			cursorword = {
-				enable = true,
-				min_length = 3,
-				hl = { underline = true },
-			},
-		},
-	},
+	-- {
+	-- 	"yamatsum/nvim-cursorline",
+	-- 	opts = {
+	-- 		cursorline = {
+	-- 			enable = true,
+	-- 			timeout = 0,
+	-- 			number = false,
+	-- 		},
+	-- 		cursorword = {
+	-- 			enable = true,
+	-- 			min_length = 3,
+	-- 			hl = { underline = true },
+	-- 		},
+	-- 	},
+	-- },
 	{
 		"smoka7/hop.nvim",
 		version = "*",
@@ -155,8 +144,19 @@ return {
 		},
 		lazy = false,
 	},
+	-- {
+	-- 	"OXY2DEV/markview.nvim",
+	-- 	lazy = false,
+	-- },
 	{
-		"OXY2DEV/markview.nvim",
-		lazy = false,
+		"nvim-lualine/lualine.nvim",
+		dependencies = { "nvim-tree/nvim-web-devicons" },
+		config = function()
+			require("lualine").setup({
+				-- options = {
+				-- 	theme = "nord",
+				-- },
+			})
+		end,
 	},
 }

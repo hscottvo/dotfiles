@@ -1,26 +1,50 @@
 -- copied from https://github.com/majamin/nvim-lazy-starter/blob/master/lua/user/options.lua
+-- Configuration options for Neovim
 local o = vim.opt
 
+-- Color scheme
 -- vim.cmd([[colo catppuccin-frappe]])
 vim.cmd([[colo everforest]])
+vim.api.nvim_set_hl(0, "Pmenu", { bg = "NONE" })
+vim.api.nvim_set_hl(0, "FloatBorder", { bg = "NONE" })
+vim.api.nvim_set_hl(0, "NormalFloat", { bg = "NONE" })
 
+-- Line numbers
 o.number = true
 o.relativenumber = true
+
+-- Wrapping
 o.wrap = false
 
-o.tabstop = 4
-o.softtabstop = 4
-o.shiftwidth = 4
-o.expandtab = true
+-- Tabs and indentation
+vim.opt.expandtab = true
+vim.opt.tabstop = 4
+vim.opt.shiftwidth = 4
+vim.opt.smartindent = false
+vim.opt.autoindent = true
+
+-- Appearance
 o.termguicolors = true
+o.signcolumn = "yes:1"
+o.winborder = "rounded"
+o.cursorline = true
+
+-- Undo settings
 o.undodir = os.getenv("HOME") .. "/.vim/undodir"
 o.undofile = true
+
+-- Wildmenu settings
 o.wildignorecase = true
 o.wildmode = "full"
+
+-- Scrolling
 o.scrolloff = 8
+
+-- Conceal settings
 o.conceallevel = 1
+
+-- Update time
 o.updatetime = 25
-o.signcolumn = "yes:1"
 
 vim.diagnostic.config({
 	virtual_text = {
@@ -59,6 +83,6 @@ vim.api.nvim_create_autocmd("CursorMoved", {
 vim.cmd([[
     augroup highlight_yank
         autocmd!
-        au TextYankPost * silent! lua vim.highlight.on_yank({higroup="Visual", timeout=200})
+        au TextYankPost * silent! lua vim.hl.on_yank({higroup="Visual", timeout=200})
     augroup END
 ]])

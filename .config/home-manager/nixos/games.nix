@@ -1,5 +1,4 @@
-# games.nix 
-{ config, pkgs, ... }:
+{ pkgs, ... }:
 {
   home.packages = with pkgs; [
     fuse

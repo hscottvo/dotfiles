@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ pkgs, ... }:
 
 {
   home.packages = with pkgs; [
@@ -28,13 +28,7 @@
 
   gtk = {
     enable = true;
-    # theme = {
-    #   package = pkgs.everforest-gtk-theme;
-    #   name = "Nordic";
-    # };
     iconTheme = {
-      # package = pkgs.papirus-nord;
-      # name = "Papirus-Nord";
       package = pkgs.papirus-icon-theme;
       name = "Papirus";
     };
