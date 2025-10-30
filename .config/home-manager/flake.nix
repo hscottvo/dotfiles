@@ -23,7 +23,7 @@
         ./global/shell.nix
         ./global/colors.nix
         ./global/home.nix
-        stylix.homeManagerModules.stylix
+        stylix.homeModules.stylix
       ];
       linuxFiles = [
         ./nixos/home.nix
@@ -33,7 +33,7 @@
         ./nixos/nvim.nix
       ];
       macFiles = [
-        mac-app-util.homeManagerModules.default
+        mac-app-util.homeModules.default
         ./mac/home.nix
       ];
     in
@@ -43,6 +43,7 @@
         pkgs = import nixpkgs {
           system = "x86_64-linux";
           config.allowUnfree = true;
+          config.stylix.targets.zen-browser.profileNames = [ "main" ];
           allowUnfreePredicate = (_: true);
         };
         modules = moduleFiles ++ linuxFiles;
@@ -53,6 +54,7 @@
         pkgs = import nixpkgs {
           system = "aarch64-darwin";
           config.allowUnfree = true;
+          config.stylix.targets.zen-browser.profileNames = [ "main" ];
         };
         modules = moduleFiles ++ macFiles;
         extraSpecialArgs = { inherit inputs; };
