@@ -5,6 +5,7 @@
     bottles
     desmume
     gdlauncher-carbon
+    heroic
     lutris
     prismlauncher
     protonup
