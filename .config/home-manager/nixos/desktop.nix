@@ -25,6 +25,8 @@
   ];
 
   services.swaync.enable = true;
+  # stylix.cursor.package = pkgs.bibata-cursors;
+  # stylix.cursor.name = "Bibata-Modern-Classic";
 
   gtk = {
     enable = true;

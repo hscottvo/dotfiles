@@ -11,6 +11,8 @@ return {
 		lazy = false,
 		priority = 1000, -- make sure to load this before all the other start plugins
 	},
+	{ "loctvl842/monokai-pro.nvim" },
+	{ "catppuccin/nvim", name = "catppuccin", priority = 1000 },
 	{
 		"folke/noice.nvim",
 		event = "VeryLazy",
