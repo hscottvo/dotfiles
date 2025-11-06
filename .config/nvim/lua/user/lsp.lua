@@ -15,7 +15,7 @@ vim.lsp.config("lua_ls", {
 })
 vim.lsp.enable("marksman")
 vim.lsp.enable("nil_ls")
-vim.lsp.enable("pyright")
+vim.lsp.enable("ruff")
 vim.lsp.enable("rust_analyzer")
 vim.lsp.config("rust_analyzer", {
 	settings = {

@@ -13,7 +13,7 @@ return {
 				lua = { "stylua" },
 				markdown = { "prettier" },
 				nix = { "nixpkgs_fmt" },
-				python = { "isort", "black" },
+				python = { "isort", "ruff" },
 				rust = { "rustfmt", "leptosfmt" },
 				terraform = { "terraform_fmt" },
 				typescript = { "prettierd" },

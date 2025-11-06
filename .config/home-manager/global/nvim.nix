@@ -47,6 +47,7 @@
     black
     isort
     pyright
+    ruff
 
     # rust
     rustfmt
