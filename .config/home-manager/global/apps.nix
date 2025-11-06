@@ -18,14 +18,5 @@
     enable = true;
   };
 
-  programs.librewolf = {
-    enable = true;
-    profiles = {
-      main = { };
-    };
-    settings = { "privacy.resistFingerprinting" = true; };
-  };
-  stylix.targets.librewolf.profileNames = [ "main" ];
-
 }
 
