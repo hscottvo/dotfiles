@@ -68,6 +68,22 @@
         "type": "github"
       }
     },
+    "cl-nix-lite": {
+      "locked": {
+        "lastModified": 1762537751,
+        "narHash": "sha256-ozImtK2FcWBnjjiHn6p726HZOBpJoBYs6jKWMTnFTLM=",
+        "owner": "r4v3n6101",
+        "repo": "cl-nix-lite",
+        "rev": "6deefd29913ad23b73db8f1ade0a397e1518619f",
+        "type": "github"
+      },
+      "original": {
+        "owner": "r4v3n6101",
+        "ref": "url-fix",
+        "repo": "cl-nix-lite",
+        "type": "github"
+      }
+    },
     "firefox-gnome-theme": {
       "flake": false,
       "locked": {

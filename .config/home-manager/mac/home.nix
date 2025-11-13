@@ -14,6 +14,11 @@
     hoppscotch
     stow
 
+
+    just
+    nix-direnv
+    openssl
+    pkgconf
   ];
 
   programs.direnv = {
