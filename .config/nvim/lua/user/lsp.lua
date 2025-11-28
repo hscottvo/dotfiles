@@ -50,7 +50,7 @@ vim.lsp.config("rust_analyzer", {
 vim.lsp.enable("terraformls")
 vim.lsp.enable("tflint")
 vim.lsp.enable("ts_ls")
-vim.lsp.enable("volar")
+vim.lsp.enable("vuels")
 vim.lsp.enable("yamlls")
 
 -- return {
