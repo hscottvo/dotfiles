@@ -13,6 +13,11 @@
     p7zip
     hoppscotch
 
+
+    just
+    nix-direnv
+    openssl
+    pkgconf
   ];
 
   home.sessionPath = [

@@ -63,7 +63,6 @@ in
     ];
     envExtra = ''
       source <(fzf --zsh)
-      eval $(keychain --quiet --eval --agents ssh ~/.ssh/git)
     '';
   };
 
