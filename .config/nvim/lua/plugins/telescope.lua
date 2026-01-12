@@ -26,6 +26,11 @@ return {
 				"<cmd>lua require('telescope.builtin').grep_string({additional_args = function() return {'--hidden'} end})<cr>",
 				desc = "Find current string",
 			},
+			{
+				"<leader>fr",
+				"<cmd>lua require('telescope.builtin').resume()<cr>",
+				desc = "Open most recent search",
+			},
 		},
 		config = function()
 			require("telescope").setup({
