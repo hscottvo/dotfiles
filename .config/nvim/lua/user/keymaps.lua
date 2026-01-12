@@ -59,6 +59,7 @@ wk.add({
 	{ "grt", "<cmd>lua vim.lsp.buf.type_definition()<cr>", desc = "Type Definition" },
 	{ "grr", "<cmd>lua vim.lsp.buf.references()<cr>", desc = "References" },
 	{ "grs", "<cmd>lua vim.lsp.buf.signature_help()<cr>", desc = "Signature Help" },
+	{ "grT", "<cmd>lua vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())<cr>", desc = "Toggle Inlay Hints" },
 	{ "<leader>w", "<cmd> noa w<cr>", desc = "Write without Formatting" },
 
 	-- Git
