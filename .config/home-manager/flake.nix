@@ -7,7 +7,7 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    mac-app-util.url = "github:hraban/mac-app-util";
+    # mac-app-util.url = "github:hraban/mac-app-util";
     stylix.url = "github:danth/stylix";
     zen-browser = {
       url = "github:0xc000022070/zen-browser-flake";
@@ -15,7 +15,7 @@
     };
   };
 
-  outputs = { nixpkgs, home-manager, zen-browser, stylix, mac-app-util, ... } @ inputs:
+  outputs = { nixpkgs, home-manager, zen-browser, stylix, ... } @ inputs:
     let
       moduleFiles = [
         ./global/apps.nix
@@ -33,7 +33,6 @@
         ./nixos/nvim.nix
       ];
       macFiles = [
-        mac-app-util.homeModules.default
         ./mac/home.nix
       ];
     in

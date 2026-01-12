@@ -15,13 +15,13 @@ vim.lsp.config("lua_ls", {
 })
 vim.lsp.enable("marksman")
 vim.lsp.enable("nil_ls")
-vim.lsp.enable("pyright")
+vim.lsp.enable("ruff")
 vim.lsp.enable("rust_analyzer")
 vim.lsp.config("rust_analyzer", {
 	settings = {
 		["rust-analyzer"] = {
 			checkOnSave = {
-				-- command = "clippy",
+				command = "clippy",
 				-- extraArgs = {
 				-- 	"--",
 				-- 	"--no-deps",
@@ -50,5 +50,5 @@ vim.lsp.config("rust_analyzer", {
 vim.lsp.enable("terraformls")
 vim.lsp.enable("tflint")
 vim.lsp.enable("ts_ls")
-vim.lsp.enable("vue_ls")
+vim.lsp.enable("vuels")
 vim.lsp.enable("yamlls")

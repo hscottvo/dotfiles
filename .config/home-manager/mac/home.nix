@@ -12,8 +12,19 @@
     xclip
     p7zip
     hoppscotch
+    stow
 
+
+    just
+    nix-direnv
+    openssl
+    pkgconf
   ];
+
+  programs.direnv = {
+    enable = true;
+    enableZshIntegration = true;
+  };
 
   home.sessionPath = [
     "$HOME/.local/bin"
