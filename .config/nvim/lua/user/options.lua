@@ -45,7 +45,7 @@ o.wildmode = "full"
 o.scrolloff = 8
 
 -- Conceal settings
-o.conceallevel = 1
+o.conceallevel = 0
 
 -- Update time
 o.updatetime = 25
