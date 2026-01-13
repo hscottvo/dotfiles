@@ -31,6 +31,11 @@ return {
 				"<cmd>lua require('telescope.builtin').resume()<cr>",
 				desc = "Open most recent search",
 			},
+			{
+				"<leader>fS",
+				"<cmd>lua require('telescope.builtin').lsp_workspace_symbols()<cr>",
+				desc = "Find symbols in workspace",
+			},
 		},
 		config = function()
 			require("telescope").setup({
