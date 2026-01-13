@@ -50,6 +50,7 @@
     ruff
 
     # rust
+    bacon
     rustfmt
     rust-analyzer
 
