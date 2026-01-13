@@ -70,6 +70,7 @@ in
     enable = true;
     baseIndex = 1;
     escapeTime = 0;
+    keyMode = "vi";
     secureSocket = false;
     plugins = with pkgs.tmuxPlugins; [
       better-mouse-mode
