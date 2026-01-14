@@ -36,6 +36,16 @@ return {
 				"<cmd>lua require('telescope.builtin').lsp_workspace_symbols()<cr>",
 				desc = "Find symbols in workspace",
 			},
+			{
+				"<leader>fk",
+				"<cmd>Telescope keymaps<cr>",
+				desc = "Search keymaps",
+			},
+			{
+				"<leader>fb",
+				"<cmd>Telescope buffers<cr>",
+				desc = "Find open buffers",
+			},
 		},
 		config = function()
 			require("telescope").setup({
