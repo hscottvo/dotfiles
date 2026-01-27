@@ -209,7 +209,8 @@ in
         format = "[$symbol$branch(:$remote_branch)]($style) ";
       };
       nix_shell = {
-        symbol = "❄️";
+        symbol = "λ";
+        impure_msg = "";
       };
       character = {
         success_symbol = "[](bold green)";
