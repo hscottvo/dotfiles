@@ -23,12 +23,18 @@
     # cpp
     clang-tools
 
+    # docker
+    docker-language-server
+
     # go
     go
     gopls
     # lua
     lua-language-server
     stylua
+
+    # k8s
+    helm-ls
 
     # markdown
     marksman

@@ -1,8 +1,36 @@
 vim.lsp.enable("bashls")
 vim.lsp.enable("clangd")
+vim.lsp.enable("docker_language_server")
 vim.lsp.enable("docker_compose_language_service")
 vim.lsp.enable("eslint")
 vim.lsp.enable("gopls")
+vim.lsp.enable("helm_ls")
+vim.filetype.add({
+	extension = {
+		yaml = function(path, _)
+			-- Check if we're in a helm chart's templates directory
+			if path:match("helm/.*/templates/.*%.yaml$") then
+				return "helm"
+			end
+			return "yaml"
+		end,
+		yml = function(path, _)
+			if path:match("helm/.*/templates/.*%.yml$") then
+				return "helm"
+			end
+			return "yaml"
+		end,
+	},
+	filename = {
+		["values.yaml"] = function(path, _)
+			if path:match("helm/") then
+				return "yaml.helm-values"
+			end
+			return "yaml"
+		end,
+	},
+})
+
 vim.lsp.enable("lua_ls")
 vim.lsp.config("lua_ls", {
 	settings = {

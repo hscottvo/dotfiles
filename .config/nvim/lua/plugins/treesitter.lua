@@ -15,6 +15,7 @@ return {
 					"dockerfile",
 					"go",
 					"hcl",
+					"helm",
 					"html",
 					"hyprlang",
 					"javascript",
