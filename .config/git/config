@@ -6,3 +6,5 @@
 [core]
 	symlinks = true
 	editor = nvim
+[diff]
+	tool = nvimdiff
