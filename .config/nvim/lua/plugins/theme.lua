@@ -11,8 +11,13 @@ return {
 		lazy = false,
 		priority = 1000, -- make sure to load this before all the other start plugins
 	},
+	{ "ribru17/bamboo.nvim" },
 	{ "loctvl842/monokai-pro.nvim" },
 	{ "catppuccin/nvim", name = "catppuccin", priority = 1000 },
+	{ "AlexvZyl/nordic.nvim" },
+	{ "marko-cerovac/material.nvim" },
+	{ "shaunsingh/nord.nvim" },
+	{ "EdenEast/nightfox.nvim" },
 	{
 		"folke/noice.nvim",
 		event = "VeryLazy",
