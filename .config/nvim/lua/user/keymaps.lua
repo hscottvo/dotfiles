@@ -26,6 +26,12 @@ keymap("x", "<leader>p", '"_dP')
 -- Disable Q
 keymap("n", "Q", "<nop")
 
+-- Window navigation from terminal mode using Alt-hjkl (exits terminal, then navigates)
+keymap("n", "<M-h>", "<C-\\><C-n><C-w>h", opts)
+keymap("n", "<M-j>", "<C-\\><C-n><C-w>j", opts)
+keymap("n", "<M-k>", "<C-\\><C-n><C-w>k", opts)
+keymap("n", "<M-l>", "<C-\\><C-n><C-w>l", opts)
+
 -- Scroll through quick fixes
 keymap("n", "<C-k>", "<cmd>cnext<CR>zz")
 keymap("n", "<C-j>", "<cmd>cprev<CR>zz")
@@ -59,7 +65,11 @@ wk.add({
 	{ "grt", "<cmd>lua vim.lsp.buf.type_definition()<cr>", desc = "Type Definition" },
 	{ "grr", "<cmd>lua vim.lsp.buf.references()<cr>", desc = "References" },
 	{ "grs", "<cmd>lua vim.lsp.buf.signature_help()<cr>", desc = "Signature Help" },
-	{ "grT", "<cmd>lua vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())<cr>", desc = "Toggle Inlay Hints" },
+	{
+		"grT",
+		"<cmd>lua vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())<cr>",
+		desc = "Toggle Inlay Hints",
+	},
 	{ "<leader>w", "<cmd> noa w<cr>", desc = "Write without Formatting" },
 
 	-- Git
