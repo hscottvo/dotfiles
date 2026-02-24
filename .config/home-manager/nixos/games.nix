@@ -8,7 +8,7 @@
     heroic
     lutris
     prismlauncher
-    protonup
+    protonup-ng
     SDL2
   ];
 
