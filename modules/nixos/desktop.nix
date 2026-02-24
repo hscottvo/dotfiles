@@ -13,9 +13,6 @@
   # Display manager
   services.displayManager.sddm.enable = true;
 
-  # Desktop environment
-  services.xserver.desktopManager.gnome.enable = true;
-
   # Hyprland
   programs.hyprland = {
     enable = true;
@@ -35,7 +32,6 @@
         xdg-desktop-portal-gtk
         xdg-desktop-portal-wlr
         xdg-desktop-portal-hyprland
-        xdg-desktop-portal-gnome
       ];
       xdgOpenUsePortal = true;
     };
