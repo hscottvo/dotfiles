@@ -28,7 +28,7 @@
           ];
         homebrew = {
           enable = true;
-          casks = [ "ghostty" "1password-cli" ];
+          casks = [ "ghostty" "1password-cli" "keyboard-maestro" ];
         };
 
         nix.enable = false;

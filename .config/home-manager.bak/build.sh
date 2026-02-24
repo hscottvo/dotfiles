@@ -19,7 +19,16 @@ else
 fi
 
 echo -e "${BOLD}${YELLOW}Rebuilding home manager:${RESET}"
-home-manager switch --flake .#scott-linux &> build.log || (
+# Clear the log file
+> build.log
+# Run home-manager in background
+home-manager switch --flake .#scott-linux &> build.log &
+HM_PID=$!
+# Show last 5 lines as they come in
+tail -n 5 -f build.log --pid=$HM_PID 2>/dev/null || true
+# Wait for home-manager to complete and check exit status
+wait $HM_PID || (
+  echo -e "\n${BOLD}${YELLOW}Build failed, showing errors:${RESET}"
   grep --color error < build.log && false
 )
 echo -e "${BOLD}${GREEN}Finished building home manager${RESET}"
