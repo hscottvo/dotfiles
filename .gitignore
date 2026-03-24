@@ -4,3 +4,4 @@ pacman.log
 
 **/build.log
 .config/kitty
+**/theme.conf

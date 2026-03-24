@@ -47,7 +47,7 @@
           system.defaults.NSGlobalDomain.InitialKeyRepeat = 15;
           system.defaults.NSGlobalDomain.KeyRepeat = 2;
           system.defaults.NSGlobalDomain.NSDocumentSaveNewDocumentsToCloud = false;
-          system.defaults.dock.tilesize = 128;
+          system.defaults.dock.tilesize = 48;
           system.defaults.dock.orientation = "right";
           system.defaults.dock.show-recents = false;
           system.defaults.dock.wvous-br-corner = 1;

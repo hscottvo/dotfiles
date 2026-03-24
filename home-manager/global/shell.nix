@@ -1,7 +1,8 @@
 { config, pkgs, ... }:
 
 let
-  colors = config.custom.themes.everforest.colors;
+  dotfilesDir = "${config.home.homeDirectory}/dotfiles";
+  colors = config.lib.stylix.colors.withHashtag;
 in
 {
 
@@ -51,6 +52,7 @@ in
   programs.ghostty = {
     settings = {
       font-family = "FiraCode Nerd Font";
+      command = "tmux new-session -A -s main";
     };
   };
 
@@ -64,45 +66,44 @@ in
     };
   };
 
-  xdg.configFile."tmux/tmux.conf".source = ../../tmux/tmux.conf;
-  xdg.configFile."tmux/theme.conf".text = ''
+  home.file."dotfiles/tmux/theme.conf".text = ''
     # mode (copy mode highlight)
-    set-option -g mode-style fg=#${colors.bg_dim},bg=#${colors.fg}
+    set-option -g mode-style fg=${colors.base00},bg=${colors.base05}
 
     # panes
-    set -g window-active-style bg=#${colors.bg_dim}
-    set -g pane-active-border fg=#${colors.green}
+    set -g window-active-style bg=${colors.base00}
+    set -g pane-active-border fg=${colors.base0B}
 
     # status bar
-    set-option -g status-style bg=#${colors.bg0},fg=#${colors.fg}
+    set-option -g status-style bg=${colors.base01},fg=${colors.base05}
     set -g status-left-length 150
     set -g status-left "\
-    #[fg=#${colors.bg0}, bg=#${colors.statusline1}, bold] #(whoami) \
-    #[bg=#${colors.bg0}, fg=#${colors.statusline1}]\
-    #[bg=#${colors.bg0}, fg=#${colors.fg}] #S \
-    #[fg=#${colors.fg}, bg=#${colors.bg0}] "
+    #[fg=${colors.base01}, bg=${colors.base0D}, bold] #(whoami)\
+      #[bg=${colors.base01}, fg=${colors.base0D}]\
+      #[bg=${colors.base01}, fg=${colors.base05}]#S\
+      #[fg=${colors.base05}, bg=${colors.base01}]"
 
     set-option -g status-right-style none
     set -g status-right-length 150
     set -g status-right "\
-    #[fg=#${colors.bg2}, bg=#${colors.bg0}]#[bg=#${colors.bg2}, fg=#${colors.fg}] %Y-%m-%d \
-    #[bg=#${colors.bg2}, fg=#${colors.bg4}]#[fg=#${colors.fg}, bg=#${colors.bg4}] %H:%M  \
-    #[fg=#${colors.statusline1}, bg=#${colors.bg4}]#[fg=#${colors.bg_dim}, bg=#${colors.statusline1}, bold] #h "
+      #[fg=${colors.base03}, bg=${colors.base01}]#[bg=${colors.base03}, fg=${colors.base05}] %Y-%m-%d\
+      #[bg=${colors.base03}, fg=${colors.base02}]#[fg=${colors.base0D}, bg=${colors.base02}] %H:%M\
+      #[fg=${colors.base0D}, bg=${colors.base02}]#[fg=${colors.base00}, bg=${colors.base0D}, bold] #h "
 
     # active window
     set-window-option -g window-status-current-format "\
-    #[fg=#${colors.bg0}, bg=#${colors.bg5}]\
-    #[fg=#${colors.fg}, bg=#${colors.bg5}] #I \
-    #[fg=#${colors.fg}, bg=#${colors.bg5}, bold] #W \
-    #[fg=#${colors.bg5}, bg=#${colors.bg0}]"
+      #[fg=${colors.base01}, bg=${colors.base0D}]\
+      #[fg=${colors.base01}, bg=${colors.base0D}]#I\
+      #[fg=${colors.base01}, bg=${colors.base0D}, bold]#W\
+      #[fg=${colors.base0D}, bg=${colors.base01}]"
 
     # inactive window
     set-window-option -g window-status-format "\
-    #[fg=#${colors.fg}, bg=#${colors.bg0}] #I \
-     #W \
-    #[fg=#${colors.bg0}, bg=#${colors.bg0}]"
+      #[fg=${colors.base01}, bg=${colors.base01}]\
+      #[fg=${colors.base05}, bg=${colors.base01}]#I\
+      #W\
+      #[fg=${colors.base01}, bg=${colors.base01}]"
   '';
-
   programs.tmux = {
     enable = true;
     secureSocket = false;
@@ -110,6 +111,9 @@ in
       better-mouse-mode
       resurrect
     ];
+    extraConfig = ''
+      source-file ${dotfilesDir}/tmux/tmux.conf
+    '';
   };
 
   programs.bat = {
@@ -123,42 +127,84 @@ in
     enableZshIntegration = true;
   };
 
-  xdg.configFile."starship.toml".text = builtins.readFile ../../starship/starship.toml + ''
-
-    [palettes.everforest]
-    bg_dim = "#${colors.bg_dim}"
-    bg0 = "#${colors.bg0}"
-    bg1 = "#${colors.bg1}"
-    bg2 = "#${colors.bg2}"
-    bg3 = "#${colors.bg3}"
-    bg4 = "#${colors.bg4}"
-    bg5 = "#${colors.bg5}"
-    bg_visual = "#${colors.bg_visual}"
-    bg_red = "#${colors.bg_red}"
-    bg_green = "#${colors.bg_green}"
-    bg_blue = "#${colors.bg_blue}"
-    bg_yellow = "#${colors.bg_yellow}"
-    fg = "#${colors.fg}"
-    red = "#${colors.red}"
-    orange = "#${colors.orange}"
-    yellow = "#${colors.yellow}"
-    green = "#${colors.green}"
-    aqua = "#${colors.aqua}"
-    blue = "#${colors.blue}"
-    purple = "#${colors.purple}"
-    grey0 = "#${colors.grey0}"
-    grey1 = "#${colors.grey1}"
-    grey2 = "#${colors.grey2}"
-    statusline1 = "#${colors.statusline1}"
-    statusline2 = "#${colors.statusline2}"
-    statusline3 = "#${colors.statusline3}"
-  '';
-
   programs.starship = {
     enable = true;
     enableZshIntegration = true;
+
+    settings = {
+      format = "$os$username$directory$git_branch$git_state$git_status$nix_shell$character";
+      add_newline = false;
+
+      os = {
+        disabled = false;
+        format = "[$symbol ]($style)";
+        style = "fg:grey2";
+        symbols = {
+          NixOS = "";
+          Windows = "󰍲";
+          Ubuntu = "󰕈";
+          SUSE = "";
+          Raspbian = "󰐿";
+          Mint = "󰣭";
+          Macos = "󰀵";
+          Manjaro = "";
+          Linux = "󰌽";
+          Gentoo = "󰣨";
+          Fedora = "󰣛";
+          Alpine = "";
+          Amazon = "";
+          Android = "";
+          Arch = "󰣇";
+          Artix = "󰣇";
+          CentOS = "";
+          Debian = "󰣚";
+          Redhat = "󱄛";
+          RedHatEnterprise = "󱄛";
+        };
+      };
+
+      username = {
+        show_always = true;
+        style_root = "fg:red";
+        style_user = "fg:blue";
+        format = "[$user]($style)";
+      };
+
+      hostname = {
+        ssh_only = false;
+        style = "fg:blue";
+        format = "[@$hostname]($style) ";
+      };
+
+      directory = {
+        style = "fg:orange";
+        read_only_style = "fg_orange";
+        truncation_length = 3;
+        truncation_symbol = "…/";
+        format = "[ $path]($style)[$read_only]($read_only_style) ";
+      };
+
+      git_branch = {
+        style = "fg:green";
+        symbol = "[ ](bold red)";
+        format = "[$symbol$branch(:$remote_branch)]($style) ";
+      };
+
+      nix_shell = {
+        symbol = "λ";
+        impure_msg = "";
+      };
+
+      character = {
+        success_symbol = "[](bold green)";
+        error_symbol = "[](bold red)";
+      };
+
+      # inject Stylix-generated palette
+      # palettes.everforest = everforestPalette;
+    };
   };
-  stylix.targets.starship.enable = false;
+  stylix.targets.starship.enable = true;
 
   programs.zoxide = {
     enable = true;

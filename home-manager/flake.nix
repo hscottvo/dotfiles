@@ -36,6 +36,7 @@
       linuxFiles = [
         ./nixos/home.nix
         ./nixos/desktop.nix
+        # ./nixos/hyprland.nix
         ./nixos/apps.nix
         ./nixos/games.nix
         ./nixos/nvim.nix

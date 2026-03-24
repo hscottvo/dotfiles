@@ -1,6 +1,5 @@
 format = "$os$username$directory$git_branch$git_state$git_status$nix_shell$character"
 add_newline = false
-palette = "everforest"
 
 [os]
 disabled = false
