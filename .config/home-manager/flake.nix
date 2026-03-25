@@ -7,7 +7,7 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    # mac-app-util.url = "github:hraban/mac-app-util";
+    mac-app-util.url = "github:hraban/mac-app-util";
     stylix.url = "github:danth/stylix";
     zen-browser = {
       url = "github:0xc000022070/zen-browser-flake";
@@ -15,7 +15,7 @@
     };
   };
 
-  outputs = { nixpkgs, home-manager, zen-browser, stylix, ... } @ inputs:
+  outputs = { nixpkgs, home-manager, zen-browser, stylix, mac-app-util, ... } @ inputs:
     let
       moduleFiles = [
         ./global/apps.nix
@@ -55,7 +55,7 @@
           config.allowUnfree = true;
           config.stylix.targets.zen-browser.profileNames = [ "main" ];
         };
-        modules = moduleFiles ++ macFiles;
+        modules = moduleFiles ++ macFiles ++ [ mac-app-util.homeManagerModules.default ];
         extraSpecialArgs = { inherit inputs; };
       };
 
