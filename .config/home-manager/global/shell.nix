@@ -6,8 +6,6 @@ in
 {
 
   home.packages = with pkgs; [
-    act
-    bacon
     commitizen
     dust
     helix

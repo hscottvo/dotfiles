@@ -3,8 +3,6 @@
 {
   home.packages = with pkgs; [
     # Requirements for Neovim
-    cargo
-    clippy
     fd
     gcc
     gnumake
@@ -14,69 +12,22 @@
     nodejs_22
     python3
     ripgrep
-    rustc
     tree-sitter
 
-    # bash
-    bash-language-server
-
-    # cpp
-    clang-tools
-
-    # docker
-    docker-language-server
-
-    # elixir
-    elixir-ls
-
-    # go
-    go
-    gopls
-    # lua
+    # lua (dotfiles)
     lua-language-server
     stylua
-
-    # k8s
-    helm-ls
 
     # markdown
     marksman
     markdownlint-cli2
-    nodePackages.prettier
-
-    # nix
-    nixfmt
-
-    # prettier
     prettierd
 
-    # python
-    black
-    isort
-    pyright
-    ruff
-
-    # rust
-    bacon
-    rustfmt
-    rust-analyzer
+    # nix (dotfiles)
+    nixfmt
 
     # toml
     taplo
-
-    # terraform
-    terraform
-    terraform-ls
-    tflint
-
-    # typescript
-    eslint_d
-    typescript
-    typescript-language-server
-    vscode-langservers-extracted
-
-    # vue
-    vue-language-server
 
     unzip
   ];
