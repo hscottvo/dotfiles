@@ -4,6 +4,8 @@ return {
 		opts = {
 			formatters_by_ft = {
 				cpp = { "clang-format" },
+				elixir = { "mix" },
+				heex = { "mix" },
 				css = { "prettier" },
 				go = { "gofmt" },
 				html = { "prettier" },
@@ -13,7 +15,7 @@ return {
 				lua = { "stylua" },
 				markdown = { "prettier" },
 				nix = { "nixpkgs_fmt" },
-				python = { "isort", "ruff" },
+				python = { "isort", "ruff_format" },
 				rust = { "rustfmt", "leptosfmt" },
 				terraform = { "terraform_fmt" },
 				typescript = { "prettier" },

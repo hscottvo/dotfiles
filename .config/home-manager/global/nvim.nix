@@ -26,6 +26,9 @@
     # docker
     docker-language-server
 
+    # elixir
+    elixir-ls
+
     # go
     go
     gopls

@@ -1,5 +1,9 @@
 vim.lsp.enable("bashls")
 vim.lsp.enable("clangd")
+vim.lsp.enable("elixirls")
+vim.lsp.config("elixirls", {
+	filetypes = { "elixir", "eelixir", "heex", "surface", "ex" },
+})
 vim.lsp.enable("docker_language_server")
 vim.lsp.enable("docker_compose_language_service")
 vim.lsp.enable("eslint")
@@ -43,6 +47,30 @@ vim.lsp.config("lua_ls", {
 })
 vim.lsp.enable("marksman")
 vim.lsp.enable("nil_ls")
+vim.lsp.config("pyright", {
+	settings = {
+		pyright = {
+			disableOrganizeImports = true,
+		},
+		python = {
+			analysis = {
+				autoSearchPaths = true,
+				useLibraryCodeForTypes = true,
+				diagnosticMode = "openFilesOnly",
+				venvPath = ".",
+				venv = ".venv",
+			},
+		},
+	},
+})
+vim.lsp.enable("pyright")
+vim.lsp.config("ruff", {
+	init_options = {
+		settings = {
+			organizeImports = false,
+		},
+	},
+})
 vim.lsp.enable("ruff")
 vim.lsp.enable("rust_analyzer")
 vim.lsp.config("rust_analyzer", {
