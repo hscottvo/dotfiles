@@ -5,16 +5,20 @@
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
   };
 
-  outputs = { nixpkgs, ... }:
+  outputs =
+    { nixpkgs, ... }:
     let
-      systems = [ "aarch64-darwin" "x86_64-linux" ];
+      systems = [
+        "aarch64-darwin"
+        "x86_64-linux"
+      ];
       forAllSystems = f: nixpkgs.lib.genAttrs systems (system: f nixpkgs.legacyPackages.${system});
     in
     {
       devShells = forAllSystems (pkgs: {
         default = pkgs.mkShell {
           packages = with pkgs; [
-            nixpkgs-fmt
+            nixfmt
             stylua
             lua-language-server
             nil

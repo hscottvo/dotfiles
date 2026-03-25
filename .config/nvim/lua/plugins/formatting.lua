@@ -14,7 +14,7 @@ return {
 				json = { "prettier" },
 				lua = { "stylua" },
 				markdown = { "prettier" },
-				nix = { "nixpkgs_fmt" },
+				nix = { "nixfmt" },
 				python = { "isort", "ruff_format" },
 				rust = { "rustfmt", "leptosfmt" },
 				terraform = { "terraform_fmt" },

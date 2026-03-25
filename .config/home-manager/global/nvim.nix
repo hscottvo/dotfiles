@@ -44,10 +44,8 @@
     markdownlint-cli2
     nodePackages.prettier
 
-
     # nix
-    nil
-    nixpkgs-fmt
+    nixfmt
 
     # prettier
     prettierd
@@ -80,9 +78,6 @@
     # vue
     vue-language-server
 
-    # YAML
-    yaml-language-server
-
     unzip
   ];
 
@@ -101,4 +96,3 @@
     EDITOR = "nvim";
   };
 }
-
