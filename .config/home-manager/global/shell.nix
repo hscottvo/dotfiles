@@ -10,10 +10,30 @@ in
     bacon
     commitizen
     dust
+    helix
     pre-commit
     wget
     xdelta
   ];
+
+  programs.gh-dash =
+    {
+      enable = true;
+      settings = {
+        prSections = [{
+          title = "Open Pull Requests";
+          filters = "is:open";
+        }
+          {
+            title = "Closed Pull Requests";
+            filters = "is:closed";
+          }
+          {
+            title = "My Open Pull Requests";
+            filters = "is:open author:@me";
+          }];
+      };
+    };
 
   programs.kitty = {
     enable = true;
@@ -251,6 +271,28 @@ in
     };
   };
   stylix.targets.starship.enable = false;
+
+  programs.zoxide = {
+    enable = true;
+    enableZshIntegration = true;
+  };
+
+  programs.git = {
+    enable = true;
+    settings = {
+      user.name = "Scott Vo";
+      user.email = "scott.vo@mechanical-orchard.com";
+      init.defaultBranch = "main";
+      core.symlinks = true;
+      core.editor = "nvim";
+      diff.tool = "nvimdiff";
+    };
+  };
+
+  programs.delta = {
+    enable = true;
+    enableGitIntegration = true;
+  };
 
   programs.fzf = {
     enable = true;
