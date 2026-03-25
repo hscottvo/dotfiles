@@ -3,11 +3,6 @@ return {
 		"stevearc/oil.nvim",
 		---@module 'oil'
 		opts = {},
-		keys = {
-			"<leader>-",
-			"<cmd>Oil<cr>",
-			desc = "Oil File Explorer",
-		},
 		-- Optional dependencies
 		dependencies = { { "echasnovski/mini.icons", opts = {} } },
 		-- dependencies = { "nvim-tree/nvim-web-devicons" }, -- use if you prefer nvim-web-devicons

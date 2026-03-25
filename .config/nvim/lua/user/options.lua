@@ -24,7 +24,6 @@ o.wrap = false
 vim.opt.expandtab = true
 vim.opt.tabstop = 4
 vim.opt.shiftwidth = 4
-vim.opt.smartindent = false
 vim.opt.autoindent = true
 
 -- Appearance
@@ -49,6 +48,12 @@ o.conceallevel = 0
 
 -- Update time
 o.updatetime = 25
+
+-- Auto-reload files when changed outside of Neovim
+o.autoread = true
+vim.api.nvim_create_autocmd({ "FocusGained", "BufEnter" }, {
+	command = "checktime",
+})
 
 vim.diagnostic.config({
 	virtual_text = {

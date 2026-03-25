@@ -46,8 +46,8 @@ wk.add({
 	{ "<leader>p", '"+p', hidden = true },
 	{ "<leader>P", '"+P', hidden = true },
 	-- vim options
-	{ "<leader>j", "<cmd>lprev<CR>zz", desc = "Scroll quickfix up" },
-	{ "<leader>k", "<cmd>lprev<CR>zz", desc = "Scroll quickfix down" },
+	{ "<leader>j", "<cmd>lnext<CR>zz", desc = "Next location list item" },
+	{ "<leader>k", "<cmd>lprev<CR>zz", desc = "Prev location list item" },
 	-- Find
 	{ "<leader>f", desc = "Find" },
 

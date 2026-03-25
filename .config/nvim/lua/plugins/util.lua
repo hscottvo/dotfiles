@@ -3,7 +3,6 @@ return {
 		"folke/which-key.nvim",
 		event = "VeryLazy",
 		opts = {},
-		keys = {},
 	},
 	{
 		"numToStr/Comment.nvim",
