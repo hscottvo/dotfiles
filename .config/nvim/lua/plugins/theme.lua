@@ -64,21 +64,6 @@ return {
 			},
 		},
 	},
-	-- {
-	-- 	"yamatsum/nvim-cursorline",
-	-- 	opts = {
-	-- 		cursorline = {
-	-- 			enable = true,
-	-- 			timeout = 0,
-	-- 			number = false,
-	-- 		},
-	-- 		cursorword = {
-	-- 			enable = true,
-	-- 			min_length = 3,
-	-- 			hl = { underline = true },
-	-- 		},
-	-- 	},
-	-- },
 	{
 		"smoka7/hop.nvim",
 		version = "*",
@@ -152,9 +137,6 @@ return {
 		lazy = false,
 	},
 	-- {
-	-- 	"OXY2DEV/markview.nvim",
-	-- 	lazy = false,
-	-- },
 	{
 		"nvim-lualine/lualine.nvim",
 		dependencies = { "nvim-tree/nvim-web-devicons" },

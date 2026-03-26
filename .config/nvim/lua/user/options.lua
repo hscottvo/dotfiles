@@ -38,7 +38,6 @@ o.undofile = true
 
 -- Wildmenu settings
 o.wildignorecase = true
-o.wildmode = "full"
 
 -- Scrolling
 o.scrolloff = 8
