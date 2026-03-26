@@ -15,7 +15,15 @@
     };
   };
 
-  outputs = { nixpkgs, home-manager, zen-browser, stylix, mac-app-util, ... } @ inputs:
+  outputs =
+    {
+      nixpkgs,
+      home-manager,
+      zen-browser,
+      stylix,
+      mac-app-util,
+      ...
+    }@inputs:
     let
       moduleFiles = [
         ./global/apps.nix
@@ -32,9 +40,7 @@
         ./nixos/games.nix
         ./nixos/nvim.nix
       ];
-      macFiles = [
-        ./mac/home.nix
-      ];
+      macFiles = [ ./mac/home.nix ];
     in
     {
 

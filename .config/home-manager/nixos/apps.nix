@@ -1,4 +1,9 @@
-{ config, pkgs, inputs, ... }:
+{
+  config,
+  pkgs,
+  inputs,
+  ...
+}:
 
 let
   colors = config.custom.themes.everforest.colors;
@@ -47,4 +52,3 @@ in
   };
   stylix.targets.fuzzel.enable = false;
 }
-

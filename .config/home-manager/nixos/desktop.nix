@@ -39,4 +39,3 @@
   wayland.windowManager.hyprland.xwayland.enable = true;
 
 }
-

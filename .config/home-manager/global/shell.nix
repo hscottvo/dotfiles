@@ -278,6 +278,7 @@ in
   programs.git = {
     enable = true;
     ignores = [
+      ".direnv/"
       "devenv.local.nix"
       ".local/"
     ];

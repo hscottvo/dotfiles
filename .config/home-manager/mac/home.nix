@@ -14,7 +14,6 @@
     hoppscotch
     stow
 
-
     just
     nix-direnv
     openssl
@@ -26,9 +25,7 @@
     enableZshIntegration = true;
   };
 
-  home.sessionPath = [
-    "$HOME/.local/bin"
-  ];
+  home.sessionPath = [ "$HOME/.local/bin" ];
 
   programs.home-manager.enable = true;
 }
