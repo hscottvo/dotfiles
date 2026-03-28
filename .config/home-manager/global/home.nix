@@ -4,6 +4,7 @@ let
   colors = config.custom.themes.everforest.colors;
 in
 {
+  home.stateVersion = "26.05";
   stylix = {
     enable = true;
     # base16Scheme = {
