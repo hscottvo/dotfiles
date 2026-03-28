@@ -2,7 +2,7 @@
 
 let
   colors = config.custom.themes.everforest.colors;
-  dotfilesDir = "${config.home.homeDirectory}/dotfiles/.config";
+  dotfilesDir = "${config.home.homeDirectory}/dotfiles";
 in
 {
   xdg.enable = true;
