@@ -2,8 +2,12 @@
 
 let
   colors = config.custom.themes.everforest.colors;
+  dotfilesDir = "${config.home.homeDirectory}/dotfiles/.config";
 in
 {
+  xdg.enable = true;
+  xdg.configFile."nvim".source =
+    config.lib.file.mkOutOfStoreSymlink "${dotfilesDir}/nvim";
   home.stateVersion = "26.05";
   stylix = {
     enable = true;
