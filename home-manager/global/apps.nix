@@ -40,6 +40,9 @@
         "privacy.clearOnShutdown_v2.cookiesAndStorage" = false;
         "privacy.clearOnShutdown_v2.historyFormDataAndDownloads" = false;
         "privacy.sanitize.sanitizeOnShutdown" = false;
+        "sidebar.verticalTabs" = true;
+        "sidebar.revamp" = true;
+        "toolkit.legacyUserProfileCustomizations.stylesheets" = true;
       };
     };
   };
