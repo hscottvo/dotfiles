@@ -1,9 +1,11 @@
 vim.lsp.enable("bashls")
 vim.lsp.enable("clangd")
-vim.lsp.enable("elixirls")
-vim.lsp.config("elixirls", {
+vim.lsp.config("expert", {
+	cmd = { "expert", "--stdio" },
+	root_markers = { "mix.exs", ".git" },
 	filetypes = { "elixir", "eelixir", "heex", "surface", "ex" },
 })
+vim.lsp.enable("expert")
 vim.lsp.enable("docker_language_server")
 vim.lsp.enable("docker_compose_language_service")
 vim.lsp.enable("eslint")

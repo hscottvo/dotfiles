@@ -67,7 +67,7 @@ No. Plain flakes + `use flake` work fine for LSPs and tooling. devenv is worth i
 | ------------ | ------------------------------------------------------------------- |
 | `rust`       | cargo, clippy, rustc, rustfmt, rust-analyzer, bacon                 |
 | `go`         | go, gopls                                                           |
-| `elixir`     | elixir, elixir-ls                                                   |
+| `elixir`     | elixir, expert                                                      |
 | `python`     | python3, black, isort, pyright, ruff                                |
 | `typescript` | nodejs, typescript, typescript-language-server, eslint_d, prettierd |
 | `terraform`  | terraform, terraform-ls, tflint                                     |
