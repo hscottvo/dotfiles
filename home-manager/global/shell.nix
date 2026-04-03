@@ -123,105 +123,40 @@ in
     enableZshIntegration = true;
   };
 
+  xdg.configFile."starship.toml".text = builtins.readFile ../../starship/starship.toml + ''
+
+    [palettes.everforest]
+    bg_dim = "#${colors.bg_dim}"
+    bg0 = "#${colors.bg0}"
+    bg1 = "#${colors.bg1}"
+    bg2 = "#${colors.bg2}"
+    bg3 = "#${colors.bg3}"
+    bg4 = "#${colors.bg4}"
+    bg5 = "#${colors.bg5}"
+    bg_visual = "#${colors.bg_visual}"
+    bg_red = "#${colors.bg_red}"
+    bg_green = "#${colors.bg_green}"
+    bg_blue = "#${colors.bg_blue}"
+    bg_yellow = "#${colors.bg_yellow}"
+    fg = "#${colors.fg}"
+    red = "#${colors.red}"
+    orange = "#${colors.orange}"
+    yellow = "#${colors.yellow}"
+    green = "#${colors.green}"
+    aqua = "#${colors.aqua}"
+    blue = "#${colors.blue}"
+    purple = "#${colors.purple}"
+    grey0 = "#${colors.grey0}"
+    grey1 = "#${colors.grey1}"
+    grey2 = "#${colors.grey2}"
+    statusline1 = "#${colors.statusline1}"
+    statusline2 = "#${colors.statusline2}"
+    statusline3 = "#${colors.statusline3}"
+  '';
+
   programs.starship = {
     enable = true;
     enableZshIntegration = true;
-    settings = {
-      format = "$os$username$directory$git_branch$git_state$git_status$nix_shell$character";
-      add_newline = false;
-      palette = "everforest";
-      os = {
-        disabled = false;
-        format = "[$symbol ]($style)";
-        style = "fg:grey2";
-        symbols = {
-          NixOS = "";
-          Windows = "󰍲";
-          Ubuntu = "󰕈";
-          SUSE = "";
-          Raspbian = "󰐿";
-          Mint = "󰣭";
-          Macos = "󰀵";
-          Manjaro = "";
-          Linux = "󰌽";
-          Gentoo = "󰣨";
-          Fedora = "󰣛";
-          Alpine = "";
-          Amazon = "";
-          Android = "";
-          Arch = "󰣇";
-          Artix = "󰣇";
-          CentOS = "";
-          Debian = "󰣚";
-          Redhat = "󱄛";
-          RedHatEnterprise = "󱄛";
-        };
-      };
-      username = {
-        show_always = true;
-        style_root = "fg:red";
-        style_user = "fg:blue";
-        format = "[$user]($style)";
-      };
-      hostname = {
-        ssh_only = false;
-        style = "fg:blue";
-        format = "[@$hostname]($style) ";
-      };
-
-      directory = {
-        style = "fg:orange";
-        read_only_style = "fg_orange";
-        truncation_length = 3;
-        truncation_symbol = "…/";
-        format = "[ $path]($style)[$read_only]($read_only_style) ";
-      };
-      git_branch = {
-        style = "fg:green";
-        symbol = " ";
-        format = "[$symbol$branch(:$remote_branch)]($style) ";
-      };
-      nix_shell = {
-        symbol = "λ";
-        impure_msg = "";
-      };
-      character = {
-        success_symbol = "[](bold green)";
-        error_symbol = "[](bold red)";
-      };
-      palettes = {
-        everforest = {
-          bg_dim = "#${colors.bg_dim}";
-          bg0 = "#${colors.bg0}";
-          bg1 = "#${colors.bg1}";
-          bg2 = "#${colors.bg2}";
-          bg3 = "#${colors.bg3}";
-          bg4 = "#${colors.bg4}";
-          bg5 = "#${colors.bg5}";
-          bg_visual = "#${colors.bg_visual}";
-          bg_red = "#${colors.bg_red}";
-          bg_green = "#${colors.bg_green}";
-          bg_blue = "#${colors.bg_blue}";
-          bg_yellow = "#${colors.bg_yellow}";
-
-          fg = "#${colors.fg}";
-          red = "#${colors.red}";
-
-          orange = "#${colors.orange}";
-          yellow = "#${colors.yellow}";
-          green = "#${colors.green}";
-          aqua = "#${colors.aqua}";
-          blue = "#${colors.blue}";
-          purple = "#${colors.purple}";
-          grey0 = "#${colors.grey0}";
-          grey1 = "#${colors.grey1}";
-          grey2 = "#${colors.grey2}";
-          statusline1 = "#${colors.statusline1}";
-          statusline2 = "#${colors.statusline2}";
-          statusline3 = "#${colors.statusline3}";
-        };
-      };
-    };
   };
   stylix.targets.starship.enable = false;
 

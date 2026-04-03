@@ -1,0 +1,61 @@
+format = "$os$username$directory$git_branch$git_state$git_status$nix_shell$character"
+add_newline = false
+palette = "everforest"
+
+[os]
+disabled = false
+format = "[$symbol ]($style)"
+style = "fg:grey2"
+
+[os.symbols]
+NixOS = ""
+Windows = "󰍲"
+Ubuntu = "󰕈"
+SUSE = ""
+Raspbian = "󰐿"
+Mint = "󰣭"
+Macos = "󰀵"
+Manjaro = ""
+Linux = "󰌽"
+Gentoo = "󰣨"
+Fedora = "󰣛"
+Alpine = ""
+Amazon = ""
+Android = ""
+Arch = "󰣇"
+Artix = "󰣇"
+CentOS = ""
+Debian = "󰣚"
+Redhat = "󱄛"
+RedHatEnterprise = "󱄛"
+
+[username]
+show_always = true
+style_root = "fg:red"
+style_user = "fg:blue"
+format = "[$user]($style)"
+
+[hostname]
+ssh_only = false
+style = "fg:blue"
+format = "[@$hostname]($style) "
+
+[directory]
+style = "fg:orange"
+read_only_style = "fg_orange"
+truncation_length = 3
+truncation_symbol = "…/"
+format = "[ $path]($style)[$read_only]($read_only_style) "
+
+[git_branch]
+style = "fg:green"
+symbol = "[](bold red)"
+format = "[$symbol$branch(:$remote_branch)]($style) "
+
+[nix_shell]
+symbol = "λ"
+impure_msg = ""
+
+[character]
+success_symbol = "[](bold green)"
+error_symbol = "[](bold red)"
