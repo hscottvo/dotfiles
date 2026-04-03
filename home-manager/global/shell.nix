@@ -61,7 +61,6 @@ in
     shellAliases = {
       ll = "eza -l";
       ls = "eza";
-      dr = "sudo darwin-rebuild --impure switch --flake ~/.dotfiles/darwin#Scotts-Macbook-Pro";
     };
   };
 

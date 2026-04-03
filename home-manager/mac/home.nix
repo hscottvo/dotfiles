@@ -24,6 +24,11 @@
     enableZshIntegration = true;
   };
 
+  programs.zsh.shellAliases = {
+    dr = "sudo darwin-rebuild --impure switch --flake ~/dotfiles/darwin#main --option warn-dirty false";
+    hms = "home-manager switch --flake ~/dotfiles/home-manager#scott-mac --option warn-dirty false";
+  };
+
   home.sessionPath = [ "$HOME/.local/bin" ];
 
   programs.home-manager.enable = true;
