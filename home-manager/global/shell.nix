@@ -64,76 +64,52 @@ in
     };
   };
 
+  xdg.configFile."tmux/tmux.conf".source = ../../tmux/tmux.conf;
+  xdg.configFile."tmux/theme.conf".text = ''
+    # mode (copy mode highlight)
+    set-option -g mode-style fg=#${colors.bg_dim},bg=#${colors.fg}
+
+    # panes
+    set -g window-active-style bg=#${colors.bg_dim}
+    set -g pane-active-border fg=#${colors.green}
+
+    # status bar
+    set-option -g status-style bg=#${colors.bg0},fg=#${colors.fg}
+    set -g status-left-length 150
+    set -g status-left "\
+    #[fg=#${colors.bg0}, bg=#${colors.statusline1}, bold] #(whoami) \
+    #[bg=#${colors.bg0}, fg=#${colors.statusline1}]\
+    #[bg=#${colors.bg0}, fg=#${colors.fg}] #S \
+    #[fg=#${colors.fg}, bg=#${colors.bg0}] "
+
+    set-option -g status-right-style none
+    set -g status-right-length 150
+    set -g status-right "\
+    #[fg=#${colors.bg2}, bg=#${colors.bg0}]#[bg=#${colors.bg2}, fg=#${colors.fg}] %Y-%m-%d \
+    #[bg=#${colors.bg2}, fg=#${colors.bg4}]#[fg=#${colors.fg}, bg=#${colors.bg4}] %H:%M  \
+    #[fg=#${colors.statusline1}, bg=#${colors.bg4}]#[fg=#${colors.bg_dim}, bg=#${colors.statusline1}, bold] #h "
+
+    # active window
+    set-window-option -g window-status-current-format "\
+    #[fg=#${colors.bg0}, bg=#${colors.bg5}]\
+    #[fg=#${colors.fg}, bg=#${colors.bg5}] #I \
+    #[fg=#${colors.fg}, bg=#${colors.bg5}, bold] #W \
+    #[fg=#${colors.bg5}, bg=#${colors.bg0}]"
+
+    # inactive window
+    set-window-option -g window-status-format "\
+    #[fg=#${colors.fg}, bg=#${colors.bg0}] #I \
+     #W \
+    #[fg=#${colors.bg0}, bg=#${colors.bg0}]"
+  '';
+
   programs.tmux = {
     enable = true;
-    baseIndex = 1;
-    escapeTime = 0;
-    keyMode = "vi";
     secureSocket = false;
     plugins = with pkgs.tmuxPlugins; [
       better-mouse-mode
       resurrect
-      # continuum
     ];
-
-    extraConfig = ''
-      set -g @continuum-boot 'on'
-
-      set -g status-interval 2
-
-      # mouse works as expected
-      set-option -g mouse on
-
-      # terminal colors
-      set-option -g default-terminal "screen-256color"
-      set-option -a terminal-features 'xterm-256color:RGB'
-      set-option -g focus-events on
-
-      # window menu
-      set-option -g mode-style fg=#${colors.bg_dim},bg=#${colors.fg}
-
-      # pane background
-      set -g window-active-style bg=#${colors.bg_dim}
-      set -g pane-active-border fg=#${colors.green}
-
-      # status bar
-      set-option -g status-style bg=#${colors.bg0}
-      set-option -ag status-style fg=#${colors.fg}
-      set -g status-left-length 150
-      set -g status-left "\
-      #[fg=#${colors.bg0}, bg=#${colors.statusline1}, bold] #(whoami) \
-      #[bg=#${colors.bg0}, fg=#${colors.statusline1}]\
-      #[bg=#${colors.bg0}, fg=#${colors.fg}] #S \
-      #[fg=#${colors.fg}, bg=#${colors.bg0}] "
-
-      set-option -g status-right-style none
-      set -g status-right-length 150
-      set -g status-right "\
-      #[fg=#${colors.bg2}, bg=#${colors.bg0}]#[bg=#${colors.bg2}, fg=#${colors.fg}] %Y-%m-%d \
-      #[bg=#${colors.bg2}, fg=#${colors.bg4}]#[fg=#${colors.fg}, bg=#${colors.bg4}] %H:%M  \
-      #[fg=#A7C080, bg=#${colors.bg4}]#[fg=#${colors.bg_dim}, bg=#A7C080, bold] #h "
-
-      set-window-option -g window-status-current-format "\
-      #[fg=#${colors.bg0}, bg=#${colors.bg5}]\
-      #[fg=#${colors.fg}, bg=#${colors.bg5}] #I \
-      #[fg=#${colors.fg}, bg=#${colors.bg5}, bold] #W \
-      #[fg=#${colors.bg5}, bg=#${colors.bg0}]"
-
-      set-window-option -g window-status-format "\
-      #[fg=#${colors.fg}, bg=#${colors.bg0}] #I \
-       #W \
-      #[fg=#${colors.bg0}, bg=#${colors.bg0}]"
-
-      # splitting
-      bind '"' split-window -h -c "#{pane_current_path}"
-      bind % split-window -v -c "#{pane_current_path}"
-      bind c new-window -c "#{pane_current_path}"
-
-      # reload config 
-      unbind r
-      bind r source-file ~/.config/tmux/tmux.conf
-
-    '';
   };
 
   programs.bat = {
