@@ -1,16 +1,27 @@
-vim.lsp.enable("bashls")
-vim.lsp.enable("clangd")
+local function enable_if(name)
+	if
+		vim.fn.executable(vim.lsp.config[name] and vim.lsp.config[name].cmd and vim.lsp.config[name].cmd[1] or name)
+		== 1
+	then
+		vim.lsp.enable(name)
+		return true
+	end
+	return false
+end
+
+enable_if("bashls")
+enable_if("clangd")
 vim.lsp.config("expert", {
 	cmd = { "expert", "--stdio" },
 	root_markers = { "mix.exs", ".git" },
 	filetypes = { "elixir", "eelixir", "heex", "surface", "ex" },
 })
-vim.lsp.enable("expert")
-vim.lsp.enable("docker_language_server")
-vim.lsp.enable("docker_compose_language_service")
-vim.lsp.enable("eslint")
-vim.lsp.enable("gopls")
-vim.lsp.enable("helm_ls")
+enable_if("expert")
+enable_if("docker_language_server")
+enable_if("docker_compose_language_service")
+enable_if("eslint")
+enable_if("gopls")
+enable_if("helm_ls")
 vim.filetype.add({
 	extension = {
 		yaml = function(path, _)
@@ -37,7 +48,6 @@ vim.filetype.add({
 	},
 })
 
-vim.lsp.enable("lua_ls")
 vim.lsp.config("lua_ls", {
 	settings = {
 		Lua = {
@@ -47,8 +57,13 @@ vim.lsp.config("lua_ls", {
 		},
 	},
 })
-vim.lsp.enable("marksman")
-vim.lsp.enable("nil_ls")
+enable_if("lua_ls")
+
+if not enable_if("rumdl") then
+	enable_if("marksman")
+end
+
+enable_if("nil_ls")
 vim.lsp.config("pyright", {
 	settings = {
 		pyright = {
@@ -65,7 +80,7 @@ vim.lsp.config("pyright", {
 		},
 	},
 })
-vim.lsp.enable("pyright")
+enable_if("pyright")
 vim.lsp.config("ruff", {
 	init_options = {
 		settings = {
@@ -73,8 +88,7 @@ vim.lsp.config("ruff", {
 		},
 	},
 })
-vim.lsp.enable("ruff")
-vim.lsp.enable("rust_analyzer")
+enable_if("ruff")
 vim.lsp.config("rust_analyzer", {
 	settings = {
 		["rust-analyzer"] = {
@@ -105,8 +119,9 @@ vim.lsp.config("rust_analyzer", {
 		},
 	},
 })
-vim.lsp.enable("terraformls")
-vim.lsp.enable("tflint")
-vim.lsp.enable("ts_ls")
-vim.lsp.enable("vuels")
-vim.lsp.enable("yamlls")
+enable_if("rust_analyzer")
+enable_if("terraformls")
+enable_if("tflint")
+enable_if("ts_ls")
+enable_if("vuels")
+enable_if("yamlls")
