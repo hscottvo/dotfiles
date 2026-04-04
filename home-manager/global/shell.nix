@@ -55,6 +55,7 @@ in
       command = "tmux new-session -A -s main";
     };
   };
+  stylix.targets.ghostty.enable = true;
 
   programs.zsh = {
     enable = true;
