@@ -1,13 +1,11 @@
 { config, ... }:
 
 let
-  colors = config.custom.themes.everforest.colors;
   dotfilesDir = "${config.home.homeDirectory}/dotfiles";
 in
 {
   xdg.enable = true;
-  xdg.configFile."nvim".source =
-    config.lib.file.mkOutOfStoreSymlink "${dotfilesDir}/nvim";
+  xdg.configFile."nvim".source = config.lib.file.mkOutOfStoreSymlink "${dotfilesDir}/nvim";
   home.stateVersion = "26.05";
   stylix = {
     enable = true;
@@ -36,22 +34,24 @@ in
       slug = "catppuccin-macchiato";
       scheme = "Catppuccin Macchiato";
       author = "catppuccin";
-      base00 = "24273A";
-      base01 = "1E2030";
-      base02 = "363A4F";
-      base03 = "494D64";
-      base04 = "5B6078";
-      base05 = "CAD3F5";
-      base06 = "F4DBD6";
-      base07 = "B7BDF8";
-      base08 = "ED8796";
-      base09 = "F5A97F";
-      base0A = "EED49F";
-      base0B = "A6DA95";
-      base0C = "8BD5CA";
-      base0D = "8AADF4";
-      base0E = "C6A0F6";
-      base0F = "F0C6C6";
+      base00 = "24273A"; # base
+      base01 = "1E2030"; # mantle
+      base02 = "363A4F"; # surface0
+      base03 = "494D64"; # surface1
+      base04 = "5B6078"; # surface2
+      base05 = "CAD3F5"; # text
+      base06 = "F4DBD6"; # rosewater
+      base07 = "B7BDF8"; # lavender
+      base08 = "ED8796"; # red
+      base09 = "F5A97F"; # peach
+      base0A = "EED49F"; # yellow
+      base0B = "A6DA95"; # green
+      base0C = "8BD5CA"; # teal
+      base0D = "8AADF4"; # blue
+      base0E = "C6A0F6"; # mauve
+      base0F = "F0C6C6"; # flamingo
+      # scheme: "Catppuccin Macchiato"
+      # author: "https://github.com/catppuccin/catppuccin"
     };
   };
 

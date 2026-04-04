@@ -1,32 +1,20 @@
-{ pkgs, ... }:
+{ pkgs, config, ... }:
 
 {
   home.packages = with pkgs; [
     blueman
     google-chrome
-    # rofi
     fastfetch
     flatpak
     gparted
     nwg-look
     pavucontrol
-    waybar
-    wlogout
+    wl-clipboard
     xfce.thunar
     xfce.thunar-volman
-
-    hyprcursor
-    hypridle
-    hyprlock
-    hyprpaper
-    hyprshot
-    wl-clipboard
-
   ];
 
   services.swaync.enable = true;
-  # stylix.cursor.package = pkgs.bibata-cursors;
-  # stylix.cursor.name = "Bibata-Modern-Classic";
 
   gtk = {
     enable = true;
@@ -36,6 +24,14 @@
     };
   };
 
-  wayland.windowManager.hyprland.xwayland.enable = true;
+  # TODO: When niri config is stable, switch to nix-generated config for theming:
+  #   xdg.configFile."niri/config.kdl".text =
+  #     builtins.readFile ../../niri/config.kdl
+  #     + ''
+  #       // nix-generated colors from colors.nix (focus-ring, border, etc.)
+  #     '';
+  # See starship config in shell.nix for the pattern.
+  xdg.configFile."niri/config.kdl".source =
+    config.lib.file.mkOutOfStoreSymlink "/home/scott/dotfiles/niri/config.kdl";
 
 }
