@@ -192,6 +192,7 @@ in
       };
 
       nix_shell = {
+        format = "[$symbol]($style) ";
         symbol = "λ";
         impure_msg = "";
       };
