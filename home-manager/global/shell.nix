@@ -58,6 +58,7 @@ in
 
   programs.zsh = {
     enable = true;
+    oh-my-zsh.enable = true;
     historySubstringSearch.enable = true;
     syntaxHighlighting.enable = true;
     shellAliases = {
