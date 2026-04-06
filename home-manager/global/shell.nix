@@ -9,6 +9,7 @@ in
   home.packages = with pkgs; [
     commitizen
     dust
+    gh
     helix
     pre-commit
     wget
