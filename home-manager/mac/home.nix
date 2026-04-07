@@ -17,6 +17,7 @@
     nix-direnv
     openssl
     pkgconf
+    _1password-cli
   ];
 
   programs.direnv = {
