@@ -92,18 +92,10 @@ in
       #[fg=${colors.base0D}, bg=${colors.base02}]#[fg=${colors.base00}, bg=${colors.base0D}, bold] #h "
 
     # active window
-    set-window-option -g window-status-current-format "\
-      #[fg=${colors.base01}, bg=${colors.base0D}]\
-      #[fg=${colors.base01}, bg=${colors.base0D}]#I\
-      #[fg=${colors.base01}, bg=${colors.base0D}, bold]#W\
-      #[fg=${colors.base0D}, bg=${colors.base01}]"
+    set-window-option -g window-status-current-format "\#[fg=${colors.base01}, bg=${colors.base0D}]#[fg=${colors.base01}, bg=${colors.base0D}] #I#[fg=${colors.base01}, bg=${colors.base0D}, bold] #W #[fg=${colors.base0D}, bg=${colors.base01}]"
 
     # inactive window
-    set-window-option -g window-status-format "\
-      #[fg=${colors.base01}, bg=${colors.base01}]\
-      #[fg=${colors.base05}, bg=${colors.base01}]#I\
-      #W\
-      #[fg=${colors.base01}, bg=${colors.base01}]"
+    set-window-option -g window-status-format "#[fg=${colors.base01}, bg=${colors.base01}]#[fg=${colors.base05}, bg=${colors.base01}] #I #W #[fg=${colors.base01}, bg=${colors.base01}]"
   '';
   programs.tmux = {
     enable = true;
