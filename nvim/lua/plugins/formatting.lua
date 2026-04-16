@@ -13,7 +13,7 @@ return {
 				javascriptreact = { "prettier" },
 				json = { "prettier" },
 				lua = { "stylua" },
-				markdown = { "prettier" },
+				markdown = { "prettierd" },
 				nix = { "nixfmt" },
 				python = { "isort", "ruff_format" },
 				rust = { "rustfmt", "leptosfmt" },

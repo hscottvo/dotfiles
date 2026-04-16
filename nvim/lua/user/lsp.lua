@@ -1,8 +1,8 @@
 local function enable_if(name)
-	if
-		vim.fn.executable(vim.lsp.config[name] and vim.lsp.config[name].cmd and vim.lsp.config[name].cmd[1] or name)
-		== 1
-	then
+	local config = vim.lsp.config[name]
+	local cmd = config and config.cmd
+	local exe = type(cmd) == "table" and cmd[1] or name
+	if vim.fn.executable(exe) == 1 then
 		vim.lsp.enable(name)
 		return true
 	end
