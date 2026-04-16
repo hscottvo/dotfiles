@@ -1,32 +1,55 @@
 return {
 	{
-		"epwalsh/obsidian.nvim",
-		version = "*", -- recommended, use latest release instead of latest commit
+		"obsidian-nvim/obsidian.nvim",
+		version = "*",
 		lazy = true,
 		ft = "markdown",
-		-- Replace the above line with this if you only want to load obsidian.nvim for markdown files in your vault:
-		-- event = {
-		--   -- If you want to use the home shortcut '~' here you need to call 'vim.fn.expand'.
-		--   -- E.g. "BufReadPre " .. vim.fn.expand "~" .. "/my-vault/*.md"
-		--   -- refer to `:h file-pattern` for more examples
-		--   "BufReadPre path/to/my-vault/*.md",
-		--   "BufNewFile path/to/my-vault/*.md",
-		-- },
 		dependencies = {
-			-- Required.
 			"nvim-lua/plenary.nvim",
-
-			-- see below for full list of optional dependencies 👇
+		},
+		keys = {
+			{ "<leader>oo", "<cmd>Obsidian quick_switch<cr>", desc = "Open note" },
+			{ "<leader>on", "<cmd>Obsidian new<cr>", desc = "New note" },
+			{ "<leader>ot", "<cmd>Obsidian today<cr>", desc = "Today's daily note" },
+			{ "<leader>oy", "<cmd>Obsidian yesterday<cr>", desc = "Yesterday's daily note" },
+			{ "<leader>os", "<cmd>Obsidian search<cr>", desc = "Search notes" },
+			{ "<leader>ob", "<cmd>Obsidian backlinks<cr>", desc = "Backlinks" },
+			{ "<leader>ol", "<cmd>Obsidian follow_link<cr>", desc = "Follow link" },
+			{ "<leader>or", "<cmd>Obsidian rename<cr>", desc = "Rename note" },
+			{ "<leader>oi", "<cmd>Obsidian template<cr>", desc = "Insert template" },
+			{ "<leader>oc", "<cmd>Obsidian toggle_checkbox<cr>", desc = "Toggle checkbox" },
+			{ "<leader>op", "<cmd>Obsidian paste_img<cr>", desc = "Paste image" },
+			{ "<leader>ok", "<cmd>Obsidian tags<cr>", desc = "Tags" },
 		},
 		opts = {
 			workspaces = {
 				{
-					name = "personal",
-					path = "~/Documents/obsidian",
+					name = "mo",
+					path = "~/Documents/obsidian-vault",
 				},
 			},
-
-			-- see below for full list of options 👇
+			daily_notes = {
+				folder = nil,
+				date_format = "%Y-%m-%d",
+				template = "daily",
+			},
+			templates = {
+				folder = "templates",
+				date_format = "%Y-%m-%d",
+				time_format = "%H:%M",
+			},
+			completion = {
+				blink = true,
+				min_chars = 1,
+			},
+			ui = { enable = false },
+			legacy_commands = false,
+			note_id_func = function(title)
+				if title then
+					return title
+				end
+				return tostring(os.time())
+			end,
 		},
 	},
 }
