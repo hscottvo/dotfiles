@@ -20,6 +20,7 @@
 
     # markdown
     marksman
+    rumdl
     markdownlint-cli2
     prettierd
 

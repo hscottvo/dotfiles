@@ -9,6 +9,7 @@ in
   home.packages = with pkgs; [
     commitizen
     dust
+    gh
     helix
     pre-commit
     wget
@@ -55,13 +56,15 @@ in
       command = "tmux new-session -A -s main";
     };
   };
-  stylix.targets.ghostty.enable = true;
 
   programs.zsh = {
     enable = true;
-    oh-my-zsh.enable = true;
     historySubstringSearch.enable = true;
     syntaxHighlighting.enable = true;
+    envExtra = ''
+      # Local secrets (not managed by home-manager)
+      [[ -f ~/.secrets ]] && source ~/.secrets
+    '';
     shellAliases = {
       ll = "eza -l";
       ls = "eza";
@@ -93,18 +96,10 @@ in
       #[fg=${colors.base0D}, bg=${colors.base02}]#[fg=${colors.base00}, bg=${colors.base0D}, bold] #h "
 
     # active window
-    set-window-option -g window-status-current-format "\
-      #[fg=${colors.base01}, bg=${colors.base0D}]\
-      #[fg=${colors.base01}, bg=${colors.base0D}]#I\
-      #[fg=${colors.base01}, bg=${colors.base0D}, bold]#W\
-      #[fg=${colors.base0D}, bg=${colors.base01}]"
+    set-window-option -g window-status-current-format "\#[fg=${colors.base01}, bg=${colors.base0D}]#[fg=${colors.base01}, bg=${colors.base0D}] #I#[fg=${colors.base01}, bg=${colors.base0D}, bold] #W #[fg=${colors.base0D}, bg=${colors.base01}]"
 
     # inactive window
-    set-window-option -g window-status-format "\
-      #[fg=${colors.base01}, bg=${colors.base01}]\
-      #[fg=${colors.base05}, bg=${colors.base01}]#I\
-      #W\
-      #[fg=${colors.base01}, bg=${colors.base01}]"
+    set-window-option -g window-status-format "#[fg=${colors.base01}, bg=${colors.base01}]#[fg=${colors.base05}, bg=${colors.base01}] #I #W #[fg=${colors.base01}, bg=${colors.base01}]"
   '';
   programs.tmux = {
     enable = true;
@@ -193,7 +188,6 @@ in
       };
 
       nix_shell = {
-        format = "[$symbol]($style) ";
         symbol = "λ";
         impure_msg = "";
       };
