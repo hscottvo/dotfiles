@@ -37,6 +37,7 @@
             enable = true;
             casks = [
               "ghostty"
+              "maccy"
               "1password-cli"
             ];
           };

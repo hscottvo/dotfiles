@@ -14,12 +14,14 @@ in
     ../global/colors.nix
   ];
   home.packages = with pkgs; [
+    cliphist
     obs-studio
     libreoffice-qt
     nginx
     signal-desktop
     vlc
     vesktop
+    wl-clipboard
   ];
 
   programs.zen-browser = {
