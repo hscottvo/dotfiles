@@ -14,6 +14,10 @@
     ripgrep
     tree-sitter
 
+    # bash
+    bash-language-server
+    shfmt
+
     # lua (dotfiles)
     lua-language-server
     stylua
