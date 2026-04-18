@@ -67,6 +67,7 @@ in
 
       autoload -Uz compinit && compinit
       zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
+      ulimit -n 2048
     '';
     shellAliases = {
       ll = "eza -l";
