@@ -64,6 +64,9 @@ in
     envExtra = ''
       # Local secrets (not managed by home-manager)
       [[ -f ~/.secrets ]] && source ~/.secrets
+
+      autoload -Uz compinit && compinit
+      zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
     '';
     shellAliases = {
       ll = "eza -l";
