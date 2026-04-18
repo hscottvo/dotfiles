@@ -33,6 +33,11 @@
           install_url = "https://addons.mozilla.org/firefox/downloads/latest/hide-youtube-shorts/latest.xpi";
           installation_mode = "force_installed";
         };
+        "keepa" = {
+          install_url = "https://addons.mozilla.org/firefox/downloads/latest/keepa/latest.xpi";
+          installation_mode = "force_installed";
+        };
+
       };
     };
     profiles.main = {
