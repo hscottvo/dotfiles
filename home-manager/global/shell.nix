@@ -82,6 +82,8 @@ in
     # panes
     set -g window-active-style bg=${colors.base00}
     set -g pane-active-border fg=${colors.base0B}
+    set -g display-panes-colour "${colors.base0D}"
+    set -g display-panes-active-colour "${colors.base09}"
 
     # status bar
     set-option -g status-style bg=${colors.base01},fg=${colors.base05}
