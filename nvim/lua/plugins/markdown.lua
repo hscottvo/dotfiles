@@ -3,6 +3,12 @@ return {
 	"OXY2DEV/markview.nvim",
 	lazy = false,
 
+	opts = {
+		preview = {
+			hybrid_modes = { "n", "i" },
+		},
+	},
+
 	keys = {
 		{
 			"<leader>m",
