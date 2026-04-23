@@ -37,7 +37,11 @@ return {
 		version = "*",
 		event = "VeryLazy",
 		config = function()
-			require("nvim-surround").setup({})
+			require("nvim-surround").setup({
+				surrounds = {
+					["l"] = { add = { "[[", "]]" } },
+				},
+			})
 		end,
 	},
 }

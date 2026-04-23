@@ -20,6 +20,7 @@ return {
 			{ "<leader>oc", "<cmd>Obsidian toggle_checkbox<cr>", desc = "Toggle checkbox" },
 			{ "<leader>op", "<cmd>Obsidian paste_img<cr>", desc = "Paste image" },
 			{ "<leader>ok", "<cmd>Obsidian tags<cr>", desc = "Tags" },
+			{ "<leader>ou", "ds]ds]", desc = "Unlink wikilink", remap = true },
 		},
 		opts = {
 			workspaces = {
