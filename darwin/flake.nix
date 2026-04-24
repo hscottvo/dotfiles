@@ -35,6 +35,7 @@
           ];
           homebrew = {
             enable = true;
+            onActivation.cleanup = "uninstall";
             casks = [
               "ghostty"
               "maccy"
