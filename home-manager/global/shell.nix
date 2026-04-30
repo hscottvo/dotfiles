@@ -16,6 +16,14 @@ in
     xdelta
   ];
 
+  programs.direnv = {
+    enable = true;
+    enableZshIntegration = true;
+    package = pkgs.direnv.overrideAttrs (old: {
+      doCheck = false;
+    });
+  };
+
   programs.gh-dash = {
     enable = true;
     settings = {

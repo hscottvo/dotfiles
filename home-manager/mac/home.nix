@@ -20,11 +20,6 @@
     _1password-cli
   ];
 
-  programs.direnv = {
-    enable = true;
-    enableZshIntegration = true;
-  };
-
   programs.zsh.shellAliases = {
     dr = "sudo darwin-rebuild --impure switch --flake ~/dotfiles/darwin#main --option warn-dirty false";
     hms = "home-manager switch --flake ~/dotfiles/home-manager#scott-mac --option warn-dirty false";
