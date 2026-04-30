@@ -25,9 +25,13 @@
           install_url = "https://addons.mozilla.org/firefox/downloads/latest/bitwarden-password-manager/latest.xpi";
           installation_mode = "force_installed";
         };
-        "vimium-c@gdh1995.cn" = {
-          install_url = "https://addons.mozilla.org/firefox/downloads/latest/vimium-c/latest.xpi";
+        "{d7742d87-e61d-4b78-b8a1-b469842139fa}" = {
+          install_url = "https://addons.mozilla.org/firefox/downloads/latest/vimium-ff/latest.xpi";
           installation_mode = "force_installed";
+        };
+
+        "vimium-c@gdh1995.cn" = {
+          installation_mode = "blocked";
         };
         "{88ebde3a-4581-4c6b-8019-2a05a9e3e938}" = {
           install_url = "https://addons.mozilla.org/firefox/downloads/latest/hide-youtube-shorts/latest.xpi";
@@ -37,7 +41,6 @@
           install_url = "https://addons.mozilla.org/firefox/downloads/latest/keepa/latest.xpi";
           installation_mode = "force_installed";
         };
-
       };
     };
     profiles.main = {
