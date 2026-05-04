@@ -33,6 +33,12 @@
             stow
             vim
           ];
+
+          environment.systemPath = [
+            "/opt/homebrew/bin"
+            "/opt/homebrew/sbin"
+          ];
+
           homebrew = {
             enable = true;
             onActivation.cleanup = "uninstall";
