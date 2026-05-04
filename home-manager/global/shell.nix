@@ -78,6 +78,8 @@ in
       ulimit -n 2048
     '';
     shellAliases = {
+      vi = "nvim";
+      vim = "nvim";
       ll = "eza -l";
       ls = "eza";
     };

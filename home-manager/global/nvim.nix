@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, lib, ... }:
 
 {
   home.packages = with pkgs; [
@@ -9,6 +9,7 @@
     lazygit
     lua
     luajitPackages.luarocks_bootstrap
+    neovim
     nodejs_22
     python3
     ripgrep
@@ -37,12 +38,13 @@
     unzip
   ];
 
-  programs.neovim = {
-    enable = true;
-    viAlias = true;
-    vimAlias = true;
-    vimdiffAlias = true;
-  };
+  home.activation.nvimSymlink = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
+    if [ -L ~/.config/nvim ] || [ -d ~/.config/nvim ]; then
+      rm -rf ~/.config/nvim
+    fi
+
+    ln -s ~/dotfiles/nvim ~/.config/nvim
+  '';
   stylix.targets.neovim.enable = false;
 
   programs.yazi = {
