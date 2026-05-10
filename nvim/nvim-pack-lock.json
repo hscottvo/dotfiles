@@ -1,0 +1,16 @@
+{
+  "plugins": {
+    "nvim": {
+      "rev": "84336e08415858f6d835835e81a4f79e585463c6",
+      "src": "https://github.com/catppuccin/nvim"
+    },
+    "nvim-lspconfig": {
+      "rev": "4d3b3bb8815fbe37bcaf3dbdb12a22382bc11ebe",
+      "src": "https://github.com/neovim/nvim-lspconfig"
+    },
+    "vague.nvim": {
+      "rev": "c9bdc33539c7a6260000326c4da6b2e7ab428079",
+      "src": "https://github.com/vague2k/vague.nvim"
+    }
+  }
+}
