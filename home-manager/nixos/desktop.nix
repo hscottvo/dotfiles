@@ -10,8 +10,8 @@
     nwg-look
     pavucontrol
     wl-clipboard
-    xfce.thunar
-    xfce.thunar-volman
+    thunar
+    thunar-volman
   ];
 
   services.swaync.enable = true;
