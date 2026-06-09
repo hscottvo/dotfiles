@@ -6,6 +6,7 @@
     hunspell
     dbeaver-bin
     duckdb
+    localsend
     musescore
     obsidian
     spotify
