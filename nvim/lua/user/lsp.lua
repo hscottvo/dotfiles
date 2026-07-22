@@ -63,6 +63,17 @@ if not enable_if("rumdl") then
 	enable_if("marksman")
 end
 
+vim.lsp.config("nil_ls", {
+	settings = {
+		["nil"] = {
+			nix = {
+				flake = {
+					autoArchive = false,
+				},
+			},
+		},
+	},
+})
 enable_if("nil_ls")
 vim.lsp.config("pyright", {
 	settings = {

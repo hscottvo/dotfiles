@@ -82,6 +82,8 @@ in
       vim = "nvim";
       ll = "eza -l";
       ls = "eza";
+      # Update every machine flake's lock; skips languages/ (unpinned templates).
+      bump-locks = "find ${dotfilesDir} -name flake.nix -not -path '*/.*' -not -path '*/languages/*' -execdir nix flake update \\;";
     };
   };
 
