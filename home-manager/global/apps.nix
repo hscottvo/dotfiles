@@ -43,8 +43,16 @@
           install_url = "https://addons.mozilla.org/firefox/downloads/latest/keepa/latest.xpi";
           installation_mode = "force_installed";
         };
+        "adnauseam@rednoise.org" = {
+          install_url = "https://addons.mozilla.org/firefox/downloads/latest/adnauseam/latest.xpi";
+          installation_mode = "force_installed";
+        };
+        "uBlock0@raymondhill.net" = {
+          installation_mode = "blocked";
+        };
       };
     };
+
     profiles.main = {
       isDefault = true;
       settings = {
