@@ -11,7 +11,6 @@
     musescore
     obsidian
     spotify
-    spotify-player
     tree
   ];
 
