@@ -39,10 +39,6 @@ return {
 				date_format = "%Y-%m-%d",
 				time_format = "%H:%M",
 			},
-			completion = {
-				blink = true,
-				min_chars = 1,
-			},
 			ui = { enable = false },
 			legacy_commands = false,
 			note_id_func = function(title)
