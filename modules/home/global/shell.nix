@@ -244,6 +244,9 @@
           core.symlinks = true;
           core.editor = "nvim";
           diff.tool = "nvimdiff";
+          # Rebase on pull instead of creating merge bubbles when local and
+          # remote have both moved.
+          pull.rebase = true;
         };
       };
 
