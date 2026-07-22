@@ -3,6 +3,7 @@
 {
   home.packages = with pkgs; [
     brave
+    difftastic
     hunspell
     dbeaver-bin
     duckdb

@@ -30,6 +30,7 @@ in
       main = { };
     };
   };
+  stylix.targets.zen-browser.profileNames = [ "main" ];
 
   programs.fuzzel = {
     enable = true;

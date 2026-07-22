@@ -1,6 +1,8 @@
-{ pkgs, ... }:
+{ pkgs, inputs, ... }:
 
 {
+  imports = [ inputs.zen-browser.homeModules.beta ];
+
   home.username = "scott";
   home.homeDirectory = "/Users/scott";
 
@@ -17,13 +19,15 @@
     nix-direnv
     openssl
     pkgconf
-    _1password-cli
   ];
-
-  programs.zsh.shellAliases = {
-    dr = "sudo darwin-rebuild --impure switch --flake ~/dotfiles/darwin#main --option warn-dirty false";
-    hms = "home-manager switch --flake ~/dotfiles/home-manager#scott-mac --option warn-dirty false";
+  programs.zen-browser = {
+    enable = true;
+    darwinDefaultsId = "app.zen-browser.zen";
+    profiles = {
+      main = { };
+    };
   };
+  stylix.targets.zen-browser.profileNames = [ "main" ];
 
   home.sessionPath = [ "$HOME/.local/bin" ];
 

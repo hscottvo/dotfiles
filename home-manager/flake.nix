@@ -42,6 +42,18 @@
         ./nixos/nvim.nix
       ];
       macFiles = [ ./mac/home.nix ];
+
+      # Both Macs share the repo; each builds its role by name.
+      mkMac =
+        roleModules:
+        home-manager.lib.homeManagerConfiguration {
+          pkgs = import nixpkgs {
+            system = "aarch64-darwin";
+            config.allowUnfree = true;
+          };
+          modules = moduleFiles ++ macFiles ++ roleModules ++ [ mac-app-util.homeManagerModules.default ];
+          extraSpecialArgs = { inherit inputs; };
+        };
     in
     {
 
@@ -49,22 +61,14 @@
         pkgs = import nixpkgs {
           system = "x86_64-linux";
           config.allowUnfree = true;
-          config.stylix.targets.zen-browser.profileNames = [ "main" ];
           allowUnfreePredicate = (_: true);
         };
         modules = moduleFiles ++ linuxFiles;
         extraSpecialArgs = { inherit inputs; };
       };
 
-      homeConfigurations.scott-mac = home-manager.lib.homeManagerConfiguration {
-        pkgs = import nixpkgs {
-          system = "aarch64-darwin";
-          config.allowUnfree = true;
-          config.stylix.targets.zen-browser.profileNames = [ "main" ];
-        };
-        modules = moduleFiles ++ macFiles ++ [ mac-app-util.homeManagerModules.default ];
-        extraSpecialArgs = { inherit inputs; };
-      };
+      homeConfigurations.scott-mac-personal = mkMac [ ./mac/personal.nix ];
+      homeConfigurations.scott-mac-work = mkMac [ ./mac/work.nix ];
 
     };
 }

@@ -43,9 +43,9 @@
             enable = true;
             onActivation.cleanup = "uninstall";
             casks = [
+              "finetune"
               "ghostty"
               "maccy"
-              "1password-cli"
             ];
           };
 
@@ -92,19 +92,35 @@
           nixpkgs.hostPlatform = "aarch64-darwin";
           nixpkgs.config.allowUnfree = true;
         };
-    in
-    {
-      # Build darwin flake using:
-      # $ darwin-rebuild build --flake .#simple
-      darwinConfigurations.main = nix-darwin.lib.darwinSystem {
-        modules = [
-          mac-app-util.darwinModules.default
-          configuration
+
+      # Work-laptop-only tooling. Homebrew casks merge across modules, so these
+      # append to the shared list.
+      work = {
+        homebrew.casks = [
+          "tsh"
+          "1password-cli"
+          "gcloud-cli"
         ];
       };
 
+      darwinSystem =
+        extraModules:
+        nix-darwin.lib.darwinSystem {
+          modules = [
+            mac-app-util.darwinModules.default
+            configuration
+          ]
+          ++ extraModules;
+        };
+    in
+    {
+      # Each laptop builds its role: `darwin-rebuild switch --flake .#personal`
+      # on the personal Mac, `.#work` on the work Mac.
+      darwinConfigurations.personal = darwinSystem [ ];
+      darwinConfigurations.work = darwinSystem [ work ];
+
       # Expose the package set, including overlays, for convenience.
-      darwinPackages = self.darwinConfigurations.main.pkgs;
+      darwinPackages = self.darwinConfigurations.personal.pkgs;
     };
 }
 
