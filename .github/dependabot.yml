@@ -1,0 +1,15 @@
+version: 2
+
+# Dependabot keeps the GitHub Actions versions and drift's Cargo deps current.
+# It does NOT handle Nix flake inputs or nvim plugins — the update-locks
+# workflow owns those.
+updates:
+  - package-ecosystem: github-actions
+    directory: /
+    schedule:
+      interval: weekly
+
+  - package-ecosystem: cargo
+    directory: /drift
+    schedule:
+      interval: weekly
