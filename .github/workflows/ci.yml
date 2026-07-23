@@ -5,9 +5,16 @@ name: ci
 # and PR and adds the fmt/clippy gates that a plain build doesn't.
 
 on:
+  # Only run when drift, its toolchain, or this workflow changes — a pure Nix
+  # or nvim change can't affect the drift crate.
   push:
     branches: [main]
-  pull_request: {}
+    paths: &drift-paths
+      - "drift/**"
+      - "languages/rust/**"
+      - ".github/workflows/ci.yml"
+  pull_request:
+    paths: *drift-paths
   workflow_dispatch: {}
 
 permissions:
