@@ -1,19 +1,20 @@
 name: update-locks
 
 # Weekly bump of both lockfiles, committed to main ONLY if every check passes:
-#   - flake.lock  (nix inputs) — validated by evaluating all six configs and
-#     building the Linux-native outputs
-#   - nvim/lazy-lock.json (neovim plugins) — validated by `Lazy! sync`, which
-#     installs every plugin at its new revision and runs its build step
-# Public repo → Actions minutes are free and unlimited. A red run commits
-# nothing and GitHub emails the failure.
+#   - flake.lock  (nix inputs)
+#   - nvim/lazy-lock.json (neovim plugins), validated by `Lazy! sync`
+# Validation is split by platform because the configs can't all be evaluated on
+# one OS: the darwin/mac-home configs import-from-derivation into aarch64-darwin
+# builds (and the reverse for the Linux configs). So Linux configs are checked
+# on ubuntu and darwin/mac-home configs on a native macOS runner, both against
+# the SAME updated lock (passed as an artifact). Public repo → Actions minutes
+# (incl. macOS) are free. A red run commits nothing and GitHub emails it.
 
 on:
   schedule:
     - cron: "0 8 * * 1" # Mondays 08:00 UTC
   workflow_dispatch: {} # manual "Run workflow" button
 
-# Never let two runs race on the push to main.
 concurrency:
   group: update-locks
   cancel-in-progress: true
@@ -22,7 +23,10 @@ permissions:
   contents: write
 
 jobs:
-  update:
+  # Bump the locks, validate the Linux-native configs + neovim plugins, and
+  # publish the updated lockfiles so the darwin check and the commit reuse the
+  # exact same lock.
+  check-linux:
     runs-on: ubuntu-latest
     timeout-minutes: 45
     steps:
@@ -33,33 +37,20 @@ jobs:
           extra-conf: |
             experimental-features = nix-command flakes
 
-      # --- nix inputs -------------------------------------------------------
       - name: Update flake.lock
         run: nix flake update
 
-      - name: Evaluate every configuration
+      - name: Evaluate Linux configurations
         run: |
           set -euo pipefail
           for attr in \
-            darwinConfigurations.personal.system \
-            darwinConfigurations.work.system \
-            homeConfigurations.scott-mac-personal.activationPackage \
-            homeConfigurations.scott-mac-work.activationPackage \
-            homeConfigurations.scott-linux.activationPackage \
-            nixosConfigurations.main.config.system.build.toplevel; do
+            nixosConfigurations.main.config.system.build.toplevel \
+            homeConfigurations.scott-linux.activationPackage; do
             echo "::group::eval $attr"
             nix eval ".#$attr.drvPath" --raw > /dev/null
             echo "::endgroup::"
           done
 
-      - name: Build Linux-native outputs
-        run: |
-          set -euo pipefail
-          nix build --no-link --print-out-paths \
-            .#packages.x86_64-linux.drift \
-            .#devShells.x86_64-linux.default
-
-      # --- neovim plugins ---------------------------------------------------
       - name: Update and verify neovim plugins
         run: |
           set -euo pipefail
@@ -80,7 +71,60 @@ jobs:
             nixpkgs#curl nixpkgs#unzip \
             --command nvim --headless "+Lazy! sync" +qa
 
-      # --- commit (reached only if all the above passed) --------------------
+      - name: Publish updated lockfiles
+        uses: actions/upload-artifact@v4
+        with:
+          name: locks
+          path: |
+            flake.lock
+            nvim/lazy-lock.json
+          include-hidden-files: true
+          retention-days: 1
+
+  # Validate the darwin + mac-home configs on a native macOS runner, against the
+  # exact flake.lock produced above.
+  check-darwin:
+    needs: check-linux
+    runs-on: macos-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v5
+
+      - name: Use the updated lock from check-linux
+        uses: actions/download-artifact@v4
+        with:
+          name: locks
+
+      - uses: DeterminateSystems/nix-installer-action@main
+        with:
+          extra-conf: |
+            experimental-features = nix-command flakes
+
+      - name: Evaluate darwin configurations
+        run: |
+          set -euo pipefail
+          for attr in \
+            darwinConfigurations.personal.system \
+            darwinConfigurations.work.system \
+            homeConfigurations.scott-mac-personal.activationPackage \
+            homeConfigurations.scott-mac-work.activationPackage; do
+            echo "::group::eval $attr"
+            nix eval ".#$attr.drvPath" --raw > /dev/null
+            echo "::endgroup::"
+          done
+
+  # Commit the validated lockfiles — reached only if both checks passed.
+  commit:
+    needs: [check-linux, check-darwin]
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+
+      - name: Restore the validated lockfiles
+        uses: actions/download-artifact@v4
+        with:
+          name: locks
+
       - name: Commit bumped locks
         run: |
           set -euo pipefail
