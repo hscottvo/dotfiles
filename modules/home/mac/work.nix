@@ -14,6 +14,11 @@
         hms = "home-manager switch --flake ~/dotfiles#scott-mac-work --option warn-dirty false";
       };
 
+      # Tell drift which Mac this is (see modules/packages/drift.nix).
+      xdg.configFile."drift/config.toml".text = ''
+        role = "work"
+      '';
+
       # greywall sandbox (mo-pi): wrap pi in the company deny-by-default OS sandbox.
       # Work mac only — this file is not imported by scott-mac-personal. Guarded on
       # the binary by absolute path, so it is a harmless no-op if greywall is not

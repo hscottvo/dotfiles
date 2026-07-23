@@ -20,6 +20,11 @@
         nrs = "sudo nixos-rebuild switch --flake ~/dotfiles#main --option warn-dirty false";
       };
 
+      # Tell drift which NixOS host this is (see modules/packages/drift.nix).
+      xdg.configFile."drift/config.toml".text = ''
+        nixos_host = "main"
+      '';
+
       home.sessionPath = [ "$HOME/.local/bin" ];
       programs.home-manager.enable = true;
     };
