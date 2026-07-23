@@ -1,0 +1,104 @@
+name: update-locks
+
+# Weekly bump of both lockfiles, committed to main ONLY if every check passes:
+#   - flake.lock  (nix inputs) — validated by evaluating all six configs and
+#     building the Linux-native outputs
+#   - nvim/lazy-lock.json (neovim plugins) — validated by `Lazy! sync`, which
+#     installs every plugin at its new revision and runs its build step
+# Public repo → Actions minutes are free and unlimited. A red run commits
+# nothing and GitHub emails the failure.
+
+on:
+  schedule:
+    - cron: "0 8 * * 1" # Mondays 08:00 UTC
+  workflow_dispatch: {} # manual "Run workflow" button
+
+# Never let two runs race on the push to main.
+concurrency:
+  group: update-locks
+  cancel-in-progress: true
+
+permissions:
+  contents: write
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: DeterminateSystems/nix-installer-action@main
+        with:
+          extra-conf: |
+            experimental-features = nix-command flakes
+
+      # --- nix inputs -------------------------------------------------------
+      - name: Update flake.lock
+        run: nix flake update
+
+      - name: Evaluate every configuration
+        run: |
+          set -euo pipefail
+          for attr in \
+            darwinConfigurations.personal.system \
+            darwinConfigurations.work.system \
+            homeConfigurations.scott-mac-personal.activationPackage \
+            homeConfigurations.scott-mac-work.activationPackage \
+            homeConfigurations.scott-linux.activationPackage \
+            nixosConfigurations.main.config.system.build.toplevel; do
+            echo "::group::eval $attr"
+            nix eval ".#$attr.drvPath" --raw > /dev/null
+            echo "::endgroup::"
+          done
+
+      - name: Build Linux-native outputs
+        run: |
+          set -euo pipefail
+          nix build --no-link --print-out-paths \
+            .#packages.x86_64-linux.drift \
+            .#devShells.x86_64-linux.default
+
+      # --- neovim plugins ---------------------------------------------------
+      - name: Update and verify neovim plugins
+        run: |
+          set -euo pipefail
+          # Point neovim at the repo's config; keep data/state/cache in temp so
+          # the only file touched in the tree is nvim/lazy-lock.json.
+          export XDG_CONFIG_HOME="$RUNNER_TEMP/xdg-config"
+          export XDG_DATA_HOME="$RUNNER_TEMP/xdg-data"
+          export XDG_STATE_HOME="$RUNNER_TEMP/xdg-state"
+          export XDG_CACHE_HOME="$RUNNER_TEMP/xdg-cache"
+          mkdir -p "$XDG_CONFIG_HOME"
+          ln -sfn "$GITHUB_WORKSPACE/nvim" "$XDG_CONFIG_HOME/nvim"
+          # `Lazy! sync` updates every plugin to its latest allowed revision,
+          # rewrites lazy-lock.json, and runs each plugin's build step; it exits
+          # non-zero (failing the job) if any install or build fails.
+          nix shell \
+            nixpkgs#neovim nixpkgs#git nixpkgs#gcc nixpkgs#gnumake \
+            nixpkgs#nodejs nixpkgs#tree-sitter nixpkgs#ripgrep nixpkgs#fd \
+            nixpkgs#curl nixpkgs#unzip \
+            --command nvim --headless "+Lazy! sync" +qa
+
+      # --- commit (reached only if all the above passed) --------------------
+      - name: Commit bumped locks
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          changed=0
+          if ! git diff --quiet flake.lock; then
+            git add flake.lock
+            git commit -m "flake.lock: weekly input bump"
+            changed=1
+          fi
+          if ! git diff --quiet nvim/lazy-lock.json; then
+            git add nvim/lazy-lock.json
+            git commit -m "nvim: weekly plugin bump (lazy-lock.json)"
+            changed=1
+          fi
+          if [ "$changed" = 1 ]; then
+            git push origin HEAD:main
+          else
+            echo "No lock changes this week."
+          fi

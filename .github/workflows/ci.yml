@@ -1,0 +1,41 @@
+name: ci
+
+# Fast per-change checks. The weekly update-locks workflow also builds drift
+# (which runs `cargo test` in its Nix check phase), but this runs on every push
+# and PR and adds the fmt/clippy gates that a plain build doesn't.
+
+on:
+  push:
+    branches: [main]
+  pull_request: {}
+  workflow_dispatch: {}
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  drift:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: DeterminateSystems/nix-installer-action@main
+        with:
+          extra-conf: |
+            experimental-features = nix-command flakes
+
+      # Use the repo's own pinned Rust toolchain (languages/rust dev shell) so
+      # CI matches local development.
+      - name: fmt, clippy, test
+        run: |
+          nix develop ./languages/rust --no-write-lock-file --command bash -euo pipefail -c '
+            cd drift
+            cargo fmt --check
+            cargo clippy --all-targets -- -D warnings
+            cargo test
+          '
