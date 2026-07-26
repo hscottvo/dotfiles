@@ -11,7 +11,6 @@
       home.homeDirectory = "/Users/scott";
 
       home.packages = with pkgs; [
-        discord
         git
         keychain
         xclip

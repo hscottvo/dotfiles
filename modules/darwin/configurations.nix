@@ -13,7 +13,7 @@ let
     };
 in
 {
-  flake.darwinConfigurations.personal = darwinSystem [ ];
+  flake.darwinConfigurations.personal = darwinSystem [ self.darwinModules.personal ];
   flake.darwinConfigurations.work = darwinSystem [ self.darwinModules.work ];
 
   # Expose the package set (with overlays) for convenience.
