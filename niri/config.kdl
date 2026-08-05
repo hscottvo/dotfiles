@@ -12,6 +12,8 @@ output "HDMI-A-1" {
 
 input {
     keyboard {
+        repeat-delay 150
+        repeat-rate 25
         xkb {
             layout "us,ua"
         }
@@ -19,7 +21,45 @@ input {
 }
 
 layout {
-    gaps 5
+    gaps 4
+
+    focus-ring {
+        off
+    }
+
+    border {
+        width 4
+        active-color "#e0e0e0"
+        inactive-color "#3a3a3a"
+        urgent-color "#808080"
+    }
+
+    shadow {
+        on
+        softness 30
+        spread 4
+        offset x=0 y=4
+        color "#00000070"
+    }
+
+    struts {
+        left 4
+        right 4
+        top 4
+        bottom 4
+    }
+}
+
+prefer-no-csd
+
+window-rule {
+    geometry-corner-radius 10
+    clip-to-geometry true
+}
+
+layer-rule {
+    match namespace="^quickshell$"
+    place-within-backdrop true
 }
 
 binds {
