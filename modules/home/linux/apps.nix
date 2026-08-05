@@ -13,7 +13,6 @@
       colors = config.custom.themes.everforest.colors;
     in
     {
-      imports = [ inputs.zen-browser.homeModules.beta ];
       home.packages = with pkgs; [
         cliphist
         obs-studio
@@ -24,14 +23,6 @@
         vesktop
         wl-clipboard
       ];
-
-      programs.zen-browser = {
-        enable = true;
-        profiles = {
-          main = { };
-        };
-      };
-      stylix.targets.zen-browser.profileNames = [ "main" ];
 
       programs.fuzzel = {
         enable = true;

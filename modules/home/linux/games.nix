@@ -5,7 +5,7 @@
     {
       home.packages = with pkgs; [
         fuse
-        bottles
+        # bottles
         desmume
         gdlauncher-carbon
         heroic
