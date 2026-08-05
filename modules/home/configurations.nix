@@ -31,6 +31,7 @@ let
     hm.global-shell
     hm.global-nvim
     hm.global-colors
+    hm.global-zen
     driftOnPath
     stylix.homeModules.stylix
   ];
