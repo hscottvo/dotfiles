@@ -8,6 +8,9 @@
       home.stateVersion = "26.05";
       stylix = {
         enable = true;
+        # Sets the GNOME color-scheme key that xdg-desktop-portal reports to Zen
+        # and GTK4; without it they render light chrome under a dark palette.
+        polarity = "dark";
         # base16Scheme = {
         #   slug = "everforest-dark-hard";
         #   scheme = "Everforest dark, hard";
