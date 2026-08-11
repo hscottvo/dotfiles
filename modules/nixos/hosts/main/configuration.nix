@@ -51,6 +51,10 @@
         LC_TIME = "en_US.UTF-8";
       };
 
+      services.udev.extraRules = ''
+        KERNEL=="hidraw*", SUBSYSTEM=="hidraw", ATTRS{serial}=="*vial:f64c2b3c*", MODE="0660", GROUP="users", TAG+="uaccess", TAG+="udev-acl"
+      '';
+
       # Enable the X11 windowing system.
       services.xserver.enable = true;
 
