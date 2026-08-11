@@ -48,7 +48,10 @@
               };
           };
           profiles.main = {
-            settings."zen.welcome-screen.seen" = true;
+            settings = {
+              "zen.welcome-screen.seen" = true;
+              "security.webauthn.ctap2" = false;
+            };
             presets.betterfox.enable = true;
           };
         }
