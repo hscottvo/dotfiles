@@ -1,0 +1,215 @@
+[general]
+defaultLayoutType = "niri"
+ipcEnabled = true
+animationsEnabled = true
+
+[focus]
+followsMouse = true
+
+[gaps]
+size = 4
+
+[gaps.outer]
+left = 4
+right = 4
+top = 4
+bottom = 4
+
+[borders]
+enabled = true
+width = 4
+
+[borders.color]
+red = 0.878
+green = 0.878
+blue = 0.878
+alpha = 1.0
+
+[gestures]
+scrollEnabled = true
+
+[[workspaces]]
+id = "D0D6AED2-8FED-4934-9090-7248ED34DE55"
+name = "1"
+layoutType = "niri"
+monitorAssignment = { type = "main" }
+
+[[workspaces]]
+id = "B9D0C43A-ABE0-4676-80B2-ECB2305F286A"
+name = "2"
+layoutType = "niri"
+monitorAssignment = { type = "main" }
+
+[[workspaces]]
+id = "43A4217E-67C8-4CC4-AF38-22FFC6DB147D"
+name = "3"
+layoutType = "niri"
+monitorAssignment = { type = "main" }
+
+[[workspaces]]
+id = "ACE6EA8E-32E7-4E22-8094-C99F6A6B0B04"
+name = "4"
+layoutType = "niri"
+monitorAssignment = { type = "main" }
+
+[[workspaces]]
+id = "78E0DE6B-695C-4FAD-9065-FE13F7DCF558"
+name = "5"
+layoutType = "niri"
+monitorAssignment = { type = "main" }
+
+[[workspaces]]
+id = "EBB0537C-C416-4995-BAA0-DB9A2E111FC6"
+name = "6"
+layoutType = "niri"
+monitorAssignment = { type = "main" }
+
+[[workspaces]]
+id = "ABE4D874-B07D-4ECD-976B-868D6040E0C3"
+name = "7"
+layoutType = "niri"
+monitorAssignment = { type = "main" }
+
+[[workspaces]]
+id = "B8D34DFE-5795-411C-847A-8E468A761BFD"
+name = "8"
+layoutType = "niri"
+monitorAssignment = { type = "main" }
+
+[[workspaces]]
+id = "250029E7-0566-43BB-9C2A-76B945457F08"
+name = "9"
+layoutType = "niri"
+monitorAssignment = { type = "main" }
+
+[[hotkeys]]
+id = "toggleQuakeTerminal"
+binding = "Option+Return"
+
+[[hotkeys]]
+id = "focus.left"
+binding = "Option+H"
+
+[[hotkeys]]
+id = "focus.right"
+binding = "Option+L"
+
+[[hotkeys]]
+id = "switchWorkspace.next"
+binding = "Option+J"
+
+[[hotkeys]]
+id = "switchWorkspace.previous"
+binding = "Option+K"
+
+[[hotkeys]]
+id = "moveColumn.left"
+binding = "Option+Shift+H"
+
+[[hotkeys]]
+id = "moveColumn.right"
+binding = "Option+Shift+L"
+
+[[hotkeys]]
+id = "moveWindowDown"
+binding = "Option+Shift+J"
+
+[[hotkeys]]
+id = "moveWindowUp"
+binding = "Option+Shift+K"
+
+[[hotkeys]]
+id = "toggleFullscreen"
+binding = "Option+F"
+
+[[hotkeys]]
+id = "toggleFocusedWindowFloating"
+binding = "Option+V"
+
+[[hotkeys]]
+id = "openCommandPalette"
+binding = "Option+R"
+
+[[hotkeys]]
+id = "toggleOverview"
+binding = "Option+Shift+Slash"
+
+[[hotkeys]]
+id = "moveWorkspaceToMonitor.left"
+binding = "Option+Comma"
+
+[[hotkeys]]
+id = "moveWorkspaceToMonitor.right"
+binding = "Option+Period"
+
+[[hotkeys]]
+id = "switchWorkspace.1"
+binding = "Option+1"
+
+[[hotkeys]]
+id = "switchWorkspace.2"
+binding = "Option+2"
+
+[[hotkeys]]
+id = "switchWorkspace.3"
+binding = "Option+3"
+
+[[hotkeys]]
+id = "switchWorkspace.4"
+binding = "Option+4"
+
+[[hotkeys]]
+id = "switchWorkspace.5"
+binding = "Option+5"
+
+[[hotkeys]]
+id = "switchWorkspace.6"
+binding = "Option+6"
+
+[[hotkeys]]
+id = "switchWorkspace.7"
+binding = "Option+7"
+
+[[hotkeys]]
+id = "switchWorkspace.8"
+binding = "Option+8"
+
+[[hotkeys]]
+id = "switchWorkspace.9"
+binding = "Option+9"
+
+[[hotkeys]]
+id = "moveToWorkspace.1"
+binding = "Option+Shift+1"
+
+[[hotkeys]]
+id = "moveToWorkspace.2"
+binding = "Option+Shift+2"
+
+[[hotkeys]]
+id = "moveToWorkspace.3"
+binding = "Option+Shift+3"
+
+[[hotkeys]]
+id = "moveToWorkspace.4"
+binding = "Option+Shift+4"
+
+[[hotkeys]]
+id = "moveToWorkspace.5"
+binding = "Option+Shift+5"
+
+[[hotkeys]]
+id = "moveToWorkspace.6"
+binding = "Option+Shift+6"
+
+[[hotkeys]]
+id = "moveToWorkspace.7"
+binding = "Option+Shift+7"
+
+[[hotkeys]]
+id = "moveToWorkspace.8"
+binding = "Option+Shift+8"
+
+[[hotkeys]]
+id = "moveToWorkspace.9"
+binding = "Option+Shift+9"
