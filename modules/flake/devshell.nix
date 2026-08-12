@@ -6,6 +6,7 @@
     {
       devShells.default = pkgs.mkShell {
         packages = with pkgs; [
+          just
           nixfmt
           stylua
           lua-language-server
