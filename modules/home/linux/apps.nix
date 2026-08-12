@@ -17,8 +17,11 @@
         cliphist
         obs-studio
         libreoffice-qt
+        localsend
         nginx
+        obsidian
         signal-desktop
+        spotify
         vlc
         vesktop
         wl-clipboard

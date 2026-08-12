@@ -48,20 +48,6 @@
         };
       };
 
-      programs.kitty = {
-        enable = true;
-        font = {
-          name = "FiraCode Nerd Font";
-          size = 14;
-        };
-        extraConfig = ''
-          enable_audio_bell no
-          confirm_os_window_close 0
-
-        '';
-      };
-      stylix.targets.kitty.enable = false;
-
       programs.ghostty = {
         settings = {
           font-family = "FiraCode Nerd Font";
