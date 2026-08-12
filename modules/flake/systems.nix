@@ -8,11 +8,4 @@
     "aarch64-linux"
     "aarch64-darwin"
   ];
-
-  # `nix fmt` formats the whole repo.
-  perSystem =
-    { pkgs, ... }:
-    {
-      formatter = pkgs.nixfmt;
-    };
 }

@@ -6,6 +6,14 @@ drift := "cargo run --quiet --release --manifest-path " + drift_crate + " --"
 _default:
     @just --list
 
+# Format the repo (nix, lua, toml) with treefmt.
+fmt:
+    nix fmt --option warn-dirty false
+
+# Fail if anything is unformatted, without writing changes.
+fmt-check:
+    nix fmt --option warn-dirty false -- --ci
+
 # Detect drift between the nix config and this machine (OS-aware, all layers).
 drift:
     {{drift}} all
