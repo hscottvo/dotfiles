@@ -5,5 +5,4 @@ pacman.log
 **/build.log
 .config/kitty
 **/theme.conf
-/niri/theme.kdl
 /noctalia/colors.json

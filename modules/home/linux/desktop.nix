@@ -37,7 +37,7 @@
 
       # Keep the hand-written Niri config modular, like tmux/tmux.conf:
       # config.kdl includes this Nix-generated Stylix theme fragment.
-      home.file."dotfiles/niri/theme.kdl".text = ''
+      xdg.configFile."niri/theme.kdl".text = ''
         layout {
             border {
                 active-color "${colors.base0D}"
