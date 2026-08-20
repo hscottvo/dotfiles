@@ -30,9 +30,6 @@ layout {
 
     border {
         width 4
-        active-color "#e0e0e0"
-        inactive-color "#3a3a3a"
-        urgent-color "#808080"
     }
 
     shadow {
@@ -40,7 +37,6 @@ layout {
         softness 30
         spread 4
         offset x=0 y=4
-        color "#00000070"
     }
 
     struts {
@@ -55,6 +51,9 @@ layout {
         proportion 1.0
     }
 }
+
+// Generated from the Stylix palette by Home Manager.
+include "theme.kdl"
 
 prefer-no-csd
 
