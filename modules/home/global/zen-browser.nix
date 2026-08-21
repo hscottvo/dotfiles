@@ -42,9 +42,10 @@
                 "{d7742d87-e61d-4b78-b8a1-b469842139fa}" = fromAmo "vimium-ff";
                 "{88ebde3a-4581-4c6b-8019-2a05a9e3e938}" = fromAmo "hide-youtube-shorts";
                 "keepa" = fromAmo "keepa";
-                "adnauseam@rednoise.org" = fromAmo "adnauseam";
+                "uBlock0@raymondhill.net" = fromAmo "ublock-origin";
                 "vimium-c@gdh1995.cn".installation_mode = "blocked";
                 "@testpilot-containers" = fromAmo "multi-account-containers";
+                "amptra@keepa.com" = fromAmo "keepa";
               };
           };
           profiles.main = {
