@@ -20,6 +20,7 @@
       casks = [
         "finetune"
         "ghostty"
+        "localsend"
         "maccy"
         "vial"
       ];
