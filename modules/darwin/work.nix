@@ -4,6 +4,7 @@
   # configuration pulls this in.
   flake.darwinModules.work = {
     homebrew.casks = [
+      "chatgpt"
       "tsh"
       "1password-cli"
       "gcloud-cli"
