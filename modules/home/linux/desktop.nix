@@ -73,5 +73,7 @@
         mTertiary = colors.base0C;
       };
 
+      programs.mpvpaper.enable = true;
     };
+
 }
