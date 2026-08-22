@@ -27,6 +27,7 @@ local parsers = {
 	"typst",
 	"vue",
 	"yaml",
+	"zig",
 }
 
 return {
