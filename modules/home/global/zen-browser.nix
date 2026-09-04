@@ -52,13 +52,14 @@
             settings = {
               "zen.welcome-screen.seen" = true;
               "security.webauthn.ctap2" = false;
+              "zen.view.use-single-toolbar" = false;
+              "zen.view.sidebar-expanded" = true;
+              "zen.urlbar.behavior" = "normal";
             };
             presets.betterfox.enable = true;
           };
         }
-        (lib.mkIf pkgs.stdenv.hostPlatform.isDarwin {
-          darwinDefaultsId = "app.zen-browser.zen";
-        })
+        (lib.mkIf pkgs.stdenv.hostPlatform.isDarwin { darwinDefaultsId = "app.zen-browser.zen"; })
       ];
 
       stylix.targets.zen-browser = {
