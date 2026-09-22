@@ -102,7 +102,6 @@ binds {
     Alt+J     { focus-monitor-up; }
     Alt+K     { focus-monitor-down; }
 
-    Mod+E { spawn "thunar"; }
     Mod+V { toggle-window-floating; }
     Mod+R { spawn "noctalia-shell" "ipc" "call" "launcher" "toggle"; }
     Mod+F { fullscreen-window; }
