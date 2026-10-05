@@ -13,6 +13,10 @@ clipboard-write = allow
 keybind = super+shift+enter=new_split:auto
 
 # Move to splits: arrow keys mapped by default
+keybind = super+shift+arrow_left=goto_split:left
+keybind = super+shift+arrow_down=goto_split:down
+keybind = super+shift+arrow_up=goto_split:up
+keybind = super+shift+arrow_right=goto_split:right
 keybind = super+shift+h=goto_split:left
 keybind = super+shift+j=goto_split:down
 keybind = super+shift+k=goto_split:up
