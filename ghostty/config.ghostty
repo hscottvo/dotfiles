@@ -2,6 +2,16 @@
 font-family = FiraCode Nerd Font
 font-size = 14
 
+# Font size — current pane
+keybind = super+shift+equal=increase_font_size:1
+keybind = super+minus=decrease_font_size:1
+keybind = super+0=reset_font_size
+
+# Font size — all panes
+keybind = all:super+alt+shift+equal=increase_font_size:1
+keybind = all:super+alt+minus=decrease_font_size:1
+keybind = all:super+alt+0=reset_font_size
+
 # Scrollback
 scrollback-limit = 100000
 
