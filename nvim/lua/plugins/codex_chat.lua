@@ -15,6 +15,7 @@ return {
 			"CodexChatInfo",
 			"CodexChatSkills",
 			"CodexChatDiagram",
+			"CodexChatDiagramView",
 		},
 		keys = {
 			{ "<leader>at", "<cmd>CodexChat<cr>", desc = "Open Codex chat" },
