@@ -62,12 +62,8 @@
       };
       stylix.targets.kitty.enable = false;
 
-      programs.ghostty = {
-        settings = {
-          font-family = "FiraCode Nerd Font";
-          command = "tmux new-session -A -s main";
-        };
-      };
+      xdg.configFile."ghostty/config.ghostty".source =
+        config.lib.file.mkOutOfStoreSymlink "${dotfilesDir}/ghostty/config.ghostty";
 
       programs.zsh = {
         enable = true;
