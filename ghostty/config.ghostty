@@ -19,6 +19,9 @@ scrollback-limit = 100000
 # Searchable scrollback
 clipboard-read = allow
 clipboard-write = allow
+keybind = super+c=copy_to_clipboard:plain
+keybind = super+shift+c=copy_to_clipboard:mixed
+keybind = ctrl+shift+c=copy_to_clipboard:plain
 
 # Splits
 keybind = super+shift+enter=new_split:auto
@@ -50,7 +53,7 @@ keybind = super+shift+e=equalize_splits
 # Tabs
 keybind = super+t=new_tab
 keybind = super+w=close_surface
-keybind = super+ctrl+t=prompt_tab_title
+keybind = super+alt+t=prompt_tab_title
 
 # Prompt navigation
 keybind = super+up=jump_to_prompt:-1
