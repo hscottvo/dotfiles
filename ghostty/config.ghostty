@@ -22,7 +22,7 @@ clipboard-write = allow
 # Splits
 keybind = super+shift+enter=new_split:auto
 
-# Move to splits: arrow keys mapped by default
+# Move to splits
 keybind = super+alt+arrow_left=goto_split:left
 keybind = super+alt+arrow_down=goto_split:down
 keybind = super+alt+arrow_up=goto_split:up
@@ -37,6 +37,10 @@ keybind = super+ctrl+h=resize_split:left,10
 keybind = super+ctrl+j=resize_split:down,10
 keybind = super+ctrl+k=resize_split:up,10
 keybind = super+ctrl+l=resize_split:right,10
+keybind = super+ctrl+arrow_left=resize_split:left,10
+keybind = super+ctrl+arrow_down=resize_split:down,10
+keybind = super+ctrl+arrow_up=resize_split:up,10
+keybind = super+ctrl+arrow_right=resize_split:right,10
 
 # Split management
 keybind = super+shift+z=toggle_split_zoom
