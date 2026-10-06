@@ -49,11 +49,11 @@ keybind = super+shift+e=equalize_splits
 # Tabs
 keybind = super+t=new_tab
 keybind = super+w=close_surface
-keybind = super+shift+t=prompt_tab_title
-keybind = super+shift+alt+left=previous_tab
-keybind = super+shift+alt+right=next_tab
-keybind = super+shift+alt+h=previous_tab
-keybind = super+shift+alt+l=next_tab
+keybind = super+ctrl+t=prompt_tab_title
+keybind = super+ctrl+alt+arrow_left=previous_tab
+keybind = super+ctrl+alt+arrow_right=next_tab
+keybind = super+ctrl+alt+h=previous_tab
+keybind = super+ctrl+alt+l=next_tab
 
 # Prompt navigation
 keybind = super+up=jump_to_prompt:-1
