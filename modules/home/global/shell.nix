@@ -66,6 +66,7 @@
         '';
       };
       stylix.targets.kitty.enable = false;
+      stylix.targets.ghostty.enable = false;
 
       xdg.configFile."ghostty/config.ghostty".source =
         config.lib.file.mkOutOfStoreSymlink "${dotfilesDir}/ghostty/config.ghostty";
@@ -167,7 +168,7 @@
           os = {
             disabled = false;
             format = "[$symbol ]($style)";
-            style = "fg:grey2";
+            style = "fg:base04";
             symbols = {
               NixOS = "";
               Windows = "󰍲";
@@ -207,7 +208,7 @@
 
           directory = {
             style = "fg:orange";
-            read_only_style = "fg_orange";
+            read_only_style = "fg:orange";
             truncation_length = 3;
             truncation_symbol = "…/";
             format = "[ $path]($style)[$read_only]($read_only_style) ";

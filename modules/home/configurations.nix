@@ -15,14 +15,27 @@ let
       config.allowUnfree = true;
     };
 
+  # The pinned Home Manager uses the deprecated `profile install` alias.
+  # Preserve its activation logic while using the current command name.
+  homeManagerCompatibility = { lib, ... }: {
+    options.home.activation = lib.mkOption {
+      apply =
+        entries:
+        entries
+        // {
+          installPackages = entries.installPackages // {
+            data = lib.replaceStrings [ "profile install" ] [ "profile add" ] entries.installPackages.data;
+          };
+        };
+    };
+  };
+
   # Put the repo's own `drift` CLI on PATH (source in ../../drift, packaged in
   # ../packages/drift.nix). Each machine's role/host for it is written to
   # ~/.config/drift/config.toml by the mac-*/linux-base modules.
-  driftOnPath =
-    { pkgs, ... }:
-    {
-      home.packages = [ self.packages.${pkgs.system}.drift ];
-    };
+  driftOnPath = { pkgs, ... }: {
+    home.packages = [ self.packages.${pkgs.stdenv.hostPlatform.system}.drift ];
+  };
 
   # Modules every home configuration gets, regardless of platform.
   globalModules = [
@@ -33,6 +46,7 @@ let
     hm.global-colors
     hm.global-zen
     driftOnPath
+    homeManagerCompatibility
     stylix.homeModules.stylix
   ];
 

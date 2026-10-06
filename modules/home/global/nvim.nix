@@ -1,8 +1,5 @@
 {
-  # Cross-platform Neovim toolchain: neovim itself plus the language servers,
-  # formatters, and build tools the config expects. The nvim config lives in
-  # ~/dotfiles/nvim and is symlinked into place by the activation script below.
-  flake.homeModules.global-nvim = { pkgs, lib, ... }: {
+  flake.homeModules.global-nvim = { pkgs, config, ... }: {
     home.packages = with pkgs; [
       # Requirements for Neovim
       fd
@@ -39,13 +36,8 @@
       unzip
     ];
 
-    home.activation.nvimSymlink = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
-      if [ -L ~/.config/nvim ] || [ -d ~/.config/nvim ]; then
-        rm -rf ~/.config/nvim
-      fi
-
-      ln -s ~/dotfiles/nvim ~/.config/nvim
-    '';
+    xdg.configFile."nvim".source =
+      config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/nvim";
     stylix.targets.neovim.enable = false;
 
     programs.lazygit = {

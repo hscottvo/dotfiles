@@ -26,15 +26,15 @@ keymap("x", "<leader>p", '"_dP')
 -- Disable Q
 keymap("n", "Q", "<nop")
 
--- Window navigation from terminal mode using Alt-hjkl (exits terminal, then navigates)
-keymap("n", "<M-h>", "<C-\\><C-n><C-w>h", opts)
-keymap("n", "<M-j>", "<C-\\><C-n><C-w>j", opts)
-keymap("n", "<M-k>", "<C-\\><C-n><C-w>k", opts)
-keymap("n", "<M-l>", "<C-\\><C-n><C-w>l", opts)
+-- Window navigation using Alt-hjkl; terminal mappings first leave terminal mode.
+for _, direction in ipairs({ "h", "j", "k", "l" }) do
+	keymap("n", "<M-" .. direction .. ">", "<C-w>" .. direction, opts)
+	keymap("t", "<M-" .. direction .. ">", "<C-\\><C-n><C-w>" .. direction, opts)
+end
 
 -- Scroll through quick fixes
-keymap("n", "<C-k>", "<cmd>cnext<CR>zz")
-keymap("n", "<C-j>", "<cmd>cprev<CR>zz")
+keymap("n", "<C-k>", "<cmd>cprev<CR>zz")
+keymap("n", "<C-j>", "<cmd>cnext<CR>zz")
 
 local wk = require("which-key")
 

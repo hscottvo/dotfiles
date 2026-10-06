@@ -93,14 +93,14 @@ binds {
     Mod+Shift+J     { move-window-down-or-to-workspace-down; }
     Mod+Shift+K     { move-window-up-or-to-workspace-up; }
 
-    Alt+Left  { focus-monitor-left; }
-    Alt+Right  { focus-monitor-right; }
-    Alt+Up    { focus-monitor-up; }
-    Alt+Down  { focus-monitor-down; }
-    Alt+H     { focus-monitor-left; }
-    Alt+L     { focus-monitor-right; }
-    Alt+J     { focus-monitor-up; }
-    Alt+K     { focus-monitor-down; }
+    Mod+Ctrl+Alt+Left  { focus-monitor-left; }
+    Mod+Ctrl+Alt+Right { focus-monitor-right; }
+    Mod+Ctrl+Alt+Up    { focus-monitor-up; }
+    Mod+Ctrl+Alt+Down  { focus-monitor-down; }
+    Mod+Ctrl+Alt+H     { focus-monitor-left; }
+    Mod+Ctrl+Alt+L     { focus-monitor-right; }
+    Mod+Ctrl+Alt+J     { focus-monitor-down; }
+    Mod+Ctrl+Alt+K     { focus-monitor-up; }
 
     Mod+V { toggle-window-floating; }
     Mod+R { spawn "noctalia-shell" "ipc" "call" "launcher" "toggle"; }
