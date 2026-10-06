@@ -2,7 +2,12 @@
   # Cross-platform shell + terminal environment: zsh, tmux (Stylix-colored
   # theme), starship, git, and CLI tools.
   flake.homeModules.global-shell =
-    { config, pkgs, ... }:
+    {
+      config,
+      pkgs,
+      lib,
+      ...
+    }:
 
     let
       dotfilesDir = "${config.home.homeDirectory}/dotfiles";
@@ -69,12 +74,21 @@
         enable = true;
         historySubstringSearch.enable = true;
         syntaxHighlighting.enable = true;
-        envExtra = ''
+        initContent = lib.mkAfter ''
           # Local secrets (not managed by home-manager)
           [[ -f ~/.secrets ]] && source ~/.secrets
 
-          autoload -Uz compinit && compinit
+          HISTSIZE=100000
+          SAVEHIST=100000
+          setopt APPEND_HISTORY
+          setopt HIST_EXPIRE_DUPS_FIRST
+          setopt HIST_IGNORE_DUPS
+          setopt HIST_IGNORE_SPACE
+          setopt SHARE_HISTORY
+
           zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
+          zstyle ':completion:*' menu select=2
+          zstyle ':completion:*' group-name
           ulimit -n 2048
         '';
         shellAliases = {
