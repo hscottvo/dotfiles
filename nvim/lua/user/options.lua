@@ -4,11 +4,11 @@ local o = vim.opt
 
 -- Color scheme
 vim.cmd([[colo catppuccin-macchiato]])
--- vim.cmd([[colo everforest]])
--- vim.cmd([[colo monokai-pro]])
-vim.api.nvim_set_hl(0, "Pmenu", { bg = "NONE" })
-vim.api.nvim_set_hl(0, "FloatBorder", { bg = "NONE" })
-vim.api.nvim_set_hl(0, "NormalFloat", { bg = "NONE" })
+-- -- vim.cmd([[colo everforest]])
+-- -- vim.cmd([[colo monokai-pro]])
+-- vim.api.nvim_set_hl(0, "Pmenu", { bg = "NONE" })
+-- vim.api.nvim_set_hl(0, "FloatBorder", { bg = "NONE" })
+-- vim.api.nvim_set_hl(0, "NormalFloat", { bg = "NONE" })
 
 -- toggle inlay hints
 vim.lsp.inlay_hint.enable(true)

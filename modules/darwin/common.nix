@@ -5,7 +5,6 @@
     system.primaryUser = "scott";
     environment.systemPackages = with pkgs; [
       libiconv
-      rustup
       stow
       vim
     ];

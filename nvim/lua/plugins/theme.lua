@@ -1,5 +1,14 @@
 return {
 	{
+		"catppuccin/nvim",
+		name = "catppuccin",
+		priority = 1000,
+		opts = {
+			flavour = "macchiato",
+			transparent_background = true,
+		},
+	},
+	{
 		"neanias/everforest-nvim",
 		config = function()
 			require("everforest").setup({
@@ -13,7 +22,7 @@ return {
 	},
 	{ "ribru17/bamboo.nvim" },
 	{ "loctvl842/monokai-pro.nvim" },
-	{ "catppuccin/nvim", name = "catppuccin", priority = 1000 },
+	-- { "catppuccin/nvim", name = "catppuccin", priority = 1000 },
 	{ "AlexvZyl/nordic.nvim" },
 	{ "marko-cerovac/material.nvim" },
 	{ "shaunsingh/nord.nvim" },

@@ -1,5 +1,7 @@
 # Visual
 theme = Catppuccin Macchiato
+background-opacity = 0.9
+background-blur = true
 font-family = FiraCode Nerd Font
 font-size = 18
 
