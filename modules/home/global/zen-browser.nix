@@ -12,7 +12,7 @@
       programs.zen-browser = lib.mkMerge [
         {
           enable = true;
-          setAsDefaultBrowser = true;
+          setAsDefaultBrowser = lib.mkDefault true;
           policies = {
             DisableAppUpdate = true;
             DisableTelemetry = true;

@@ -2,6 +2,11 @@
   # Work Mac role. Extra packages plus rebuild aliases against the unified
   # flake (#work / #scott-mac-work).
   flake.homeModules.mac-work = { pkgs, ... }: {
+    programs.zen-browser.setAsDefaultBrowser = false;
+    home.sessionVariables.BROWSER = "${pkgs.writeShellScriptBin "chrome" ''
+      exec /usr/bin/open -a "Google Chrome" "$@"
+    ''}/bin/chrome";
+
     home.packages = with pkgs; [
       _1password-cli
       docker-credential-helpers
