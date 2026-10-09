@@ -27,6 +27,7 @@ keybind = ctrl+shift+c=copy_to_clipboard:plain
 
 # Splits
 keybind = super+shift+enter=new_split:auto
+window-save-state = "always"
 
 # Move to splits
 keybind = super+alt+arrow_left=goto_split:left
@@ -63,3 +64,4 @@ keybind = super+down=jump_to_prompt:1
 
 # Shell Integration
 shell-integration-features = ssh-env,ssh-terminfo
+
