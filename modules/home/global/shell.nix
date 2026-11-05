@@ -236,8 +236,6 @@
           ".local/"
         ];
         settings = {
-          user.name = "Scott Vo";
-          user.email = "scott.vo@mechanical-orchard.com";
           init.defaultBranch = "main";
           core.symlinks = true;
           core.editor = "nvim";
