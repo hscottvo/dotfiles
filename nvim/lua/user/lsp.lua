@@ -1,11 +1,21 @@
 local function enable_if(name)
 	local config = vim.lsp.config[name]
-	local cmd = config and config.cmd
-	local exe = type(cmd) == "table" and cmd[1] or name
+	if not config then
+		return false
+	end
+
+	if type(config.cmd) == "function" then
+		vim.lsp.enable(name)
+		return true
+	end
+
+	local exe = type(config.cmd) == "table" and config.cmd[1] or name
+
 	if vim.fn.executable(exe) == 1 then
 		vim.lsp.enable(name)
 		return true
 	end
+
 	return false
 end
 
@@ -131,6 +141,7 @@ vim.lsp.config("rust_analyzer", {
 	},
 })
 enable_if("rust_analyzer")
+enable_if("svelte")
 enable_if("terraformls")
 enable_if("tflint")
 enable_if("ts_ls")

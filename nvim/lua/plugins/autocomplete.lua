@@ -24,6 +24,7 @@ return {
 		ft = {
 			"javascript",
 			"javascriptreact",
+			"svelte",
 			"typescript",
 			"typescriptreact",
 			"vue",

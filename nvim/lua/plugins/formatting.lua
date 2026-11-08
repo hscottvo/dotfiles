@@ -17,6 +17,7 @@ return {
 				nix = { "nixfmt" },
 				python = { "isort", "ruff_format" },
 				rust = { "rustfmt", "leptosfmt" },
+				svelte = { "prettierd" },
 				terraform = { "terraform_fmt" },
 				typescript = { "prettier" },
 				typescriptreact = { "prettier" },

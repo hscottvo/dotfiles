@@ -20,6 +20,7 @@ local parsers = {
 	"nix",
 	"python",
 	"rust",
+	"svelte",
 	"sql",
 	"terraform",
 	"tsx",
