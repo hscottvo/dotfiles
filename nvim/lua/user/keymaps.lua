@@ -4,6 +4,8 @@ local opts = { silent = true }
 
 local keymap = vim.keymap.set
 
+keymap("n", "<ESC>", "<cmd>noh<cr>")
+
 -- Move selection up and down, with indents
 keymap("v", "J", ":m '>+1<CR>gv=gv")
 keymap("v", "K", ":m '<-2<CR>gv=gv")
