@@ -1,11 +1,8 @@
 vim.g.mapleader = " "
 
 local opts = { silent = true }
-local expr_opts = { silent = true, expr = true }
 
 local keymap = vim.keymap.set
-
-keymap("n", "<ESC>", ":noh<CR>:lua require('notify').dismiss()<CR>", opts)
 
 -- Move selection up and down, with indents
 keymap("v", "J", ":m '>+1<CR>gv=gv")
@@ -24,7 +21,7 @@ keymap("n", "N", "Nzzzv")
 keymap("x", "<leader>p", '"_dP')
 
 -- Disable Q
-keymap("n", "Q", "<nop")
+keymap("n", "Q", "<nop>")
 
 -- Window navigation using Alt-hjkl; terminal mappings first leave terminal mode.
 for _, direction in ipairs({ "h", "j", "k", "l" }) do
@@ -35,6 +32,8 @@ end
 -- Scroll through quick fixes
 keymap("n", "<C-k>", "<cmd>cprev<CR>zz")
 keymap("n", "<C-j>", "<cmd>cnext<CR>zz")
+keymap("n", "<C-f>", "<cmd>cfirst<CR>zz")
+keymap("n", "<C-l>", "<cmd>clast<CR>zz")
 
 local wk = require("which-key")
 
@@ -70,7 +69,7 @@ wk.add({
 		"<cmd>lua vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())<cr>",
 		desc = "Toggle Inlay Hints",
 	},
-	{ "<leader>w", "<cmd> noa w<cr>", desc = "Write without Formatting" },
+	{ "<leader>w", "<cmd> noa w<cr>", desc = "Write without formatting" },
 
 	-- Git
 	{ "<leader>g", "", desc = "git" },

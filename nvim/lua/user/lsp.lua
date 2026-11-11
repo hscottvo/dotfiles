@@ -115,14 +115,6 @@ vim.lsp.config("rust_analyzer", {
 		["rust-analyzer"] = {
 			checkOnSave = {
 				command = "clippy",
-				-- extraArgs = {
-				-- 	"--",
-				-- 	"--no-deps",
-				-- 	"-Dclippy::correctness",
-				-- 	"-Dclippy::complexity",
-				-- 	"-Wclippy::perf",
-				-- 	"-Wclippy::pedantic",
-				-- },
 			},
 			-- Other Settings ...
 			rustfmt = {

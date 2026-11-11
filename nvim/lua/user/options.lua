@@ -13,6 +13,12 @@ vim.cmd([[colo catppuccin-macchiato]])
 -- toggle inlay hints
 vim.lsp.inlay_hint.enable(true)
 
+-- use rg for grepping
+if vim.fn.executable("rg") == 1 then
+	vim.opt.grepprg = "rg --vimgrep"
+	vim.opt.grepformat = "%f:%l:%c:%m"
+end
+
 -- Line numbers
 o.number = true
 o.relativenumber = true
