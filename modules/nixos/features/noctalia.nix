@@ -1,6 +1,6 @@
 { self, inputs, ... }: {
   perSystem = { pkgs, ... }: {
-    packages.myNoctalia = inputs.wrapper-modules.wrappers.noctalia-shell.wrap {
+    packages.myNoctalia = inputs.wrapper-modules.wrappers.noctalia.wrap {
       inherit pkgs;
       outOfStoreConfig = "/home/scott/dotfiles/noctalia";
       # settings =
