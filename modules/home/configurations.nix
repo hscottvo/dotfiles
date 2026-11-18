@@ -15,13 +15,6 @@ let
       config.allowUnfree = true;
     };
 
-  # Put the repo's own `drift` CLI on PATH (source in ../../drift, packaged in
-  # ../packages/drift.nix). Each machine's role/host for it is written to
-  # ~/.config/drift/config.toml by the mac-*/linux-base modules.
-  driftOnPath = { pkgs, ... }: {
-    home.packages = [ self.packages.${pkgs.stdenv.hostPlatform.system}.drift ];
-  };
-
   # Modules every home configuration gets, regardless of platform.
   globalModules = [
     hm.global-base
@@ -30,7 +23,6 @@ let
     hm.global-nvim
     hm.global-colors
     hm.global-zen
-    driftOnPath
     stylix.homeModules.stylix
   ];
 
