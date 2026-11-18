@@ -1,5 +1,5 @@
 spawn-at-startup "xwayland-satellite"
-spawn-at-startup "noctalia-shell"
+spawn-at-startup "noctalia"
 spawn-at-startup "sh" "-c" "wl-paste --watch cliphist store"
 
 output "DP-1" {
@@ -63,7 +63,7 @@ window-rule {
 }
 
 layer-rule {
-    match namespace="^quickshell$"
+    match namespace="^noctalia-backdrop"
     place-within-backdrop true
 }
 
@@ -103,7 +103,7 @@ binds {
     Mod+Ctrl+Alt+K     { focus-monitor-up; }
 
     Mod+V { toggle-window-floating; }
-    Mod+R { spawn "noctalia-shell" "ipc" "call" "launcher" "toggle"; }
+    Mod+R { spawn "noctalia" "msg" "panel-toggle" "launcher"; }
     Mod+F { fullscreen-window; }
     Mod+C { spawn "sh" "-c" "cliphist list | fuzzel -d | cliphist decode | wl-copy"; }
     Mod+Ctrl+S { screenshot; }

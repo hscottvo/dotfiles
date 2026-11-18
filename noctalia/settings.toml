@@ -1,0 +1,116 @@
+[theme]
+mode = "dark"
+source = "custom"
+custom_palette = "stylix"
+
+[shell]
+font_family = "Sans Serif"
+clipboard_enabled = false
+telemetry_enabled = false
+
+[shell.launcher]
+categories = true
+app_grid = false
+sort_by_usage = true
+auto_paste = "off"
+
+[bar.default]
+position = "right"
+auto_hide = false
+background_opacity = 0.93
+margin_ends = 4
+margin_edge = 4
+padding = 2
+widget_spacing = 6
+capsule = true
+start = ["launcher", "clock", "cpu", "cpu-temp", "memory", "active_window", "media"]
+center = ["workspaces"]
+end = ["tray", "notifications", "battery", "volume", "brightness", "control-center"]
+
+[widget.launcher]
+glyph = "rocket"
+
+[widget.clock]
+format = "{:%H:%M %a, %b %d}"
+vertical_format = "{:%H %M - %d %m}"
+tooltip_format = "{:%H:%M %a, %b %d}"
+
+[widget.cpu]
+type = "sysmon"
+stat = "cpu_usage"
+visualization = "none"
+
+[widget.cpu-temp]
+type = "sysmon"
+stat = "cpu_temp"
+visualization = "none"
+
+[widget.memory]
+type = "sysmon"
+stat = "ram_used"
+visualization = "none"
+
+[widget.active_window]
+max_length = 145
+title_scroll = "on_hover"
+
+[widget.media]
+artist_first = true
+max_length = 145
+title_scroll = "on_hover"
+hide_when_no_media = true
+hide_when_idle = false
+
+[widget.volume]
+peek = true
+
+[widget.volume.actions]
+middle = "exec pavucontrol"
+
+[widget.brightness]
+peek = true
+
+[dock]
+enabled = true
+position = "bottom"
+auto_hide = true
+reserve_space = false
+background_opacity = 1.0
+launcher_position = "none"
+show_dots = false
+
+[wallpaper]
+enabled = true
+directory = "/home/scott/dotfiles/Wallpapers"
+fill_mode = "crop"
+transition = ["fade", "disc", "stripes", "wipe", "pixel", "honeycomb"]
+transition_duration = 1500
+edge_smoothness = 0.05
+transition_on_startup = true
+
+[wallpaper.automation]
+enabled = false
+interval_seconds = 300
+
+[backdrop]
+enabled = false
+
+[lockscreen]
+lock_before_suspend = true
+
+[idle.behavior.lock]
+enabled = false
+
+[idle.behavior.screen-off]
+enabled = false
+
+[notifications]
+enable_daemon = true
+position = "top_right"
+layer = "overlay"
+background_opacity = 1.0
+keep_dismissed_in_history = false
+
+[weather]
+enabled = true
+unit = "metric"

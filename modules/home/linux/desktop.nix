@@ -20,7 +20,7 @@
         thunar-volman
       ];
 
-      services.swaync.enable = true;
+      services.swaync.enable = false;
 
       gtk = {
         enable = true;
@@ -51,26 +51,26 @@
         }
       '';
 
-      # Noctalia splits its configuration into separate JSON files rather than
-      # supporting includes. Its wrapper points NOCTALIA_CONFIG_DIR at this
-      # checkout, so replacing this generated file is detected at runtime.
-      home.file."dotfiles/noctalia/colors.json".text = builtins.toJSON {
-        mError = colors.base08;
-        mOnError = colors.base00;
-        mOnPrimary = colors.base00;
-        mOnSecondary = colors.base00;
-        mOnSurface = colors.base05;
-        mOnSurfaceVariant = colors.base04;
-        mOnTertiary = colors.base00;
-        mOnHover = colors.base00;
-        mOutline = colors.base03;
-        mPrimary = colors.base0D;
-        mSecondary = colors.base0E;
-        mShadow = colors.base00;
-        mSurface = colors.base00;
-        mHover = colors.base02;
-        mSurfaceVariant = colors.base01;
-        mTertiary = colors.base0C;
+      home.file."dotfiles/noctalia/palettes/stylix.json".text = builtins.toJSON {
+        version = 2;
+        dark = {
+          error = colors.base08;
+          on_error = colors.base00;
+          on_primary = colors.base00;
+          on_secondary = colors.base00;
+          on_surface = colors.base05;
+          on_surface_variant = colors.base04;
+          on_tertiary = colors.base00;
+          on_hover = colors.base00;
+          outline_variant = colors.base03;
+          primary = colors.base0D;
+          secondary = colors.base0E;
+          shadow = colors.base00;
+          surface = colors.base00;
+          hover = colors.base02;
+          surface_container = colors.base01;
+          tertiary = colors.base0C;
+        };
       };
 
       programs.mpvpaper.enable = true;

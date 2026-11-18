@@ -6,3 +6,4 @@ pacman.log
 .config/kitty
 **/theme.conf
 /noctalia/colors.json
+/noctalia/palettes/stylix.json

@@ -29,9 +29,6 @@
 
     zen-browser.url = "github:0xc000022070/zen-browser-flake";
     zen-browser.inputs.nixpkgs.follows = "nixpkgs";
-
-    # noctalia-shell wrapper, used by the niri feature.
-    wrapper-modules.url = "github:BirdeeHub/nix-wrapper-modules";
   };
 
   # import-tree ./modules loads every module under modules/. To add config,

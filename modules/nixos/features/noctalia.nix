@@ -1,11 +1,14 @@
-{ self, inputs, ... }: {
+{
   perSystem = { pkgs, ... }: {
-    packages.myNoctalia = inputs.wrapper-modules.wrappers.noctalia.wrap {
-      inherit pkgs;
-      outOfStoreConfig = "/home/scott/dotfiles/noctalia";
-      # settings =
-      #   (builtins.fromJSON
-      #     (builtins.readFile ./noctalia.json)).settings;
+    packages.myNoctalia = pkgs.symlinkJoin {
+      name = "noctalia-configured";
+      paths = [ pkgs.noctalia ];
+      nativeBuildInputs = [ pkgs.makeWrapper ];
+      postBuild = ''
+        wrapProgram $out/bin/noctalia \
+          --set NOCTALIA_CONFIG_HOME /home/scott/dotfiles \
+          --set TERMINAL ghostty
+      '';
     };
   };
 }
