@@ -25,7 +25,7 @@ return {
 		opts = {
 			workspaces = {
 				{
-					name = "mo",
+					name = "main",
 					path = "~/Documents/obsidian-vault",
 				},
 			},
